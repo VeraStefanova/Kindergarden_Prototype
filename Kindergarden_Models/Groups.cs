@@ -8,5 +8,13 @@ namespace Kindergarden_Models
 {
     internal class Groups
     {
-    }
+		private int groupId;
+
+		public int GroupId
+		{
+			get { return groupId; }
+			set { groupId = value; }
+		}
+
+	}
 }
