@@ -4,7 +4,8 @@
     {
         private int kidId;
         private string firstKidName;
-        private string lastKidName;        
+        private string lastKidName;   
+        
         public int KidId
         {
             get { return kidId; }
