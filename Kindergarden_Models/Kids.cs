@@ -8,5 +8,13 @@
             get { return kidId; }
             set { kidId = value; }
         }
+        private string firstkidName;
+
+        public string FirstKidName
+        {
+            get { return firstkidName; }
+            set { firstkidName = value; }
+        }
+
     }
 }
