@@ -7,4 +7,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Kindergarden_Data\Kindergarden_Data.csproj" />
+    <ProjectReference Include="..\Kindergarden_Services\Kindergarden_Services.csproj" />
+  </ItemGroup>
+
 </Project>
