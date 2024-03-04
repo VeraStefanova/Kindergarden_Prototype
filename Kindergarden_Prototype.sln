@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kindergarden_Services", "Ki
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kindergarden_Data", "Kindergarden_Data\Kindergarden_Data.csproj", "{8E0E2F38-6CD4-4AB4-B383-5FE16216C4F7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kindergarden_ConsoleApplication", "Kindergarden_ConsoleApplication\Kindergarden_ConsoleApplication.csproj", "{9109CA15-393E-477D-82A6-F5995948253B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{8E0E2F38-6CD4-4AB4-B383-5FE16216C4F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8E0E2F38-6CD4-4AB4-B383-5FE16216C4F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8E0E2F38-6CD4-4AB4-B383-5FE16216C4F7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9109CA15-393E-477D-82A6-F5995948253B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9109CA15-393E-477D-82A6-F5995948253B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9109CA15-393E-477D-82A6-F5995948253B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9109CA15-393E-477D-82A6-F5995948253B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

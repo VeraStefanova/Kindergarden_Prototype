@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,7 +11,7 @@ namespace Kindergarden_Models
 	{
         public Groups()
         {
-                this.KidInGroup = new HashSet<Kids>();
+            this.KidInGroup = new HashSet<Kids>();
         }
         public int GroupId { get; set; }
 
