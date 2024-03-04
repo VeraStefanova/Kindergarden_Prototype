@@ -16,5 +16,13 @@ namespace Kindergarden_Models
 			set { groupId = value; }
 		}
 
+		private string groupName;
+
+		public string GroupName
+		{
+			get { return  groupName; }
+			set {  groupName = value; }
+		}
+
 	}
 }
