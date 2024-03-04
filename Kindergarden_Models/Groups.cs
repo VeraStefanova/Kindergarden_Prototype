@@ -6,23 +6,11 @@ using System.Threading.Tasks;
 
 namespace Kindergarden_Models
 {
-    internal class Groups
-    {
-		private int groupId;
+	public class Groups
+	{
+		public int GroupId { get; set; }
 
-		public int GroupId
-		{
-			get { return groupId; }
-			set { groupId = value; }
-		}
+        public string GroupName { get; set; }
 
-		private string groupName;
-
-		public string GroupName
-		{
-			get { return  groupName; }
-			set {  groupName = value; }
-		}
-
-	}
+    }
 }
