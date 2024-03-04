@@ -10,7 +10,7 @@ namespace Kindergarden_Models
 	{
         public Groups()
         {
-                this.KidInGroup = new Hashset<Kids>();
+                this.KidInGroup = new HashSet<Kids>();
         }
         public int GroupId { get; set; }
 
