@@ -9,5 +9,8 @@
         public int ParentId { get; set; }
         public int GroupId { get; set; }
 
+
+        public string Ben_Dover{ get; set; }
+
     }
 }
