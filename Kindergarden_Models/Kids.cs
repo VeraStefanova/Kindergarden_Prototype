@@ -2,25 +2,12 @@
 {
     public class Kids
     {
-        private int kidId;
-        private string firstKidName;
-        private string lastKidName;   
-        
-        public int KidId
-        {
-            get { return kidId; }
-            set { kidId = value; }
-        }
-        public string FirstKidName
-        {
-            get { return firstkidName; }
-            set { firstkidName = value; }
-        }
-        public string LastKidName
-        {
-            get { return lastKidName; }
-            set { lastKidName = value; }
-        }
+        public int KidId { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public int Age { get; set; }
+        public int ParentId { get; set; }
+        public int GroupId { get; set; }
 
     }
 }
