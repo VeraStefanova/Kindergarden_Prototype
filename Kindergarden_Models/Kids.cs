@@ -4,6 +4,7 @@ namespace Kindergarden_Models
 {
     public class Kids
     {
+        [Key]
         public int KidId { get; set; }
         
         [Required]
