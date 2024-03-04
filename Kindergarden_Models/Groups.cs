@@ -13,6 +13,8 @@ namespace Kindergarden_Models
         {
             this.KidInGroup = new HashSet<Kids>();
         }
+		
+		[Key]
         public int GroupId { get; set; }
 
 		[Required]
