@@ -7,19 +7,19 @@ using System.Threading.Tasks;
 
 namespace Kindergarden_Models
 {
-	public class Groups
+	public class Group
 	{
-		public Groups()
+		public Group()
 		{
-			this.KidInGroup = new HashSet<Kids>();
+			this.Kids = new HashSet<Kid>();
 		}
 		
-		[Key]
+		
 		public int GroupId { get; set; }
 
 		[Required]
 		public string GroupName { get; set; }
 
-		public virtual ICollection<Kids> KidInGroup { get; set; }	
+		public virtual ICollection<Kid> Kids { get; set; }	
 	}
 }
