@@ -14,6 +14,7 @@ namespace Kindergarden_Models
         }
         public int GroupId { get; set; }
 
+        [Required]
         public string GroupName { get; set; }
 
 		public ICollection<Kids> KidInGroup { get; set; }	
