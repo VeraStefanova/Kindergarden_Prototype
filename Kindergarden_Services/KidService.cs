@@ -39,23 +39,23 @@ namespace Kindergarden_Services
                 };
 
                 db.Parents.Add(parentEntity);
-                
             }
+
             if(kid.Age==3)
             {
-                
+                kid.GroupId = 1;
             }
             else if(kid.Age==4)
             {
-
+                kid.GroupId = 2;
             }
             else if(kid.Age==5)
             {
-
+                kid.GroupId = 3;
             }
             else if(kid.Age==6)
             {
-
+                kid.GroupId = 4;
             }
 
             kid.ParentId = parentEntity.ParentId;

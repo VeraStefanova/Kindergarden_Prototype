@@ -20,6 +20,6 @@ namespace Kindergarden_Models
 		[Required]
 		public string GroupName { get; set; }
 
-		public virtual ICollection<Kid> Kids { get; set; }	
+        public virtual ICollection<Kid> Kids { get; set; }	
 	}
 }
