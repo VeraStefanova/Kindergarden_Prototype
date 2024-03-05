@@ -6,10 +6,11 @@ using System.Text;
 using System.Threading.Tasks;
 using Kindergarden_Data;
 using Kindergarden_Models;
+using Kindergarden_Services.ViewModels;
 
 namespace Kindergarden_Services
 {
-    public class KidService
+    public class KidService : IKidService
     {
         public KidService(KindergardenDbContext db)
         {
@@ -65,6 +66,16 @@ namespace Kindergarden_Services
         public void Add()
         {
             Kid kid = new Kid();
+        }
+
+        public void Delete(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public KidViewModel Fetch(int id)
+        {
+            throw new NotImplementedException();
         }
     }
 }
