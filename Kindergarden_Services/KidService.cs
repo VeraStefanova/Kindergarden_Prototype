@@ -63,19 +63,35 @@ namespace Kindergarden_Services
             db.Kids.Add(kid);
             db.SaveChanges();
         }
-        public void Add()
-        {
-            Kid kid = new Kid();
-        }
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            var kid = db.Kids.FirstOrDefault(x => x.KidId == id);
+            if (kid != null)
+            {
+                db.Kids.Remove(kid);
+            }
+            else
+            {
+                Console.WriteLine($"Did not find kid with id: {id}.");
+            }
+            db.SaveChanges();
         }
 
         public KidViewModel Fetch(int id)
         {
-            throw new NotImplementedException();
+            var kvm = new KidViewModel();
+            var kid = db.Kids.FirstOrDefault(x => x.KidId == id);
+            if (kid != null)
+            {
+                kvm.KidId = kid.KidId;
+                kvm.Name = kid.FirstName + " " + kid.LastName;
+                kvm.Age = kid.Age;
+                kvm.ParentName = kid.Parent.FirstName + " " + kid.Parent.LastName;
+                kvm.GroupName = kid.Group.GroupName;
+                return kvm;
+            }
+            else return null;
         }
     }
 }

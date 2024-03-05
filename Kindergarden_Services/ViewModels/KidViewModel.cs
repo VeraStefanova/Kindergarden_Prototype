@@ -8,6 +8,7 @@ namespace Kindergarden_Services.ViewModels
 {
     public class KidViewModel
     {
+        public int KidId { get; set; }
         public string Name { get; set; }
         public int Age { get; set; }
         public string ParentName { get; set; }
