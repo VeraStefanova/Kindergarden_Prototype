@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Kindergarden_Services
 {
-    internal class ParentService
+    public class ParentService : IParentService
     {
         public ParentService(KindergardenDbContext db)
         {
@@ -18,24 +18,20 @@ namespace Kindergarden_Services
 
         private KindergardenDbContext db;
 
-        public void CreateParent(string firstName, string lastName, string phoneNumber, string address)
+        public void CreateParent(string firstName, string lastName, int age, string parentFirstName, string parentLastName, string phoneNumber, string address)
         {
-            
-                var parentEntity = new Parent
-                {
-                FirstName = firstName,
-                LastName = lastName,
-                PhoneNumber = phoneNumber,
-                Address = address
-                };
+            //TODO: find a way to call CreateKid from KidService
+            //KidService.CreateKid(firstName, lastName, age, parentFirstName, parentLastName, phoneNumber, address); NOT RIGHT
+        }
 
-                db.Parents.Add(parentEntity);
-                db.SaveChanges();
+        public void Delete(int id)
+        {
+            throw new NotImplementedException();
+        }
 
-           
-            
-            
-            
+        public void Fetch(int id)
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Kindergarden_Services
 {
-    internal interface IKidService
+    public interface IKidService
     {
         public void CreateKid(string firstName, string lastName, int age, string parentFirstName, string parentLastName, string phoneNumber, string address);
         public void Delete(int id);

@@ -32,12 +32,12 @@ namespace Kindergarden_Services
             if(parentEntity==null)
             {
                  parentEntity = new Parent
-                {
+                 {
                     FirstName = firstName,
                     LastName = lastName,
                     PhoneNumber = phoneNumber,
                     Address = address
-                };
+                 };
 
                 db.Parents.Add(parentEntity);
             }

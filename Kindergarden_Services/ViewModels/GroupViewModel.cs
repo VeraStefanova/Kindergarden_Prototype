@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Kindergarden_Services.ViewModels
 {
-    internal class GroupViewModel
+    public class GroupViewModel
     {
         public string Name { get; set; }
         public int Count { get; set; }
