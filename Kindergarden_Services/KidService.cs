@@ -71,8 +71,9 @@ namespace Kindergarden_Services
             {
                 Parent parent = kid.Parent; // Викам родителя на детето на което искам да изтрия
                 db.Kids.Remove(kid); //изтривам детето, но родителя остава
-                
-                db.SaveChanges(); // запазвам, защото не знам дали иначе ще изтрие релатиона 
+
+                parent.Kids.Remove(kid); // nz dali trie relationa i za tva go pravq ruchno
+
                 if(parent.Kids.Count==0) //Sled iztrivaneto na tova dete proverqvame dali tozi roditel, na iztritoto veche dete, ima drugi relation-i
                 {
                     db.Parents.Remove(parent);
