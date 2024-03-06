@@ -69,8 +69,9 @@ namespace Kindergarden_Services
             var kid = db.Kids.FirstOrDefault(x => x.KidId == id);
             if (kid != null)
             {
-                db.Kids.Remove(kid);
                 Parent parent = kid.Parent;
+                db.Kids.Remove(kid);
+                
                 db.SaveChanges();
                 if(parent.Kids.Count==0) //Sled iztrivaneto na tova dete proverqvame dali tozi roditel, na iztritoto veche dete, ima drugi relation-i
                 {
