@@ -28,17 +28,6 @@ namespace Kindergarden_Services
 
         public void Delete(int id)
         {
-            
-            var parent = db.Parents.FirstOrDefault(x => x.ParentId == id);
-            if (parent != null)
-            {
-                if(parent.Kids==null)
-                {
-                    db.Parents.Remove(parent);
-                }
-            }
-            db.SaveChanges();
-
 
         }
 
