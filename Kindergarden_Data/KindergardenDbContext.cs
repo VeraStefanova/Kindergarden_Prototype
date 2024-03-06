@@ -63,6 +63,7 @@ namespace Kindergarden_Data
 
 
         }
+
         //protected override void OnModelCreating(ModelBuilder modelBuilder)
         //{
         //    //при изтриване на компания да се трие само ако няма филми направени от тази компания

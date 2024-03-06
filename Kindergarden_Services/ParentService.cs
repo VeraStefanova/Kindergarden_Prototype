@@ -1,6 +1,7 @@
 ﻿using Azure;
 using Kindergarden_Data;
 using Kindergarden_Models;
+using Kindergarden_Services.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,12 +27,22 @@ namespace Kindergarden_Services
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            
         }
 
-        public void Fetch(int id)
+        public ParentViewModel Fetch(int id)
         {
-            throw new NotImplementedException();
+            var pvm = new ParentViewModel();
+            var parent = db.Parents.FirstOrDefault(x => x.ParentId == id);
+            if (parent != null)
+            {
+                pvm.ParentId = parent.ParentId;
+                pvm.Name = parent.FirstName + " " + parent.LastName;
+                pvm.PhoneNumber = parent.PhoneNumber;
+                pvm.Address = parent.Address;
+                return pvm;
+            }
+            else return null;
         }
     }
 }

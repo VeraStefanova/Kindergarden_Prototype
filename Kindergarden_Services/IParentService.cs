@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Kindergarden_Services.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,6 +11,6 @@ namespace Kindergarden_Services
     {
         public void CreateParent(string firstName, string lastName, int age, string parentFirstName, string parentLastName, string phoneNumber, string address);
         public void Delete(int id);
-        public void Fetch(int id);
+        public ParentViewModel Fetch(int id);
     }
 }
