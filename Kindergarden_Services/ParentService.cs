@@ -2,6 +2,7 @@
 using Kindergarden_Data;
 using Kindergarden_Models;
 using Kindergarden_Services.ViewModels;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,6 +29,17 @@ namespace Kindergarden_Services
         public void Delete(int id)
         {
             
+            var parent = db.Parents.FirstOrDefault(x => x.ParentId == id);
+            if (parent != null)
+            {
+                if(parent.Kids==null)
+                {
+                    db.Parents.Remove(parent);
+                }
+            }
+            db.SaveChanges();
+
+
         }
 
         public ParentViewModel Fetch(int id)
