@@ -34,6 +34,13 @@ namespace Kindergarden_Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            //при изтриване на идасшев да се трие само ако няма децана този родител
+            modelBuilder.Entity<Parent>()
+                .HasMany(x => x.Kids)
+                .WithOne(x => x.Parent)
+                .OnDelete(DeleteBehavior.Restrict);
+
+
             // Configure the constant table
             modelBuilder.Entity<Kindergarden_Models.Group>().HasData(
                 new Kindergarden_Models.Group { GroupId = 1, GroupName = "Kometa" },
