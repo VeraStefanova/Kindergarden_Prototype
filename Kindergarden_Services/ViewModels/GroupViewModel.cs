@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Kindergarden_Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +9,13 @@ namespace Kindergarden_Services.ViewModels
 {
     public class GroupViewModel
     {
+        public GroupViewModel()
+        {
+            Kids = new List<Kid>();
+        }
         public string Name { get; set; }
-        public int Count { get; set; }
+        public List<Kid> Kids { get; set; }
+
+
     }
 }
