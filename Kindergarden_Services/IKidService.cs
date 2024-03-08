@@ -10,8 +10,8 @@ namespace Kindergarden_Services
     public interface IKidService
     {
         public void CreateKid(string firstName, string lastName, int age, string parentFirstName, string parentLastName, string phoneNumber, string address);
-        public bool Delete(int id);
-        KidViewModel Fetch(int id);
+        public bool Delete(string kidName);
+        KidViewModel FetchKidAndParent(string kidName);
         //public void Update(int id);
         
 

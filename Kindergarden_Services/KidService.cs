@@ -64,9 +64,9 @@ namespace Kindergarden_Services
             db.SaveChanges();
         }
 
-        public bool Delete(int id)
+        public bool Delete(string kidName)
         {
-            var kid = db.Kids.FirstOrDefault(x => x.KidId == id);
+            var kid = db.Kids.FirstOrDefault(x => x.FirstName == kidName);
             if (kid != null)
             {
                 Parent parent = kid.Parent; // Викам родителя на детето на което искам да изтрия
@@ -74,7 +74,7 @@ namespace Kindergarden_Services
 
                 parent.Kids.Remove(kid); // nz dali trie relationa i za tva go pravq ruchno
 
-                if(parent.Kids.Count==0) //Sled iztrivaneto na tova dete proverqvame dali tozi roditel, na iztritoto veche dete, ima drugi relation-i
+                if (parent.Kids.Count == 0) //Sled iztrivaneto na tova dete proverqvame dali tozi roditel, na iztritoto veche dete, ima drugi relation-i
                 {
                     db.Parents.Remove(parent);
                 }
@@ -85,21 +85,22 @@ namespace Kindergarden_Services
             {
                 return false;
             }
-            
         }
 
-        public KidViewModel Fetch(int id)
+        public KidViewModel FetchKidAndParent(string kidName)
         {
+            
             var kvm = new KidViewModel();
-            var kid = db.Kids.FirstOrDefault(x => x.KidId == id);
+            var kid = db.Kids.FirstOrDefault(x => x.FirstName == kidName.Trim());
             if (kid != null)
             {
-                kvm.KidId = kid.KidId;
                 kvm.Name = kid.FirstName + " " + kid.LastName;
                 kvm.Age = kid.Age;
                 kvm.ParentName = kid.Parent.FirstName + " " + kid.Parent.LastName;
+                kvm.PhoneNumber = kid.Parent.PhoneNumber;
+                kvm.Address = kid.Parent.Address;
                 kvm.GroupName = kid.Group.GroupName;
-                return kvm;
+                return kvm; 
             }
             else return null;
         }
