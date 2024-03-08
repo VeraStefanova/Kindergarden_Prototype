@@ -64,7 +64,7 @@ namespace Kindergarden_Services
             db.SaveChanges();
         }
 
-        public void Delete(int id)
+        public bool Delete(int id)
         {
             var kid = db.Kids.FirstOrDefault(x => x.KidId == id);
             if (kid != null)
@@ -78,12 +78,14 @@ namespace Kindergarden_Services
                 {
                     db.Parents.Remove(parent);
                 }
+                db.SaveChanges();
+                return true;
             }
             else
             {
-                Console.WriteLine($"Did not find kid with id: {id}.");
+                return false;
             }
-            db.SaveChanges();
+            
         }
 
         public KidViewModel Fetch(int id)

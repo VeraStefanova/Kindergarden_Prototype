@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -44,6 +45,31 @@ namespace Kindergarden_Services
                 return pvm;
             }
             else return null;
+        }
+
+        public bool UpdateName(int id, string newName)
+        {
+            var parentEntity = db.Parents.FirstOrDefault(x => x.ParentId == id);
+            string[] name = newName.Trim().Split().ToArray();
+            if (parentEntity != null)
+            {
+                parentEntity.FirstName = name[0];
+                parentEntity.LastName = name[1];
+                db.SaveChanges();
+                return true;
+            }
+            else { return false; }
+         //   
+        }
+
+        public bool UpdateAddress(int id, string newAddress)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool UpdatePN(string pn)
+        {
+            throw new NotImplementedException();
         }
     }
 }
