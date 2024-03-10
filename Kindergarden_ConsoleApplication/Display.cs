@@ -446,6 +446,9 @@ namespace Kindergarden_ConsoleApplication
             }
 
 
+            kidService.CreateKid(fName, lName, age, parentFName, parentLName, pn, address);
+
+
         } 
 
         private void DeleteKid()

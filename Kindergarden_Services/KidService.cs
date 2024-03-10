@@ -30,7 +30,7 @@ namespace Kindergarden_Services
 
             };
             
-            var parentEntity = db.Parents.FirstOrDefault(x => x.PhoneNumber.Trim()==phoneNumber.Trim());
+            var parentEntity = db.Parents.FirstOrDefault(x => x.PhoneNumber.Trim()==phoneNumber.Trim()); 
             if(parentEntity==null)
             {
                  parentEntity = new Parent
