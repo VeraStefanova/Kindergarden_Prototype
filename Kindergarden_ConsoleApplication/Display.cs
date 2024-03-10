@@ -376,8 +376,77 @@ namespace Kindergarden_ConsoleApplication
         }
         private void CreateKid()
         {
-            throw new NotImplementedException();
-        } //TODO: validate age
+            Console.Write("Enter kid's first name:"); //kid First name
+            string fName = Console.ReadLine();
+            if (String.IsNullOrWhiteSpace(fName))
+            {
+                Console.WriteLine("You must type a first name!");
+                CreateKid();
+            }
+
+            Console.Write("Enter kid's last name:"); // kid Last name
+            string lName = Console.ReadLine();
+            if (String.IsNullOrWhiteSpace(lName))
+            {
+                Console.WriteLine("You must type a last name!");
+                CreateKid();
+            }
+
+            Console.Write("Enter kid's age:");      // kid Age
+            int age = int.Parse(Console.ReadLine());
+            if(String.IsNullOrEmpty(age.ToString()))
+            {
+                Console.WriteLine("You must type an age!");
+                CreateKid();
+            }
+            else if (age<1)
+            {
+                Console.WriteLine("You must type a valid age!");
+                CreateKid();
+
+            }
+            else if(age<3|| age>6)
+            {
+                Console.WriteLine("This kid cannot be in our kindergarden!");
+                CreateKid();
+            }    
+
+
+            Console.Write("Enter parents's first name:"); //Parent First name
+            string parentFName = Console.ReadLine();
+            if (String.IsNullOrWhiteSpace(parentFName))
+            {
+                Console.WriteLine("You must type first name!");
+                CreateKid();
+            }
+
+
+            Console.Write("Enter parents's last name:");  //Parent Last name
+            string parentLName = Console.ReadLine();
+            if (String.IsNullOrWhiteSpace(parentLName))
+            {
+                Console.WriteLine("You must type last name!");
+                CreateKid();
+            }
+
+            Console.Write("Enter parents's phone number:");  //Parent phone number
+            string pn = Console.ReadLine();
+            if (String.IsNullOrWhiteSpace(pn))
+            {
+                Console.WriteLine("You must type a phone number!");
+                CreateKid();
+            }
+
+            Console.Write("Enter parents's phone number:");  //Parent address
+            string address = Console.ReadLine();
+            if (String.IsNullOrWhiteSpace(address))
+            {
+                Console.WriteLine("You must type an address!");
+                CreateKid();
+            }
+
+
+        } 
 
         private void DeleteKid()
         {
