@@ -30,7 +30,7 @@ namespace Kindergarden_Services
 
             };
             
-            var parentEntity = db.Parents.FirstOrDefault(x => x.PhoneNumber.Trim()==phoneNumber.Trim()); 
+            var parentEntity = db.Parents.FirstOrDefault(x => x.PhoneNumber.Trim()==phoneNumber.Trim());  // търсим дали вече има такъв родител в програмата
             if(parentEntity==null)
             {
                  parentEntity = new Parent
@@ -43,8 +43,9 @@ namespace Kindergarden_Services
 
                 db.Parents.Add(parentEntity);
             }
+            //else { } TODO: дали трябва да добавяме relation-a ръчно или сам го прави
 
-            if(kid.Age==3)
+            if(kid.Age==3) //според годините ходи в съответната група
             {
                 kid.GroupId = 1;
             }
@@ -69,7 +70,7 @@ namespace Kindergarden_Services
 
         public bool Delete(string kidName)
         {
-            var kid = db.Kids.FirstOrDefault(x => x.FirstName == kidName);
+            var kid = db.Kids.FirstOrDefault(x => x.FirstName == kidName); 
             if (kid != null)
             {
                 Parent parent = kid.Parent; // Викам родителя на детето на което искам да изтрия

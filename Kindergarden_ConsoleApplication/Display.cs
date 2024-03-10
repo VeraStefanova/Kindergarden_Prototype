@@ -499,8 +499,8 @@ namespace Kindergarden_ConsoleApplication
                 }
                 Console.Write("Please, enter the id of your choice: ");
                 Kid selectedKid = kidsWithThisName[int.Parse(Console.ReadLine()) - 1];
-                kidService.Delete(selectedKid.FirstName);
-
+                kidService.Delete(selectedKid.FirstName); // TODO: KAkvo pravim ako Delete() vurne null???
+                // TODO:Analogichno da vidim kakvo pravim s Update?????
             }
         }
     }
