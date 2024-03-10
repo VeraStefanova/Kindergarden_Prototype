@@ -1,4 +1,5 @@
 ﻿using Kindergarden_Data;
+using Kindergarden_Models;
 using Kindergarden_Services;
 using Kindergarden_Services.ViewModels;
 using Microsoft.EntityFrameworkCore;
@@ -6,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http.Headers;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -28,7 +30,7 @@ namespace Kindergarden_ConsoleApplication
             this.groupService = new GroupService(db);
             Input();
         }
-        
+
         private void ShowMenu()
         {
             Console.Clear();
@@ -42,9 +44,9 @@ namespace Kindergarden_ConsoleApplication
             Console.WriteLine("5. Create kid");//
             Console.WriteLine("6. Update kid");
             Console.WriteLine("7. Update parent");
-            Console.WriteLine("8. Delete");
+            Console.WriteLine("8. Delete kid");
             Console.WriteLine("9. Exit");
-            
+
         }
         private void Input()
         {
@@ -77,7 +79,7 @@ namespace Kindergarden_ConsoleApplication
                         UpdateParent();
                         break;
                     case 8:
-                        Delete();
+                        DeleteKid();
                         break;
                     default:
                         break;
@@ -90,7 +92,7 @@ namespace Kindergarden_ConsoleApplication
             Console.Clear();
             foreach (var kid in db.Kids)
             {
-                KidViewModel kvm =  kidService.FetchKidAndParent(kid.FirstName);
+                KidViewModel kvm = kidService.FetchKidAndParent(kid.FirstName);
                 Console.WriteLine($"Kid name: {kvm.Name}, Age: {kvm.Age}, Parent name: {kvm.ParentName}, Parent phone number: {kvm.PhoneNumber}, Address: {kvm.Address}, Group: {kvm.GroupName}");
             }
             Console.WriteLine("Press any key to go back to main menu");
@@ -132,59 +134,303 @@ namespace Kindergarden_ConsoleApplication
             Console.Clear();
             Console.Write("Enter kid name: ");
             string name = Console.ReadLine();
-            if(String.IsNullOrWhiteSpace(name))
+            if (String.IsNullOrWhiteSpace(name))
             {
                 Console.WriteLine("You must type a name!");
                 FetchKidAndParent();
             }
             KidViewModel kvm = kidService.FetchKidAndParent(name);
-            if(kvm==null)
+            if (kvm == null)
             {
                 Console.WriteLine("There is no kid with this name!");
                 Console.WriteLine("1. Search again");
                 Console.WriteLine("2. Go back to main menu");
                 int choice = int.Parse(Console.ReadLine());
-
-                do
+                bool n = true;
+                while (n)
                 {
                     if (choice == 1)
                     {
                         FetchKidAndParent();
+                        n = false;
                     }
                     else if (choice == 2)
                     {
 
                         ShowMenu();
+                        n = false;
                     }
                     else
                     {
                         Console.WriteLine("Please select a valid option!");
+                        choice = int.Parse(Console.ReadLine());
                     }
                 }
-                while (choice != 1 && choice != 2);
-                
             }
             else
             {
-                Console.WriteLine($"Kid name: {kvm.Name}, Age: {kvm.Age}, Parent name: {kvm.ParentName}, Parent phone number: {kvm.PhoneNumber}, Address: {kvm.Address}, Group: {kvm.GroupName}");
+                Console.WriteLine($"Kid name: {kvm.Name}\nAge: {kvm.Age}\nParent name: {kvm.ParentName}\nParent phone number: {kvm.PhoneNumber}\nAddress: {kvm.Address}\nGroup: {kvm.GroupName}");
             }
 
         }
         private void UpdateKid()
         {
-            
+            Console.Write("Enter kid's first name: ");
+            string name = Console.ReadLine();
+            List<Kid> kidsWithThisName = new List<Kid>();
+            KidViewModel kvm = kidService.FetchKidAndParent(name);
+            if (kvm == null)
+            {
+                Console.WriteLine("There is no kid with this name!");
+                Console.WriteLine("1. Enter name again");
+                Console.WriteLine("2. Go back to main menu");
+                int choice = int.Parse(Console.ReadLine());
+                bool n = true;
+                while (n)
+                {
+                    if (choice == 1)
+                    {
+                        UpdateKid();
+                        n = false;
+                    }
+                    else if (choice == 2)
+                    {
+
+                        ShowMenu();
+                        n = false;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Please select a valid option!");
+                        choice = int.Parse(Console.ReadLine());
+                    }
+                }
+            }
+            else
+            {
+                foreach (var kid in db.Kids)
+                {
+                    if (kid.FirstName == name)
+                    {
+                        kidsWithThisName.Add(kid);
+                    }
+                }
+                for (int i = 1; i <= kidsWithThisName.Count; i++)
+                {
+                    Console.WriteLine($"{i}. Name: {kidsWithThisName[i].FirstName + " " + kidsWithThisName[i].LastName}, Age: {kidsWithThisName[i].Age}");
+                }
+                Console.Write("Please, enter the id of your choice: ");
+                Kid selectedKid = kidsWithThisName[int.Parse(Console.ReadLine()) - 1];
+
+                Console.WriteLine("1.Update name.");
+                Console.WriteLine("2.Update age.");
+                int choice = int.Parse(Console.ReadLine());
+                bool n = true;
+                while (n)
+                {
+                    if (choice == 1)
+                    {
+                        Console.Write("Enter kid's new name: ");
+                        string newName = Console.ReadLine();
+                        if (String.IsNullOrWhiteSpace(newName))
+                        {
+                            Console.WriteLine("You must type a name!");
+                            UpdateKid();
+                            n = false;
+                        }
+                        kidService.UpdateName(selectedKid.KidId, newName);
+                        Console.WriteLine("Name has been successfully updated.");
+
+                    }
+                    else if (choice == 2)
+                    {
+                        Console.Write("Enter kid's new age: ");
+                        int newAge = int.Parse(Console.ReadLine());
+                        if (newAge < 3 || newAge > 6 || newAge == null)
+                        {
+                            Console.WriteLine("You must type a valid age!");
+                            UpdateKid();
+                            n = false;
+                        }
+                        kidService.UpdateAge(selectedKid.KidId, newAge);
+                        Console.WriteLine("Age has been successfully updated.");
+
+                    }
+                    else
+                    {
+                        Console.WriteLine("Please select a valid option!");
+                        choice = int.Parse(Console.ReadLine());
+                    }
+                }
+
+            }
+
+        }
+        private void UpdateParent()
+        {
+            Console.Write("Enter parent's first name: ");
+            string name = Console.ReadLine();
+            List<Parent> parentsWithThisName = new List<Parent>();
+            Parent parent = db.Parents.FirstOrDefault(x => x.FirstName == name);
+            if (parent == null)
+            {
+                Console.WriteLine("There is no parent with this name!");
+                Console.WriteLine("1. Enter name again");
+                Console.WriteLine("2. Go back to main menu");
+
+                int choice = int.Parse(Console.ReadLine());
+                bool n = true;
+                while (n)
+                {
+                    if (choice == 1)
+                    {
+                        UpdateParent();
+                        n = false;
+                    }
+                    else if (choice == 2)
+                    {
+
+                        ShowMenu();
+                        n = false;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Please select a valid option!");
+                        choice = int.Parse(Console.ReadLine());
+                    }
+                }
+            }
+            else
+            {
+                foreach (var parentSearch in db.Parents)
+                {
+                    if (parentSearch.FirstName == name)
+                    {
+                        parentsWithThisName.Add(parentSearch);
+                    }
+                }
+                for (int i = 1; i <= parentsWithThisName.Count; i++)
+                {
+                    Console.WriteLine($"{i}. Name: {parentsWithThisName[i].FirstName + " " + parentsWithThisName[i].LastName}, Phone number: {parentsWithThisName[i].PhoneNumber}");
+                }
+                Console.Write("Please, enter the id of your choice: ");
+                Parent selectedParent = parentsWithThisName[int.Parse(Console.ReadLine()) - 1];
+
+                Console.WriteLine("1.Update name.");
+                Console.WriteLine("2.Update phone number.");
+                Console.WriteLine("2.Update address.");
+
+                int choice = int.Parse(Console.ReadLine());
+                bool n = true;
+                while (n)
+                {
+                    if (choice == 1) // update name
+                    {
+                        Console.Write("Enter parents's new name: ");
+                        string newName = Console.ReadLine();
+                        if (String.IsNullOrWhiteSpace(newName))
+                        {
+                            Console.WriteLine("You must type a name!");
+                            UpdateParent();
+                            n = false;
+                        }
+                        parentService.UpdateName(selectedParent.ParentId, newName);
+                        Console.WriteLine("Name has been successfully updated.");
+
+                    }
+                    else if (choice == 2) // update phone number
+                    {
+                        Console.Write("Enter parent's new phone number: ");
+                        string newPN = Console.ReadLine();
+                        if (newPN.Count() != 10 && String.IsNullOrWhiteSpace(newPN))
+                        {
+                            Console.WriteLine("You must type a valid phone number!");
+                            UpdateParent();
+                            n = false;
+                        }
+                        parentService.UpdatePN(selectedParent.PhoneNumber, newPN);
+                        Console.WriteLine("Phone number has been successfully updated.");
+
+                    }
+                    else if (choice == 3) //update address
+                    {
+                        Console.Write("Enter parents's new address: ");
+                        string newAddress = Console.ReadLine();
+                        if (String.IsNullOrWhiteSpace(newAddress))
+                        {
+                            Console.WriteLine("You must type an addreess!");
+                            UpdateParent();
+                            n = false;
+                        }
+                        parentService.UpdateAddress(selectedParent.Address, newAddress);
+                        Console.WriteLine("Address has been successfully updated.");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Please select a valid option!");
+                        choice = int.Parse(Console.ReadLine());
+                    }
+                }
+
+            }
         }
         private void CreateKid()
         {
             throw new NotImplementedException();
-        }
-        private void UpdateParent()
+        } //TODO: validate age
+
+        private void DeleteKid()
         {
-            throw new NotImplementedException();
-        }
-        private void Delete()
-        {
-            throw new NotImplementedException();
+            Console.Write("Enter kid's first name: ");
+            string name = Console.ReadLine();
+            List<Kid> kidsWithThisName = new List<Kid>();
+            Kid kid = db.Kids.FirstOrDefault(x=>x.FirstName == name);
+            if (kid == null)
+            {
+                Console.WriteLine("There is no kid with this name!");
+                Console.WriteLine("1. Enter name again");
+                Console.WriteLine("2. Go back to main menu");
+                int choice = int.Parse(Console.ReadLine());
+                bool n = true;
+                while (n)
+                {
+                    if (choice == 1)
+                    {
+                        DeleteKid();
+                        n = false;
+                    }
+                    else if (choice == 2)
+                    {
+
+                        ShowMenu();
+                        n = false;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Please select a valid option!");
+                        choice = int.Parse(Console.ReadLine());
+                    }
+                }
+            }
+            else
+            {
+                foreach (var kidSearch in db.Kids)
+                {
+                    if (kidSearch.FirstName == name)
+                    {
+                        kidsWithThisName.Add(kidSearch);
+                    }
+                }
+                for (int i = 1; i <= kidsWithThisName.Count; i++)
+                {
+                    Console.WriteLine($"{i}. Name: {kidsWithThisName[i].FirstName + " " + kidsWithThisName[i].LastName}, Age: {kidsWithThisName[i].Age}");
+                }
+                Console.Write("Please, enter the id of your choice: ");
+                Kid selectedKid = kidsWithThisName[int.Parse(Console.ReadLine()) - 1];
+                kidService.Delete(selectedKid.FirstName);
+
+            }
         }
     }
 }
+

@@ -1,3 +1,6 @@
+using Kindergarden_Data;
+using Kindergarden_Models;
+
 namespace Kindergarden_Web
 {
     public class Program
@@ -8,6 +11,7 @@ namespace Kindergarden_Web
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+            builder.Services.AddDbContext<KindergardenDbContext>();
 
             var app = builder.Build();
 

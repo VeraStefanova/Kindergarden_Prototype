@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using Kindergarden_Data;
 using Kindergarden_Models;
 using Kindergarden_Services.ViewModels;
+using System.Security.Cryptography;
+using System.Reflection.Metadata.Ecma335;
 
 namespace Kindergarden_Services
 {
@@ -58,6 +60,7 @@ namespace Kindergarden_Services
             {
                 kid.GroupId = 4;
             }
+           
 
             kid.ParentId = parentEntity.ParentId;
             db.Kids.Add(kid);
@@ -125,6 +128,22 @@ namespace Kindergarden_Services
             if (kidtEntity != null)
             {
                 kidtEntity.Age = newAge;
+                if (kidtEntity.Age == 3)
+                {
+                    kidtEntity.GroupId = 1;
+                }
+                else if (kidtEntity.Age == 4)
+                {
+                    kidtEntity.GroupId = 2;
+                }
+                else if (kidtEntity.Age == 5)
+                {
+                    kidtEntity.GroupId = 3;
+                }
+                else if (kidtEntity.Age == 6)
+                {
+                    kidtEntity.GroupId = 4;
+                }
                 db.SaveChanges();
                 return true;
             }

@@ -60,11 +60,11 @@ namespace Kindergarden_Data
 
             modelBuilder.Entity<Kid>().HasData(
                 new Kid { KidId = 1, FirstName = "Mariqn",LastName = "Ganev",Age = 4, ParentId = 2, GroupId = 2},
-                new Kid { KidId = 1, FirstName = "Pitagor",LastName = "Kant",Age = 3, ParentId = 5, GroupId = 1},
-                new Kid { KidId = 1, FirstName = "Kukuvica",LastName = "Trepni",Age = 6, ParentId = 3, GroupId = 4},
-                new Kid { KidId = 1, FirstName = "Petkan",LastName = "Ganev",Age = 6, ParentId = 2, GroupId = 4},
-                new Kid { KidId = 1, FirstName = "Kaloqn",LastName = "Donov",Age = 4, ParentId = 1, GroupId = 2},
-                new Kid { KidId = 1, FirstName = "Dragondis",LastName = "Nuts",Age = 3, ParentId = 4, GroupId = 1}
+                new Kid { KidId = 2, FirstName = "Pitagor",LastName = "Kant",Age = 3, ParentId = 5, GroupId = 1},
+                new Kid { KidId = 3, FirstName = "Kukuvica",LastName = "Trepni",Age = 6, ParentId = 3, GroupId = 4},
+                new Kid { KidId = 4, FirstName = "Petkan",LastName = "Ganev",Age = 6, ParentId = 2, GroupId = 4},
+                new Kid { KidId = 5, FirstName = "Kaloqn",LastName = "Donov",Age = 4, ParentId = 1, GroupId = 2},
+                new Kid { KidId = 6, FirstName = "Dragondis",LastName = "Nuts",Age = 3, ParentId = 4, GroupId = 1}
             );
 
 
