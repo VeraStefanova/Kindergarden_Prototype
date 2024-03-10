@@ -10,11 +10,11 @@ namespace Kindergarden_Services
 {
     public interface IParentService
     {
-        public void CreateParent(string firstName, string lastName, int age, string parentFirstName, string parentLastName, string phoneNumber, string address);
-        public void Delete(int id);
+        //public void CreateParent(string firstName, string lastName, int age, string parentFirstName, string parentLastName, string phoneNumber, string address);
+        //public void Delete(int id);
         public ParentViewModel Fetch(int id);
         public bool UpdateName(int id,string newName);
-        public bool UpdateAddress(int id,  string newAddress);
-        public bool UpdatePN(string pn);
+        public bool UpdateAddress(string oldAddress,  string newAddress);
+        public bool UpdatePN(string pn1, string pn);
     }
 }

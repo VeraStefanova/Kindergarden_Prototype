@@ -21,16 +21,16 @@ namespace Kindergarden_Services
 
         private KindergardenDbContext db;
 
-        public void CreateParent(string firstName, string lastName, int age, string parentFirstName, string parentLastName, string phoneNumber, string address)
-        {
-            //TODO: find a way to call CreateKid from KidService
-            //KidService.CreateKid(firstName, lastName, age, parentFirstName, parentLastName, phoneNumber, address); NOT RIGHT
-        }
+        //public void CreateParent(string firstName, string lastName, int age, string parentFirstName, string parentLastName, string phoneNumber, string address)
+        //{
+        //    //TODO: find a way to call CreateKid from KidService
+        //    //KidService.CreateKid(firstName, lastName, age, parentFirstName, parentLastName, phoneNumber, address); NOT RIGHT
+        //}
 
-        public void Delete(int id)
-        {
+        //public void Delete(int id)
+        //{
 
-        }
+        //}
 
         public ParentViewModel Fetch(int id)
         {
@@ -59,19 +59,31 @@ namespace Kindergarden_Services
                 return true;
             }
             else { return false; }
-           
+        }
+
+        public bool UpdatePN(string oldPN, string newPN)
+        {
+            var parentEntity = db.Parents.FirstOrDefault(x => x.PhoneNumber == oldPN);
+            if (parentEntity != null)
+            {
+                parentEntity.PhoneNumber = newPN;
+                db.SaveChanges();
+                return true;
+            }
+            else { return false; }
+        }
+        public bool UpdateAddress(string oldAddress, string newAddress)
+        {
+            var parentEntity = db.Parents.FirstOrDefault(x => x.Address == oldAddress);
+            if (parentEntity != null)
+            {
+                parentEntity.Address = newAddress;
+                db.SaveChanges();
+                return true;
+            }
+            else { return false; }
         }
 
         
-        public bool UpdateAddress(int id, string newAddress)
-        {
-            throw new NotImplementedException();
-            //TODO: Finish Update Methods
-        }
-
-        public bool UpdatePN(string pn)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

@@ -12,8 +12,9 @@ namespace Kindergarden_Services
         public void CreateKid(string firstName, string lastName, int age, string parentFirstName, string parentLastName, string phoneNumber, string address);
         public bool Delete(string kidName);
         KidViewModel FetchKidAndParent(string kidName);
-        //public void Update(int id);
-        
+        public bool UpdateName(int id, string newName);
+        public bool UpdateAge(int id, int newAge );
+
 
 
     }

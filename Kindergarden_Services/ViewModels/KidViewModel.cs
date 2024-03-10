@@ -15,5 +15,6 @@ namespace Kindergarden_Services.ViewModels
         public string PhoneNumber { get; set; }
         public string Address { get; set; }
         public string GroupName { get; set; }
+
     }
 }

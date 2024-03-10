@@ -1,6 +1,7 @@
 ﻿using Kindergarden_Data;
 using Kindergarden_Services;
 using Kindergarden_Services.ViewModels;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -67,21 +68,22 @@ namespace Kindergarden_ConsoleApplication
                         FetchKidAndParent();
                         break;
                     case 5:
-                        Delete();
+                        CreateKid();
                         break;
                     case 6:
-                        CreateMovie();
+                        UpdateKid();
                         break;
                     case 7:
-                        ListAllMoviesByViewModel();
+                        UpdateParent();
+                        break;
+                    case 8:
+                        Delete();
                         break;
                     default:
                         break;
                 }
             } while (operation != closeOperationId);
         }
-
-
 
         private void ListAllKids()
         {
@@ -168,6 +170,21 @@ namespace Kindergarden_ConsoleApplication
             }
 
         }
-
+        private void UpdateKid()
+        {
+            
+        }
+        private void CreateKid()
+        {
+            throw new NotImplementedException();
+        }
+        private void UpdateParent()
+        {
+            throw new NotImplementedException();
+        }
+        private void Delete()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

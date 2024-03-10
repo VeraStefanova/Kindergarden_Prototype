@@ -104,5 +104,31 @@ namespace Kindergarden_Services
             }
             else return null;
         }
+
+        public bool UpdateName(int id, string newName)
+        {
+            var kidtEntity = db.Kids.FirstOrDefault(x => x.KidId == id);
+            string[] name = newName.Trim().Split().ToArray();
+            if (kidtEntity != null)
+            {
+                kidtEntity.FirstName = name[0];
+                kidtEntity.LastName = name[1];
+                db.SaveChanges();
+                return true;
+            }
+            else { return false; }
+        }
+
+        public bool UpdateAge(int id, int newAge)
+        {
+            var kidtEntity = db.Kids.FirstOrDefault(x => x.KidId == id);
+            if (kidtEntity != null)
+            {
+                kidtEntity.Age = newAge;
+                db.SaveChanges();
+                return true;
+            }
+            else { return false; }
+        }
     }
 }
