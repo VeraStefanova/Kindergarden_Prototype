@@ -5,11 +5,13 @@ VisualStudioVersion = 17.8.34525.116
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kindergarden_Models", "Kindergarden_Models\Kindergarden_Models.csproj", "{A3518436-0264-4E39-8BCA-7B66109167BE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kindergarden_Services", "Kindergarden_Services\Kindergarden_Services.csproj", "{FC883E90-1E17-4701-A698-451E7ABABB90}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kindergarden_Services", "Kindergarden_Services\Kindergarden_Services.csproj", "{FC883E90-1E17-4701-A698-451E7ABABB90}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kindergarden_Data", "Kindergarden_Data\Kindergarden_Data.csproj", "{8E0E2F38-6CD4-4AB4-B383-5FE16216C4F7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kindergarden_Data", "Kindergarden_Data\Kindergarden_Data.csproj", "{8E0E2F38-6CD4-4AB4-B383-5FE16216C4F7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kindergarden_ConsoleApplication", "Kindergarden_ConsoleApplication\Kindergarden_ConsoleApplication.csproj", "{9109CA15-393E-477D-82A6-F5995948253B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kindergarden_ConsoleApplication", "Kindergarden_ConsoleApplication\Kindergarden_ConsoleApplication.csproj", "{9109CA15-393E-477D-82A6-F5995948253B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kindergarden_Web", "Kindergarden_Web\Kindergarden_Web.csproj", "{812E4C60-2128-4CD7-8DDD-C9796CD2E9EE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{9109CA15-393E-477D-82A6-F5995948253B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9109CA15-393E-477D-82A6-F5995948253B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9109CA15-393E-477D-82A6-F5995948253B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{812E4C60-2128-4CD7-8DDD-C9796CD2E9EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{812E4C60-2128-4CD7-8DDD-C9796CD2E9EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{812E4C60-2128-4CD7-8DDD-C9796CD2E9EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{812E4C60-2128-4CD7-8DDD-C9796CD2E9EE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
