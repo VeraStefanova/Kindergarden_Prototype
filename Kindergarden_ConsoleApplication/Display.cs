@@ -389,8 +389,10 @@ namespace Kindergarden_ConsoleApplication
             if (String.IsNullOrWhiteSpace(lName))
             {
                 Console.WriteLine("You must type a last name!");
-                CreateKid();
+                CreateKid();  
             }
+            //TODO: Dali trqbva da slojim break sled vs CreateKid();
+            //***********************************************************
 
             Console.Write("Enter kid's age:");      // kid Age
             int age = int.Parse(Console.ReadLine());
@@ -455,6 +457,8 @@ namespace Kindergarden_ConsoleApplication
         {
             Console.Write("Enter kid's first name: ");
             string name = Console.ReadLine();
+            //TODO: if(IsNull) *************************************************
+            //I za drugite mesta kudeto vkarvame ime
             List<Kid> kidsWithThisName = new List<Kid>();
             Kid kid = db.Kids.FirstOrDefault(x=>x.FirstName == name);
             if (kid == null)
@@ -499,8 +503,8 @@ namespace Kindergarden_ConsoleApplication
                 }
                 Console.Write("Please, enter the id of your choice: ");
                 Kid selectedKid = kidsWithThisName[int.Parse(Console.ReadLine()) - 1];
-                kidService.Delete(selectedKid.FirstName); // TODO: KAkvo pravim ako Delete() vurne null???
-                // TODO:Analogichno da vidim kakvo pravim s Update?????
+                kidService.Delete(selectedKid.FirstName);
+                
             }
         }
     }
