@@ -455,6 +455,7 @@ namespace Kindergarden_ConsoleApplication
 
         private void DeleteKid()
         {
+            //TODO: Да сложим Console.Clear() tuk i da go mahnem v glavniq method
             Console.Write("Enter kid's first name: ");
             string name = Console.ReadLine();
             //TODO: if(IsNull) *************************************************
