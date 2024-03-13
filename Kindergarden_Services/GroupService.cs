@@ -15,6 +15,7 @@ namespace Kindergarden_Services
             this.db = db;
         }
         private KindergardenDbContext db;
+
         public GroupViewModel Fetch(int id)
         {
             var gvm = new GroupViewModel();
@@ -29,6 +30,7 @@ namespace Kindergarden_Services
                 return gvm;
             }
             else return null;
+            //Add TODO: Show stevcho
         }
     }
 }

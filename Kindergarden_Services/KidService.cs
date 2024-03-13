@@ -14,6 +14,7 @@ namespace Kindergarden_Services
 {
     public class KidService : IKidService
     {
+
         public KidService(KindergardenDbContext db)
         {
             this.db = db;
@@ -29,7 +30,9 @@ namespace Kindergarden_Services
                 Age = age,
 
             };
-            
+
+            //TODO
+
             var parentEntity = db.Parents.FirstOrDefault(x => x.PhoneNumber.Trim()==phoneNumber.Trim());  // търсим дали вече има такъв родител в програмата
             if(parentEntity==null)
             {
