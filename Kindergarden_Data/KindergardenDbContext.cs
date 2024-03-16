@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -43,19 +44,19 @@ namespace Kindergarden_Data
 
             // Configure the constant table
             modelBuilder.Entity<Kindergarden_Models.Group>().HasData(
-                new Kindergarden_Models.Group { GroupId = 1, GroupName = "Kometa" },
-                new Kindergarden_Models.Group { GroupId = 2, GroupName = "Luna" },
-                new Kindergarden_Models.Group { GroupId = 3, GroupName = "Zvezdichka" },
-                new Kindergarden_Models.Group { GroupId = 4, GroupName = "Slunchice" }
+                new Kindergarden_Models.Group() { GroupId = 1, GroupName = "Kometa" },
+                new Kindergarden_Models.Group() { GroupId = 2, GroupName = "Luna" },
+                new Kindergarden_Models.Group() { GroupId = 3, GroupName = "Zvezdichka" },
+                new Kindergarden_Models.Group() { GroupId = 4, GroupName = "Slunchice" }
             );
 
             modelBuilder.Entity<Parent>().HasData(
 
-                new Parent { ParentId = 1, FirstName = "Anton", LastName = "Donov", PhoneNumber = "0897596243", Address = "Pazardjik, Ulitsa 7"},
-                new Parent { ParentId = 2, FirstName = "Borqna", LastName = "Valcheva", PhoneNumber = "0886489235", Address = "Pazardjik, Ulitsa 8"},
-                new Parent { ParentId = 3, FirstName = "Ceca", LastName = "Trepni", PhoneNumber = "0893465955", Address = "Pazardjik, Ulitsa 9"},
-                new Parent { ParentId = 4, FirstName = "Deez", LastName = "Nuts", PhoneNumber = "0875966356", Address = "Pazardjik, Ulitsa 10"},
-                new Parent { ParentId = 5, FirstName = "Emanuel", LastName = "Kant", PhoneNumber = "0887528744", Address = "Pazardjik, Ulitsa 11"}
+                new Parent() { ParentId = 1, FirstName = "Anton", LastName = "Donov", PhoneNumber = "0897596243", Address = "Pazardjik, Ulitsa 7"},
+                new Parent() { ParentId = 2, FirstName = "Borqna", LastName = "Valcheva", PhoneNumber = "0886489235", Address = "Pazardjik, Ulitsa 8"},
+                new Parent() { ParentId = 3, FirstName = "Ceca", LastName = "Trepni", PhoneNumber = "0893465955", Address = "Pazardjik, Ulitsa 9"},
+                new Parent() { ParentId = 4, FirstName = "Deez", LastName = "Nuts", PhoneNumber = "0875966356", Address = "Pazardjik, Ulitsa 10"},
+                new Parent() { ParentId = 5, FirstName = "Emanuel", LastName = "Kant", PhoneNumber = "0887528744", Address = "Pazardjik, Ulitsa 11"}
             );
 
             modelBuilder.Entity<Kid>().HasData(
