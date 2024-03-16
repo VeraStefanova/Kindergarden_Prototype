@@ -41,11 +41,12 @@ namespace Kindergarden_ConsoleApplication
             Console.WriteLine("2. List all groups");
             Console.WriteLine("3. List all parents");
             Console.WriteLine("4. Search kid and parent");
-            Console.WriteLine("5. Create kid");//
+            Console.WriteLine("5. Create kid");
             Console.WriteLine("6. Update kid");
             Console.WriteLine("7. Update parent");
             Console.WriteLine("8. Delete kid");
             Console.WriteLine("9. Exit");
+
 
         }
         private void Input()
@@ -55,6 +56,7 @@ namespace Kindergarden_ConsoleApplication
             {
                 ShowMenu();
                 operation = int.Parse(Console.ReadLine());
+                Console.Clear();
                 switch (operation)
                 {
                     case 1:
@@ -95,9 +97,11 @@ namespace Kindergarden_ConsoleApplication
                 KidViewModel kvm = kidService.FetchKidAndParent(kid.FirstName);
                 Console.WriteLine($"Kid name: {kvm.Name}, Age: {kvm.Age}, Parent name: {kvm.ParentName}, Parent phone number: {kvm.PhoneNumber}, Address: {kvm.Address}, Group: {kvm.GroupName}");
             }
-            Console.WriteLine("Press any key to go back to main menu");
+            Console.WriteLine();
+            Console.WriteLine("Press any key to go back to main menu.");
             Console.ReadLine();
-            ShowMenu();
+            Input();
+
         }
 
         private void ListAllGroups()
@@ -112,9 +116,11 @@ namespace Kindergarden_ConsoleApplication
                     Console.Write($"{kid.FirstName + " " + kid.LastName}, ");
                 }
             }
-            Console.WriteLine("Press any key to go back to main menu");
+            Console.WriteLine();
+            Console.WriteLine("Press any key to go back to main menu.");
             Console.ReadLine();
-            ShowMenu();
+            Input();
+
         }
         private void ListAllParents()
         {
@@ -124,9 +130,11 @@ namespace Kindergarden_ConsoleApplication
                 ParentViewModel pvm = parentService.Fetch(parent.ParentId);
                 Console.WriteLine($"Parent name: {pvm.Name}, Parent phone number: {pvm.PhoneNumber}, Address: {pvm.Address}");
             }
-            Console.WriteLine("Press any key to go back to main menu");
+            Console.WriteLine();
+            Console.WriteLine("Press any key to go back to main menu.");
             Console.ReadLine();
-            ShowMenu();
+            Input();
+
         }
 
         private void FetchKidAndParent()
@@ -137,14 +145,16 @@ namespace Kindergarden_ConsoleApplication
             if (String.IsNullOrWhiteSpace(name))
             {
                 Console.WriteLine("You must type a name!");
+                Thread.Sleep(2006);
                 FetchKidAndParent();
+                return;
             }
             List<Kid> kidsWithThisName = new List<Kid>();
             KidViewModel kvm = kidService.FetchKidAndParent(name);
             if (kvm == null)
             {
                 Console.WriteLine("There is no kid with this name!");
-                Console.WriteLine("1. Search again");
+                Console.WriteLine("1. Enter name again");
                 Console.WriteLine("2. Go back to main menu");
                 int choice = int.Parse(Console.ReadLine());
                 bool n = true;
@@ -153,13 +163,13 @@ namespace Kindergarden_ConsoleApplication
                     if (choice == 1)
                     {
                         FetchKidAndParent();
-                        n = false;
+                        return;
                     }
                     else if (choice == 2)
                     {
 
-                        ShowMenu();
-                        n = false;
+                        Input();
+                        return;
                     }
                     else
                     {
@@ -167,13 +177,33 @@ namespace Kindergarden_ConsoleApplication
                         choice = int.Parse(Console.ReadLine());
                     }
                 }
+
             }
             else
             {
-                Console.WriteLine($"Kid name: {kvm.Name}\nAge: {kvm.Age}\nParent name: {kvm.ParentName}\nParent phone number: {kvm.PhoneNumber}\nAddress: {kvm.Address}\nGroup: {kvm.GroupName}");
+                foreach (var kid in db.Kids)
+                {
+                    if (kid.FirstName == name)
+                    {
+                        kidsWithThisName.Add(kid);
+                    }
+                }
+                for (int i = 1; i <= kidsWithThisName.Count; i++)
+                {
+                    Console.WriteLine($"{i}. Kid name: {kidsWithThisName[i-1].FirstName + " " + kidsWithThisName[i-1].LastName}," +
+                        $" Age: {kidsWithThisName[i-1].Age}, Group: {kidsWithThisName[i-1].Group.GroupName}," +
+                        $" Parent name: {kidsWithThisName[i - 1].Parent.FirstName + " " + kidsWithThisName[i-1].Parent.LastName}, " +
+                        $"Parent phone number: {kidsWithThisName[i - 1].Parent.PhoneNumber}, Address: {kidsWithThisName[i - 1].Parent.Address}");
+                }
+                
             }
+            Console.WriteLine();
+            Console.WriteLine("Press any key to go back to main menu.");
+            Console.ReadLine();
+            Input();    
 
         }
+
         private void UpdateKid()
         {
             Console.Clear();
@@ -182,7 +212,7 @@ namespace Kindergarden_ConsoleApplication
             if (String.IsNullOrWhiteSpace(name))
             {
                 Console.WriteLine("You must type a name!");
-                Thread.Sleep(2000);
+                Thread.Sleep(2006);
                 UpdateKid();
                 return;
             }
@@ -273,6 +303,11 @@ namespace Kindergarden_ConsoleApplication
                 }
 
             }
+            Console.WriteLine();
+            Console.WriteLine("Press any key to go back to main menu.");
+            Console.ReadLine();
+            Input();
+
 
         }
         private void UpdateParent()
@@ -382,6 +417,11 @@ namespace Kindergarden_ConsoleApplication
                 }
 
             }
+            Console.WriteLine();
+            Console.WriteLine("Press any key to go back to main menu.");
+            Console.ReadLine();
+            Input();
+
         }
         private void CreateKid()
         {
@@ -459,8 +499,14 @@ namespace Kindergarden_ConsoleApplication
 
             kidService.CreateKid(fName, lName, age, parentFName, parentLName, pn, address);
 
+            Console.WriteLine();
+            Console.WriteLine("Press any key to go back to main menu.");
+            Console.ReadLine();
+            Input();
 
-        } 
+
+
+        }
 
         private void DeleteKid()
         {
@@ -516,6 +562,11 @@ namespace Kindergarden_ConsoleApplication
                 kidService.Delete(selectedKid.FirstName);
                 
             }
+            Console.WriteLine();
+            Console.WriteLine("Press any key to go back to main menu.");
+            Console.ReadLine();
+            Input();
+
         }
     }
 }
