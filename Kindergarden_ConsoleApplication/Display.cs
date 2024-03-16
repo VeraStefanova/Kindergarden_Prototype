@@ -40,7 +40,7 @@ namespace Kindergarden_ConsoleApplication
             Console.WriteLine("1. List all kids");
             Console.WriteLine("2. List all groups");
             Console.WriteLine("3. List all parents");
-            Console.WriteLine("4. Search kid and parent by ID");
+            Console.WriteLine("4. Search kid and parent");
             Console.WriteLine("5. Create kid");//
             Console.WriteLine("6. Update kid");
             Console.WriteLine("7. Update parent");
@@ -132,13 +132,14 @@ namespace Kindergarden_ConsoleApplication
         private void FetchKidAndParent()
         {
             Console.Clear();
-            Console.Write("Enter kid name: ");
+            Console.Write("Enter kid's first name: ");
             string name = Console.ReadLine();
             if (String.IsNullOrWhiteSpace(name))
             {
                 Console.WriteLine("You must type a name!");
                 FetchKidAndParent();
             }
+            List<Kid> kidsWithThisName = new List<Kid>();
             KidViewModel kvm = kidService.FetchKidAndParent(name);
             if (kvm == null)
             {
@@ -175,8 +176,16 @@ namespace Kindergarden_ConsoleApplication
         }
         private void UpdateKid()
         {
+            Console.Clear();
             Console.Write("Enter kid's first name: ");
             string name = Console.ReadLine();
+            if (String.IsNullOrWhiteSpace(name))
+            {
+                Console.WriteLine("You must type a name!");
+                Thread.Sleep(2000);
+                UpdateKid();
+                return;
+            }
             List<Kid> kidsWithThisName = new List<Kid>();
             KidViewModel kvm = kidService.FetchKidAndParent(name);
             if (kvm == null)
