@@ -21,17 +21,6 @@ namespace Kindergarden_Services
 
         private KindergardenDbContext db;
 
-        //public void CreateParent(string firstName, string lastName, int age, string parentFirstName, string parentLastName, string phoneNumber, string address)
-        //{
-        //    //TODO: find a way to call CreateKid from KidService
-        //    //KidService.CreateKid(firstName, lastName, age, parentFirstName, parentLastName, phoneNumber, address); NOT RIGHT
-        //}
-
-        //public void Delete(int id)
-        //{
-
-        //}
-
         public ParentViewModel Fetch(int id)
         {
             var pvm = new ParentViewModel();

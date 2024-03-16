@@ -145,7 +145,9 @@ namespace Kindergarden_ConsoleApplication
             if (String.IsNullOrWhiteSpace(name))
             {
                 Console.WriteLine("You must type a name!");
-                Thread.Sleep(2006);
+                Console.WriteLine();
+                Console.WriteLine("Press any key to continue.");
+                Console.ReadLine();
                 FetchKidAndParent();
                 return;
             }
@@ -212,7 +214,9 @@ namespace Kindergarden_ConsoleApplication
             if (String.IsNullOrWhiteSpace(name))
             {
                 Console.WriteLine("You must type a name!");
-                Thread.Sleep(2006);
+                Console.WriteLine();
+                Console.WriteLine("Press any key to continue.");
+                Console.ReadLine();
                 UpdateKid();
                 return;
             }
@@ -230,13 +234,13 @@ namespace Kindergarden_ConsoleApplication
                     if (choice == 1)
                     {
                         UpdateKid();
-                        n = false;
+                        return;
                     }
                     else if (choice == 2)
                     {
-
-                        ShowMenu();
-                        n = false;
+                        Input();
+                        return;
+                        
                     }
                     else
                     {
@@ -256,7 +260,7 @@ namespace Kindergarden_ConsoleApplication
                 }
                 for (int i = 1; i <= kidsWithThisName.Count; i++)
                 {
-                    Console.WriteLine($"{i}. Name: {kidsWithThisName[i].FirstName + " " + kidsWithThisName[i].LastName}, Age: {kidsWithThisName[i].Age}");
+                    Console.WriteLine($"{i}. Name: {kidsWithThisName[i-1].FirstName + " " + kidsWithThisName[i-1].LastName}, Age: {kidsWithThisName[i-1].Age}");
                 }
                 Console.Write("Please, enter the id of your choice: ");
                 Kid selectedKid = kidsWithThisName[int.Parse(Console.ReadLine()) - 1];
@@ -274,8 +278,11 @@ namespace Kindergarden_ConsoleApplication
                         if (String.IsNullOrWhiteSpace(newName))
                         {
                             Console.WriteLine("You must type a name!");
+                            Console.WriteLine();
+                            Console.WriteLine("Press any key to continue.");
+                            Console.ReadLine();
                             UpdateKid();
-                            n = false;
+                            return;
                         }
                         kidService.UpdateName(selectedKid.KidId, newName);
                         Console.WriteLine("Name has been successfully updated.");
@@ -288,8 +295,11 @@ namespace Kindergarden_ConsoleApplication
                         if (newAge < 3 || newAge > 6 || newAge == null)
                         {
                             Console.WriteLine("You must type a valid age!");
+                            Console.WriteLine();
+                            Console.WriteLine("Press any key to continue.");
+                            Console.ReadLine();
                             UpdateKid();
-                            n = false;
+                            return;
                         }
                         kidService.UpdateAge(selectedKid.KidId, newAge);
                         Console.WriteLine("Age has been successfully updated.");
@@ -312,8 +322,18 @@ namespace Kindergarden_ConsoleApplication
         }
         private void UpdateParent()
         {
+            Console.Clear();
             Console.Write("Enter parent's first name: ");
             string name = Console.ReadLine();
+            if (String.IsNullOrWhiteSpace(name))
+            {
+                Console.WriteLine("You must type a name!");
+                Console.WriteLine();
+                Console.WriteLine("Press any key to continue.");
+                Console.ReadLine();
+                UpdateParent();
+                return;
+            }
             List<Parent> parentsWithThisName = new List<Parent>();
             Parent parent = db.Parents.FirstOrDefault(x => x.FirstName == name);
             if (parent == null)
@@ -329,13 +349,13 @@ namespace Kindergarden_ConsoleApplication
                     if (choice == 1)
                     {
                         UpdateParent();
-                        n = false;
+                        return;
                     }
                     else if (choice == 2)
                     {
 
-                        ShowMenu();
-                        n = false;
+                        Input();
+                        return;
                     }
                     else
                     {
@@ -355,7 +375,7 @@ namespace Kindergarden_ConsoleApplication
                 }
                 for (int i = 1; i <= parentsWithThisName.Count; i++)
                 {
-                    Console.WriteLine($"{i}. Name: {parentsWithThisName[i].FirstName + " " + parentsWithThisName[i].LastName}, Phone number: {parentsWithThisName[i].PhoneNumber}");
+                    Console.WriteLine($"{i}. Name: {parentsWithThisName[i-1].FirstName + " " + parentsWithThisName[i-1].LastName}, Phone number: {parentsWithThisName[i-1].PhoneNumber}");
                 }
                 Console.Write("Please, enter the id of your choice: ");
                 Parent selectedParent = parentsWithThisName[int.Parse(Console.ReadLine()) - 1];
@@ -375,8 +395,11 @@ namespace Kindergarden_ConsoleApplication
                         if (String.IsNullOrWhiteSpace(newName))
                         {
                             Console.WriteLine("You must type a name!");
+                            Console.WriteLine();
+                            Console.WriteLine("Press any key to continue.");
+                            Console.ReadLine();
                             UpdateParent();
-                            n = false;
+                            return;
                         }
                         parentService.UpdateName(selectedParent.ParentId, newName);
                         Console.WriteLine("Name has been successfully updated.");
@@ -389,8 +412,11 @@ namespace Kindergarden_ConsoleApplication
                         if (newPN.Count() != 10 && String.IsNullOrWhiteSpace(newPN))
                         {
                             Console.WriteLine("You must type a valid phone number!");
+                            Console.WriteLine();
+                            Console.WriteLine("Press any key to continue.");
+                            Console.ReadLine();
                             UpdateParent();
-                            n = false;
+                            return;
                         }
                         parentService.UpdatePN(selectedParent.PhoneNumber, newPN);
                         Console.WriteLine("Phone number has been successfully updated.");
@@ -403,8 +429,11 @@ namespace Kindergarden_ConsoleApplication
                         if (String.IsNullOrWhiteSpace(newAddress))
                         {
                             Console.WriteLine("You must type an addreess!");
+                            Console.WriteLine();
+                            Console.WriteLine("Press any key to continue.");
+                            Console.ReadLine();
                             UpdateParent();
-                            n = false;
+                            return;
                         }
                         parentService.UpdateAddress(selectedParent.Address, newAddress);
                         Console.WriteLine("Address has been successfully updated.");
@@ -425,12 +454,17 @@ namespace Kindergarden_ConsoleApplication
         }
         private void CreateKid()
         {
+            Console.Clear();
             Console.Write("Enter kid's first name:"); //kid First name
             string fName = Console.ReadLine();
             if (String.IsNullOrWhiteSpace(fName))
             {
                 Console.WriteLine("You must type a first name!");
+                Console.WriteLine();
+                Console.WriteLine("Press any key to continue.");
+                Console.ReadLine();
                 CreateKid();
+                return;
             }
 
             Console.Write("Enter kid's last name:"); // kid Last name
@@ -438,28 +472,41 @@ namespace Kindergarden_ConsoleApplication
             if (String.IsNullOrWhiteSpace(lName))
             {
                 Console.WriteLine("You must type a last name!");
-                CreateKid();  
+                Console.WriteLine();
+                Console.WriteLine("Press any key to continue.");
+                Console.ReadLine();
+                CreateKid();
+                return;
             }
-            //TODO: Dali trqbva da slojim break sled vs CreateKid();
-            //***********************************************************
-
+            
             Console.Write("Enter kid's age:");      // kid Age
             int age = int.Parse(Console.ReadLine());
             if(String.IsNullOrEmpty(age.ToString()))
             {
                 Console.WriteLine("You must type an age!");
+                Console.WriteLine();
+                Console.WriteLine("Press any key to continue.");
+                Console.ReadLine();
                 CreateKid();
+                return;
             }
-            else if (age<1)
+            else if (age<0 || age>120)
             {
                 Console.WriteLine("You must type a valid age!");
+                Console.WriteLine();
+                Console.WriteLine("Press any key to continue.");
+                Console.ReadLine();
                 CreateKid();
-
+                return;
             }
             else if(age<3|| age>6)
             {
                 Console.WriteLine("This kid cannot be in our kindergarden!");
+                Console.WriteLine();
+                Console.WriteLine("Press any key to continue.");
+                Console.ReadLine();
                 CreateKid();
+                return;
             }    
 
 
@@ -468,7 +515,11 @@ namespace Kindergarden_ConsoleApplication
             if (String.IsNullOrWhiteSpace(parentFName))
             {
                 Console.WriteLine("You must type first name!");
+                Console.WriteLine();
+                Console.WriteLine("Press any key to continue.");
+                Console.ReadLine();
                 CreateKid();
+                return;
             }
 
 
@@ -477,7 +528,11 @@ namespace Kindergarden_ConsoleApplication
             if (String.IsNullOrWhiteSpace(parentLName))
             {
                 Console.WriteLine("You must type last name!");
+                Console.WriteLine();
+                Console.WriteLine("Press any key to continue.");
+                Console.ReadLine();
                 CreateKid();
+                return;
             }
 
             Console.Write("Enter parents's phone number:");  //Parent phone number
@@ -485,7 +540,11 @@ namespace Kindergarden_ConsoleApplication
             if (String.IsNullOrWhiteSpace(pn))
             {
                 Console.WriteLine("You must type a phone number!");
+                Console.WriteLine();
+                Console.WriteLine("Press any key to continue.");
+                Console.ReadLine();
                 CreateKid();
+                return;
             }
 
             Console.Write("Enter parents's phone number:");  //Parent address
@@ -493,28 +552,35 @@ namespace Kindergarden_ConsoleApplication
             if (String.IsNullOrWhiteSpace(address))
             {
                 Console.WriteLine("You must type an address!");
+                Console.WriteLine();
+                Console.WriteLine("Press any key to continue.");
+                Console.ReadLine();
                 CreateKid();
+                return;
             }
 
-
             kidService.CreateKid(fName, lName, age, parentFName, parentLName, pn, address);
-
+            Console.WriteLine("The kid has been successfully added to our kindergarden!");
             Console.WriteLine();
             Console.WriteLine("Press any key to go back to main menu.");
             Console.ReadLine();
             Input();
-
-
-
         }
 
         private void DeleteKid()
         {
-            //TODO: Да сложим Console.Clear() tuk i da go mahnem v glavniq method
+            Console.Clear();
             Console.Write("Enter kid's first name: ");
             string name = Console.ReadLine();
-            //TODO: if(IsNull) *************************************************
-            //I za drugite mesta kudeto vkarvame ime
+            if (String.IsNullOrWhiteSpace(name))
+            {
+                Console.WriteLine("You must type a first name!");
+                Console.WriteLine();
+                Console.WriteLine("Press any key to continue.");
+                Console.ReadLine();
+                DeleteKid();
+                return;
+            }
             List<Kid> kidsWithThisName = new List<Kid>();
             Kid kid = db.Kids.FirstOrDefault(x=>x.FirstName == name);
             if (kid == null)
@@ -529,13 +595,13 @@ namespace Kindergarden_ConsoleApplication
                     if (choice == 1)
                     {
                         DeleteKid();
-                        n = false;
+                        return;
                     }
                     else if (choice == 2)
                     {
 
-                        ShowMenu();
-                        n = false;
+                        Input();
+                        return;
                     }
                     else
                     {
@@ -555,7 +621,7 @@ namespace Kindergarden_ConsoleApplication
                 }
                 for (int i = 1; i <= kidsWithThisName.Count; i++)
                 {
-                    Console.WriteLine($"{i}. Name: {kidsWithThisName[i].FirstName + " " + kidsWithThisName[i].LastName}, Age: {kidsWithThisName[i].Age}");
+                    Console.WriteLine($"{i}. Name: {kidsWithThisName[i-1].FirstName + " " + kidsWithThisName[i].LastName}, Age: {kidsWithThisName[i].Age}");
                 }
                 Console.Write("Please, enter the id of your choice: ");
                 Kid selectedKid = kidsWithThisName[int.Parse(Console.ReadLine()) - 1];

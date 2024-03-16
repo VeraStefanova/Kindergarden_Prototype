@@ -31,8 +31,6 @@ namespace Kindergarden_Services
 
             };
 
-            //TODO
-
             var parentEntity = db.Parents.FirstOrDefault(x => x.PhoneNumber.Trim()==phoneNumber.Trim());  // търсим дали вече има такъв родител в програмата
             if(parentEntity==null)
             {
@@ -46,7 +44,8 @@ namespace Kindergarden_Services
 
                 db.Parents.Add(parentEntity);
             }
-            //else { } TODO: дали трябва да добавяме relation-a ръчно или сам го прави
+            //else { }
+            //TODO: дали трябва да добавяме relation-a ръчно или сам го прави
 
             if(kid.Age==3) //според годините ходи в съответната група
             {
