@@ -86,6 +86,7 @@ namespace Kindergarden_ConsoleApplication
                     default:
                         break;
                 }
+                return;
             } while (operation != closeOperationId);
         }
 
@@ -109,9 +110,9 @@ namespace Kindergarden_ConsoleApplication
             Console.Clear();
             for (int i = 1; i <= 4; i++)
             {
-                GroupViewModel gvm = groupService.Fetch(i);
+                Group gvm = groupService.Fetch(i);
                 Console.WriteLine($"Group: {gvm.Name}");
-                foreach (var kid in gvm.Kids)
+                foreach (var kid in db.Kids.Where(x => x.GroupId == gvm.))
                 {
                     Console.Write($"{kid.FirstName + " " + kid.LastName}, ");
                 }
@@ -203,7 +204,7 @@ namespace Kindergarden_ConsoleApplication
             }
             Console.WriteLine();
             Console.WriteLine("Press any key to go back to main menu.");
-            //Console.ReadLine();
+            Console.ReadLine();
             Input();    
 
         }
@@ -377,14 +378,15 @@ namespace Kindergarden_ConsoleApplication
                 }
                 for (int i = 1; i <= parentsWithThisName.Count; i++)
                 {
-                    Console.WriteLine($"{i}. Name: {parentsWithThisName[i-1].FirstName + " " + parentsWithThisName[i-1].LastName}, Phone number: {parentsWithThisName[i-1].PhoneNumber}");
+                    Console.WriteLine($"{i}. Name: {parentsWithThisName[i-1].FirstName + " " + parentsWithThisName[i-1].LastName}, " +
+                        $"Phone number: {parentsWithThisName[i-1].PhoneNumber}, Address: {parentsWithThisName[i - 1].Address}");
                 }
                 Console.Write("Please, enter the id of your choice: ");
                 Parent selectedParent = parentsWithThisName[int.Parse(Console.ReadLine()) - 1];
 
                 Console.WriteLine("1.Update name.");
                 Console.WriteLine("2.Update phone number.");
-                Console.WriteLine("2.Update address.");
+                Console.WriteLine("3.Update address.");
 
                 int choice = int.Parse(Console.ReadLine());
                 bool n = true;
@@ -405,7 +407,7 @@ namespace Kindergarden_ConsoleApplication
                         }
                         parentService.UpdateName(selectedParent.ParentId, newName);
                         Console.WriteLine("Name has been successfully updated.");
-
+                        n = false;
                     }
                     else if (choice == 2) // update phone number
                     {
@@ -422,7 +424,7 @@ namespace Kindergarden_ConsoleApplication
                         }
                         parentService.UpdatePN(selectedParent.PhoneNumber, newPN);
                         Console.WriteLine("Phone number has been successfully updated.");
-
+                        n = false;
                     }
                     else if (choice == 3) //update address
                     {
@@ -439,6 +441,7 @@ namespace Kindergarden_ConsoleApplication
                         }
                         parentService.UpdateAddress(selectedParent.Address, newAddress);
                         Console.WriteLine("Address has been successfully updated.");
+                        n = false;
                     }
                     else
                     {

@@ -44,31 +44,34 @@ namespace Kindergarden_Services
 
                 db.Parents.Add(parentEntity);
             }
-            //else { }
-            //TODO: дали трябва да добавяме relation-a ръчно или сам го прави
 
-            if(kid.Age==3) //според годините ходи в съответната група
+            if (kid.Age==3) //според годините ходи в съответната група
             {
-                kid.GroupId = 1;
-                kid.Group.GroupName = "Kometa";
+                var group = db.Groups.FirstOrDefault(x => x.GroupId == 1);
+                //kid.GroupId = group.GroupId;
+                kid.Group = group;
             }
             else if(kid.Age==4)
             {
-                kid.GroupId = 2;
-                kid.Group.GroupName = "Luna";
+                var group = db.Groups.FirstOrDefault(x => x.GroupId == 2);
+                //kid.GroupId = group.GroupId;
+                kid.Group = group;
             }
             else if(kid.Age==5)
             {
-                kid.GroupId = 3;
-                kid.Group.GroupName = "Zvezdichka";
+                var group = db.Groups.FirstOrDefault(x => x.GroupId == 3);
+                //kid.GroupId = group.GroupId;
+                kid.Group = group;
             }
             else if(kid.Age==6)
             {
-                kid.GroupId = 4;
-                kid.Group.GroupName = "Slunchice";
+                var group = db.Groups.FirstOrDefault(x => x.GroupId == 4);
+                //kid.GroupId = group.GroupId;
+                kid.Group = group;
             }
-            
-            kid.ParentId = parentEntity.ParentId;
+
+            kid.Parent = parentEntity;
+            //kid.ParentId = parentEntity.ParentId;
             db.Kids.Add(kid);
             db.SaveChanges();
         }
