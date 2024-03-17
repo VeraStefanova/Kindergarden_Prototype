@@ -1,4 +1,5 @@
 ﻿using Kindergarden_Data;
+using Kindergarden_Models;
 using Kindergarden_Services.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -16,9 +17,9 @@ namespace Kindergarden_Services
         }
         private KindergardenDbContext db;
 
-        public GroupViewModel Fetch(int id)
+        public Group Fetch(int id)
         {
-            var gvm = new GroupViewModel();
+            var gvm = new Group();
             var group = db.Groups.FirstOrDefault(x => x.GroupId == id);
             if (group != null)
             {

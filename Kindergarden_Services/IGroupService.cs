@@ -1,4 +1,5 @@
-﻿using Kindergarden_Services.ViewModels;
+﻿using Kindergarden_Models;
+using Kindergarden_Services.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,7 @@ namespace Kindergarden_Services
 {
     public interface IGroupService
     {
-        public GroupViewModel Fetch(int id);
+        public Group Fetch(int id);
 
 
     }
