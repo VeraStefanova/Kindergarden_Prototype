@@ -152,6 +152,8 @@ namespace Kindergarden_ConsoleApplication
                 return;
             }
             List<Kid> kidsWithThisName = new List<Kid>();
+
+
             KidViewModel kvm = kidService.FetchKidAndParent(name);
             if (kvm == null)
             {
