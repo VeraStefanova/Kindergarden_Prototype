@@ -158,8 +158,6 @@ namespace Kindergarden_ConsoleApplication
                 return;
             }
             List<Kid> kidsWithThisName = new List<Kid>();
-
-
             Kid kid = kidService.FetchKidAndParent(name);
             if (kid == null)
             {
