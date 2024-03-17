@@ -9,17 +9,11 @@ namespace Kindergarden_Models
 {
 	public class Group
 	{
-		public Group()
-		{
-			this.Kids = new HashSet<Kid>();
-		}
-		
-		
-		public int GroupId { get; set; }
+        public int GroupId { get; set; }
 
 		[Required]
 		public string GroupName { get; set; }
 
-		public virtual ICollection<Kid> Kids { get; set; }	
-	}
+		public virtual ICollection<Kid> Kids { get; set; }	= new HashSet<Kid>();
+    }
 }

@@ -92,13 +92,21 @@ namespace Kindergarden_ConsoleApplication
         private void ListAllKids()
         {
             Console.Clear();
-            var kidsList = db.Kids.ToList();
+            List<Kid> kidsList = db.Kids.ToList();
             foreach (var kid1 in kidsList)
             {
                 Kid kid = kidService.FetchKidAndParent(kid1.FirstName);
+                Group group = db.Groups.FirstOrDefault(x=>x.GroupId==kid.GroupId);
+                Parent parent = db.Parents.FirstOrDefault(y => y.ParentId == kid.ParentId);
+
+                if(kid== null)
+                {
+                    Console.WriteLine("No kid found!");
+                    break;
+                }
                 Console.WriteLine($"Kid name: {kid.FirstName + " " + kid.LastName}, Age: {kid.Age}, " +
-                    $"Parent name: {kid.Parent.FirstName + " " + kid.Parent.LastName}, Parent phone number: {kid.Parent.PhoneNumber}, " +
-                    $"Address: {kid.Parent.Address}, Group: {kid.Group.GroupName}");
+                    $"Parent name: {parent.FirstName + " " + parent.LastName}, Parent phone number: {parent.PhoneNumber}, " +
+                    $"Address: {parent.Address}, Group: {group.GroupName}");
             }
             Console.WriteLine();
             Console.WriteLine("Press any key to go back to main menu.");
@@ -387,7 +395,7 @@ namespace Kindergarden_ConsoleApplication
                         $"Phone number: {parentsWithThisName[i-1].PhoneNumber}, Address: {parentsWithThisName[i - 1].Address}");
                 }
                 Console.Write("Please, enter the id of your choice: ");
-                Parent selectedParent = parentsWithThisName[int.Parse(Console.ReadLine()) - 1];
+                Parent selectedParent = parentsWithThisName[int.Parse(Console.ReadLine()) - 1]; //TODO: Change this row and some others
 
                 Console.WriteLine("1.Update name.");
                 Console.WriteLine("2.Update phone number.");

@@ -49,25 +49,25 @@ namespace Kindergarden_Services
             if (kid.Age==3) //според годините ходи в съответната група
             {
                 var group = db.Groups.FirstOrDefault(x => x.GroupId == 1);
-                //kid.GroupId = group.GroupId;
+                kid.GroupId = group.GroupId;
                 kid.Group = group;
             }
             else if(kid.Age==4)
             {
                 var group = db.Groups.FirstOrDefault(x => x.GroupId == 2);
-                //kid.GroupId = group.GroupId;
+                kid.GroupId = group.GroupId;
                 kid.Group = group;
             }
             else if(kid.Age==5)
             {
                 var group = db.Groups.FirstOrDefault(x => x.GroupId == 3);
-                //kid.GroupId = group.GroupId;
+                kid.GroupId = group.GroupId;
                 kid.Group = group;
             }
             else if(kid.Age==6)
             {
                 var group = db.Groups.FirstOrDefault(x => x.GroupId == 4);
-                //kid.GroupId = group.GroupId;
+                kid.GroupId = group.GroupId;
                 kid.Group = group;
             }
 
