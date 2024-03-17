@@ -111,9 +111,9 @@ namespace Kindergarden_ConsoleApplication
             Console.Clear();
             for (int i = 1; i <= 4; i++)
             {
-                Group gvm = groupService.Fetch(i);
-                Console.WriteLine($"Group: {gvm.Name}");
-                foreach (var kid in db.Kids.Where(x => x.GroupId == gvm.))
+                Group group = groupService.Fetch(i);
+                Console.WriteLine($"Group: {group.GroupName}");
+                foreach (var kid in db.Kids.Where(x => x.GroupId == group.GroupId))
                 {
                     Console.Write($"{kid.FirstName + " " + kid.LastName}, ");
                 }
@@ -127,10 +127,11 @@ namespace Kindergarden_ConsoleApplication
         private void ListAllParents()
         {
             Console.Clear();
-            foreach (var parent in db.Parents)
+            foreach (var parent1 in db.Parents)
             {
-                Parent pvm = parentService.Fetch(parent.ParentId);
-                Console.WriteLine($"Parent name: {pvm.Name}, Parent phone number: {pvm.PhoneNumber}, Address: {pvm.Address}");
+                Parent parent = parentService.Fetch(parent1.ParentId);
+                Console.WriteLine($"Parent name: {parent.FirstName + " " + parent.LastName}, " +
+                    $"Parent phone number: {parent.PhoneNumber}, Address: {parent.Address}");
             }
             Console.WriteLine();
             Console.WriteLine("Press any key to go back to main menu.");
