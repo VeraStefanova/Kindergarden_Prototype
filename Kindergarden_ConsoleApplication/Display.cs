@@ -92,7 +92,8 @@ namespace Kindergarden_ConsoleApplication
         private void ListAllKids()
         {
             Console.Clear();
-            foreach (var kid1 in db.Kids)
+            var kidsList = db.Kids.ToList();
+            foreach (var kid1 in kidsList)
             {
                 Kid kid = kidService.FetchKidAndParent(kid1.FirstName);
                 Console.WriteLine($"Kid name: {kid.FirstName + " " + kid.LastName}, Age: {kid.Age}, " +
@@ -115,8 +116,9 @@ namespace Kindergarden_ConsoleApplication
                 Console.WriteLine($"Group: {group.GroupName}");
                 foreach (var kid in db.Kids.Where(x => x.GroupId == group.GroupId))
                 {
-                    Console.Write($"{kid.FirstName + " " + kid.LastName}, ");
+                    Console.Write($"{kid.FirstName + " " + kid.LastName}; ");
                 }
+                Console.WriteLine();
             }
             Console.WriteLine();
             Console.WriteLine("Press any key to go back to main menu.");
@@ -127,7 +129,8 @@ namespace Kindergarden_ConsoleApplication
         private void ListAllParents()
         {
             Console.Clear();
-            foreach (var parent1 in db.Parents)
+            var parentsList = db.Parents.ToList();
+            foreach (var parent1 in parentsList)
             {
                 Parent parent = parentService.Fetch(parent1.ParentId);
                 Console.WriteLine($"Parent name: {parent.FirstName + " " + parent.LastName}, " +
@@ -276,7 +279,7 @@ namespace Kindergarden_ConsoleApplication
                 {
                     if (choice == 1)
                     {
-                        Console.Write("Enter kid's new name: ");
+                        Console.Write("Enter kid's new full name: ");
                         string newName = Console.ReadLine();
                         if (String.IsNullOrWhiteSpace(newName))
                         {
@@ -287,6 +290,7 @@ namespace Kindergarden_ConsoleApplication
                             UpdateKid();
                             return;
                         }
+                        n = false;
                         kidService.UpdateName(selectedKid.KidId, newName);
                         Console.WriteLine("Name has been successfully updated.");
 
@@ -304,6 +308,7 @@ namespace Kindergarden_ConsoleApplication
                             UpdateKid();
                             return;
                         }
+                        n = false;
                         kidService.UpdateAge(selectedKid.KidId, newAge);
                         Console.WriteLine("Age has been successfully updated.");
 
@@ -394,7 +399,7 @@ namespace Kindergarden_ConsoleApplication
                 {
                     if (choice == 1) // update name
                     {
-                        Console.Write("Enter parents's new name: ");
+                        Console.Write("Enter parents's new full name: ");
                         string newName = Console.ReadLine();
                         if (String.IsNullOrWhiteSpace(newName))
                         {
@@ -626,7 +631,7 @@ namespace Kindergarden_ConsoleApplication
                 }
                 for (int i = 1; i <= kidsWithThisName.Count; i++)
                 {
-                    Console.WriteLine($"{i}. Name: {kidsWithThisName[i-1].FirstName + " " + kidsWithThisName[i].LastName}, Age: {kidsWithThisName[i].Age}");
+                    Console.WriteLine($"{i}. Name: {kidsWithThisName[i-1].FirstName + " " + kidsWithThisName[i - 1].LastName}, Age: {kidsWithThisName[i - 1].Age}");
                 }
                 Console.Write("Please, enter the id of your choice: ");
                 Kid selectedKid = kidsWithThisName[int.Parse(Console.ReadLine()) - 1];

@@ -127,25 +127,33 @@ namespace Kindergarden_Services
 
         public bool UpdateAge(int id, int newAge)
         {
-            var kidtEntity = db.Kids.FirstOrDefault(x => x.KidId == id);
-            if (kidtEntity != null)
+            var kid = db.Kids.FirstOrDefault(x => x.KidId == id);
+            if (kid != null)
             {
-                kidtEntity.Age = newAge;
-                if (kidtEntity.Age == 3)
+                kid.Age = newAge;
+                if (kid.Age == 3) //според годините ходи в съответната група
                 {
-                    kidtEntity.GroupId = 1;
+                    var group = db.Groups.FirstOrDefault(x => x.GroupId == 1);
+                    //kid.GroupId = group.GroupId;
+                    kid.Group = group;
                 }
-                else if (kidtEntity.Age == 4)
+                else if (kid.Age == 4)
                 {
-                    kidtEntity.GroupId = 2;
+                    var group = db.Groups.FirstOrDefault(x => x.GroupId == 2);
+                    //kid.GroupId = group.GroupId;
+                    kid.Group = group;
                 }
-                else if (kidtEntity.Age == 5)
+                else if (kid.Age == 5)
                 {
-                    kidtEntity.GroupId = 3;
+                    var group = db.Groups.FirstOrDefault(x => x.GroupId == 3);
+                    //kid.GroupId = group.GroupId;
+                    kid.Group = group;
                 }
-                else if (kidtEntity.Age == 6)
+                else if (kid.Age == 6)
                 {
-                    kidtEntity.GroupId = 4;
+                    var group = db.Groups.FirstOrDefault(x => x.GroupId == 4);
+                    //kid.GroupId = group.GroupId;
+                    kid.Group = group;
                 }
                 db.SaveChanges();
                 return true;
