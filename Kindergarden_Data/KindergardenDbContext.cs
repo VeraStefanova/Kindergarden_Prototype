@@ -49,7 +49,7 @@ namespace Kindergarden_Data
                 new Kindergarden_Models.Group() { GroupId = 3, GroupName = "Zvezdichka" },
                 new Kindergarden_Models.Group() { GroupId = 4, GroupName = "Slunchice" }
             );
-
+            
             //modelBuilder.Entity<Parent>().HasData(
 
             //    new Parent { ParentId = 1, FirstName = "Anton", LastName = "Donov", PhoneNumber = "0897596243", Address = "Pazardjik, Ulitsa 7"},
