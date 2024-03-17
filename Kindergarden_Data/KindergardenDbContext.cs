@@ -27,7 +27,7 @@ namespace Kindergarden_Data
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer("Server=KAMENPC\\SQLEXPRESS;Database=Kindergarden;Integrated Security=true;TrustServerCertificate=True");
+                optionsBuilder.UseSqlServer("Server=LEGIONPRO5\\SQLEXPRESS;Database=Kindergarden;Integrated Security=true;TrustServerCertificate=True");
             }
 
         }
@@ -49,23 +49,23 @@ namespace Kindergarden_Data
                 new Kindergarden_Models.Group { GroupId = 4, GroupName = "Slunchice" }
             );
 
-            modelBuilder.Entity<Parent>().HasData(
+            //modelBuilder.Entity<Parent>().HasData(
 
-                new Parent { ParentId = 1, FirstName = "Anton", LastName = "Donov", PhoneNumber = "0897596243", Address = "Pazardjik, Ulitsa 7"},
-                new Parent { ParentId = 2, FirstName = "Borqna", LastName = "Valcheva", PhoneNumber = "0886489235", Address = "Pazardjik, Ulitsa 8"},
-                new Parent { ParentId = 3, FirstName = "Ceca", LastName = "Trepni", PhoneNumber = "0893465955", Address = "Pazardjik, Ulitsa 9"},
-                new Parent { ParentId = 4, FirstName = "Deez", LastName = "Nuts", PhoneNumber = "0875966356", Address = "Pazardjik, Ulitsa 10"},
-                new Parent { ParentId = 5, FirstName = "Emanuel", LastName = "Kant", PhoneNumber = "0887528744", Address = "Pazardjik, Ulitsa 11"}
-            );
+            //    new Parent { ParentId = 1, FirstName = "Anton", LastName = "Donov", PhoneNumber = "0897596243", Address = "Pazardjik, Ulitsa 7"},
+            //    new Parent { ParentId = 2, FirstName = "Borqna", LastName = "Valcheva", PhoneNumber = "0886489235", Address = "Pazardjik, Ulitsa 8"},
+            //    new Parent { ParentId = 3, FirstName = "Ceca", LastName = "Trepni", PhoneNumber = "0893465955", Address = "Pazardjik, Ulitsa 9"},
+            //    new Parent { ParentId = 4, FirstName = "Deez", LastName = "Nuts", PhoneNumber = "0875966356", Address = "Pazardjik, Ulitsa 10"},
+            //    new Parent { ParentId = 5, FirstName = "Emanuel", LastName = "Kant", PhoneNumber = "0887528744", Address = "Pazardjik, Ulitsa 11"}
+            //);
 
-            modelBuilder.Entity<Kid>().HasData(
-                new Kid { KidId = 1, FirstName = "Mariqn",LastName = "Ganev",Age = 4, ParentId = 2, GroupId = 2},
-                new Kid { KidId = 2, FirstName = "Pitagor",LastName = "Kant",Age = 3, ParentId = 5, GroupId = 1},
-                new Kid { KidId = 3, FirstName = "Kukuvica",LastName = "Trepni",Age = 6, ParentId = 3, GroupId = 4},
-                new Kid { KidId = 4, FirstName = "Petkan",LastName = "Ganev",Age = 6, ParentId = 2, GroupId = 4},
-                new Kid { KidId = 5, FirstName = "Kaloqn",LastName = "Donov",Age = 4, ParentId = 1, GroupId = 2},
-                new Kid { KidId = 6, FirstName = "Dragondis",LastName = "Nuts",Age = 3, ParentId = 4, GroupId = 1}
-            );
+            //modelBuilder.Entity<Kid>().HasData(
+            //    new Kid { KidId = 1, FirstName = "Mariqn",LastName = "Ganev",Age = 4, ParentId = 2, GroupId = 2},
+            //    new Kid { KidId = 2, FirstName = "Pitagor",LastName = "Kant",Age = 3, ParentId = 5, GroupId = 1},
+            //    new Kid { KidId = 3, FirstName = "Kukuvica",LastName = "Trepni",Age = 6, ParentId = 3, GroupId = 4},
+            //    new Kid { KidId = 4, FirstName = "Petkan",LastName = "Ganev",Age = 6, ParentId = 2, GroupId = 4},
+            //    new Kid { KidId = 5, FirstName = "Kaloqn",LastName = "Donov",Age = 4, ParentId = 1, GroupId = 2},
+            //    new Kid { KidId = 6, FirstName = "Dragondis",LastName = "Nuts",Age = 3, ParentId = 4, GroupId = 1}
+            //);
 
 
 
