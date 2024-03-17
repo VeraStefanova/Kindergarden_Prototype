@@ -36,8 +36,8 @@ namespace Kindergarden_Services
             {
                  parentEntity = new Parent
                  {
-                    FirstName = firstName,
-                    LastName = lastName,
+                    FirstName = parentFirstName,
+                    LastName = parentLastName,
                     PhoneNumber = phoneNumber,
                     Address = address
                  };
@@ -50,21 +50,24 @@ namespace Kindergarden_Services
             if(kid.Age==3) //според годините ходи в съответната група
             {
                 kid.GroupId = 1;
+                kid.Group.GroupName = "Kometa";
             }
             else if(kid.Age==4)
             {
                 kid.GroupId = 2;
+                kid.Group.GroupName = "Luna";
             }
             else if(kid.Age==5)
             {
                 kid.GroupId = 3;
+                kid.Group.GroupName = "Zvezdichka";
             }
             else if(kid.Age==6)
             {
                 kid.GroupId = 4;
+                kid.Group.GroupName = "Slunchice";
             }
-           
-
+            
             kid.ParentId = parentEntity.ParentId;
             db.Kids.Add(kid);
             db.SaveChanges();
@@ -98,14 +101,17 @@ namespace Kindergarden_Services
             
             var kvm = new KidViewModel();
             var kid = db.Kids.FirstOrDefault(x => x.FirstName == kidName.Trim());
+            
             if (kid != null)
             {
+                var parent = db.Parents.FirstOrDefault(x => x.Kids.Contains(kid));
+                var group = db.Groups.FirstOrDefault(x => x.Kids.Contains(kid));
                 kvm.Name = kid.FirstName + " " + kid.LastName;
                 kvm.Age = kid.Age;
-                kvm.ParentName = kid.Parent.FirstName + " " + kid.Parent.LastName;
-                kvm.PhoneNumber = kid.Parent.PhoneNumber;
-                kvm.Address = kid.Parent.Address;
-                kvm.GroupName = kid.Group.GroupName;
+                kvm.ParentName = parent.FirstName +" "+parent.LastName;
+                kvm.PhoneNumber = parent.PhoneNumber;
+                kvm.Address = parent.Address;
+                kvm.GroupName = group.GroupName;
                 return kvm; 
             }
             else return null;

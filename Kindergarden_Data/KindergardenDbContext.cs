@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -43,10 +44,10 @@ namespace Kindergarden_Data
 
             // Configure the constant table
             modelBuilder.Entity<Kindergarden_Models.Group>().HasData(
-                new Kindergarden_Models.Group { GroupId = 1, GroupName = "Kometa" },
-                new Kindergarden_Models.Group { GroupId = 2, GroupName = "Luna" },
-                new Kindergarden_Models.Group { GroupId = 3, GroupName = "Zvezdichka" },
-                new Kindergarden_Models.Group { GroupId = 4, GroupName = "Slunchice" }
+                new Kindergarden_Models.Group() { GroupId = 1, GroupName = "Kometa" },
+                new Kindergarden_Models.Group() { GroupId = 2, GroupName = "Luna" },
+                new Kindergarden_Models.Group() { GroupId = 3, GroupName = "Zvezdichka" },
+                new Kindergarden_Models.Group() { GroupId = 4, GroupName = "Slunchice" }
             );
 
             //modelBuilder.Entity<Parent>().HasData(

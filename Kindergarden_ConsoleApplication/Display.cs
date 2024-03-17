@@ -201,7 +201,7 @@ namespace Kindergarden_ConsoleApplication
             }
             Console.WriteLine();
             Console.WriteLine("Press any key to go back to main menu.");
-            Console.ReadLine();
+            //Console.ReadLine();
             Input();    
 
         }
@@ -547,7 +547,7 @@ namespace Kindergarden_ConsoleApplication
                 return;
             }
 
-            Console.Write("Enter parents's phone number:");  //Parent address
+            Console.Write("Enter parents's address:");  //Parent address
             string address = Console.ReadLine();
             if (String.IsNullOrWhiteSpace(address))
             {

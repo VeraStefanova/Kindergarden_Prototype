@@ -17,8 +17,5 @@ namespace Kindergarden_Models
         public virtual Parent Parent { get; set; }
         public int GroupId { get; set; }
         public virtual Group Group { get; set; }
-
-
-
     }
 }
