@@ -23,15 +23,12 @@ namespace Kindergarden_Services
 
         public Parent Fetch(int id)
         {
-            var pvm = new Parent();
+            
             var parent = db.Parents.FirstOrDefault(x => x.ParentId == id);
             if (parent != null)
             {
-                pvm.ParentId = parent.ParentId;
-                pvm.Name = parent.FirstName + " " + parent.LastName;
-                pvm.PhoneNumber = parent.PhoneNumber;
-                pvm.Address = parent.Address;
-                return pvm;
+                
+               return parent;
             }
             else return null;
         }
