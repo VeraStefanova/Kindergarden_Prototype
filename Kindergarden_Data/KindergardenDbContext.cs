@@ -28,7 +28,7 @@ namespace Kindergarden_Data
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer("Server=LEGIONPRO5\\SQLEXPRESS;Database=Kindergarden;Integrated Security=true;TrustServerCertificate=True");
+                optionsBuilder.UseSqlServer("Server=KAMENPC\\SQLEXPRESS;Database=Kindergarden;Integrated Security=true;TrustServerCertificate=True");
             }
 
         }
