@@ -1,7 +1,7 @@
 ﻿using Azure;
 using Kindergarden_Data;
 using Kindergarden_Models;
-using Kindergarden_Services.ViewModels;
+
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -21,9 +21,9 @@ namespace Kindergarden_Services
 
         private KindergardenDbContext db;
 
-        public ParentViewModel Fetch(int id)
+        public Parent Fetch(int id)
         {
-            var pvm = new ParentViewModel();
+            var pvm = new Parent();
             var parent = db.Parents.FirstOrDefault(x => x.ParentId == id);
             if (parent != null)
             {
