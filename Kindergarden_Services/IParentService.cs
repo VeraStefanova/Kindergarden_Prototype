@@ -1,5 +1,5 @@
 ﻿using Kindergarden_Models;
-using Kindergarden_Services.ViewModels;
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +14,7 @@ namespace Kindergarden_Services
         //public void Delete(int id);
 
 
-        public ParentViewModel Fetch(int id);
+        public Parent Fetch(int id);
         public bool UpdateName(int id,string newName);
         public bool UpdateAddress(string oldAddress,  string newAddress);
         public bool UpdatePN(string pn1, string pn);

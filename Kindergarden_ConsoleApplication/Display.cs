@@ -128,7 +128,7 @@ namespace Kindergarden_ConsoleApplication
             Console.Clear();
             foreach (var parent in db.Parents)
             {
-                ParentViewModel pvm = parentService.Fetch(parent.ParentId);
+                Parent pvm = parentService.Fetch(parent.ParentId);
                 Console.WriteLine($"Parent name: {pvm.Name}, Parent phone number: {pvm.PhoneNumber}, Address: {pvm.Address}");
             }
             Console.WriteLine();
