@@ -109,7 +109,7 @@ namespace Kindergarden_ConsoleApplication
                     $"Address: {parent.Address}, Group: {group.GroupName}");
             }
             Console.WriteLine();
-            Console.WriteLine("Press any key to go back to main menu.");
+            Console.WriteLine("Press Enter to go back to main menu.");
             Console.ReadLine();
             Input();
 
@@ -127,9 +127,10 @@ namespace Kindergarden_ConsoleApplication
                     Console.Write($"{kid.FirstName + " " + kid.LastName}; ");
                 }
                 Console.WriteLine();
+                Console.WriteLine();
             }
             Console.WriteLine();
-            Console.WriteLine("Press any key to go back to main menu.");
+            Console.WriteLine("Press Enter to go back to main menu.");
             Console.ReadLine();
             Input();
 
@@ -145,7 +146,7 @@ namespace Kindergarden_ConsoleApplication
                     $"Parent phone number: {parent.PhoneNumber}, Address: {parent.Address}");
             }
             Console.WriteLine();
-            Console.WriteLine("Press any key to go back to main menu.");
+            Console.WriteLine("Press Enter to go back to main menu.");
             Console.ReadLine();
             Input();
 
@@ -160,7 +161,7 @@ namespace Kindergarden_ConsoleApplication
             {
                 Console.WriteLine("You must type a name!");
                 Console.WriteLine();
-                Console.WriteLine("Press any key to continue.");
+                Console.WriteLine("Press Enter to continue.");
                 Console.ReadLine();
                 FetchKidAndParent();
                 return;
@@ -214,7 +215,7 @@ namespace Kindergarden_ConsoleApplication
                 
             }
             Console.WriteLine();
-            Console.WriteLine("Press any key to go back to main menu.");
+            Console.WriteLine("Press Enter to go back to main menu.");
             Console.ReadLine();
             Input();    
 
@@ -229,7 +230,7 @@ namespace Kindergarden_ConsoleApplication
             {
                 Console.WriteLine("You must type a name!");
                 Console.WriteLine();
-                Console.WriteLine("Press any key to continue.");
+                Console.WriteLine("Press Enter to continue.");
                 Console.ReadLine();
                 UpdateKid();
                 return;
@@ -293,7 +294,7 @@ namespace Kindergarden_ConsoleApplication
                         {
                             Console.WriteLine("You must type a name!");
                             Console.WriteLine();
-                            Console.WriteLine("Press any key to continue.");
+                            Console.WriteLine("Press Enter to continue.");
                             Console.ReadLine();
                             UpdateKid();
                             return;
@@ -311,7 +312,7 @@ namespace Kindergarden_ConsoleApplication
                         {
                             Console.WriteLine("You must type a valid age!");
                             Console.WriteLine();
-                            Console.WriteLine("Press any key to continue.");
+                            Console.WriteLine("Press Enter to continue.");
                             Console.ReadLine();
                             UpdateKid();
                             return;
@@ -330,7 +331,7 @@ namespace Kindergarden_ConsoleApplication
 
             }
             Console.WriteLine();
-            Console.WriteLine("Press any key to go back to main menu.");
+            Console.WriteLine("Press Enter to go back to main menu.");
             Console.ReadLine();
             Input();
 
@@ -345,7 +346,7 @@ namespace Kindergarden_ConsoleApplication
             {
                 Console.WriteLine("You must type a name!");
                 Console.WriteLine();
-                Console.WriteLine("Press any key to continue.");
+                Console.WriteLine("Press Enter to continue.");
                 Console.ReadLine();
                 UpdateParent();
                 return;
@@ -413,7 +414,7 @@ namespace Kindergarden_ConsoleApplication
                         {
                             Console.WriteLine("You must type a name!");
                             Console.WriteLine();
-                            Console.WriteLine("Press any key to continue.");
+                            Console.WriteLine("Press Enter to continue.");
                             Console.ReadLine();
                             UpdateParent();
                             return;
@@ -430,7 +431,7 @@ namespace Kindergarden_ConsoleApplication
                         {
                             Console.WriteLine("You must type a valid phone number!");
                             Console.WriteLine();
-                            Console.WriteLine("Press any key to continue.");
+                            Console.WriteLine("Press Enter to continue.");
                             Console.ReadLine();
                             UpdateParent();
                             return;
@@ -447,7 +448,7 @@ namespace Kindergarden_ConsoleApplication
                         {
                             Console.WriteLine("You must type an addreess!");
                             Console.WriteLine();
-                            Console.WriteLine("Press any key to continue.");
+                            Console.WriteLine("Press Enter to continue.");
                             Console.ReadLine();
                             UpdateParent();
                             return;
@@ -465,7 +466,7 @@ namespace Kindergarden_ConsoleApplication
 
             }
             Console.WriteLine();
-            Console.WriteLine("Press any key to go back to main menu.");
+            Console.WriteLine("Press Enter to go back to main menu.");
             Console.ReadLine();
             Input();
 
@@ -479,7 +480,7 @@ namespace Kindergarden_ConsoleApplication
             {
                 Console.WriteLine("You must type a first name!");
                 Console.WriteLine();
-                Console.WriteLine("Press any key to continue.");
+                Console.WriteLine("Press Enter to continue.");
                 Console.ReadLine();
                 CreateKid();
                 return;
@@ -491,7 +492,7 @@ namespace Kindergarden_ConsoleApplication
             {
                 Console.WriteLine("You must type a last name!");
                 Console.WriteLine();
-                Console.WriteLine("Press any key to continue.");
+                Console.WriteLine("Press Enter to continue.");
                 Console.ReadLine();
                 CreateKid();
                 return;
@@ -503,7 +504,7 @@ namespace Kindergarden_ConsoleApplication
             {
                 Console.WriteLine("You must type an age!");
                 Console.WriteLine();
-                Console.WriteLine("Press any key to continue.");
+                Console.WriteLine("Press Enter to continue.");
                 Console.ReadLine();
                 CreateKid();
                 return;
@@ -512,7 +513,7 @@ namespace Kindergarden_ConsoleApplication
             {
                 Console.WriteLine("You must type a valid age!");
                 Console.WriteLine();
-                Console.WriteLine("Press any key to continue.");
+                Console.WriteLine("Press Enter to continue.");
                 Console.ReadLine();
                 CreateKid();
                 return;
@@ -521,7 +522,7 @@ namespace Kindergarden_ConsoleApplication
             {
                 Console.WriteLine("This kid cannot be in our kindergarden!");
                 Console.WriteLine();
-                Console.WriteLine("Press any key to continue.");
+                Console.WriteLine("Press Enter to continue.");
                 Console.ReadLine();
                 CreateKid();
                 return;
@@ -534,7 +535,7 @@ namespace Kindergarden_ConsoleApplication
             {
                 Console.WriteLine("You must type first name!");
                 Console.WriteLine();
-                Console.WriteLine("Press any key to continue.");
+                Console.WriteLine("Press Enter to continue.");
                 Console.ReadLine();
                 CreateKid();
                 return;
@@ -547,7 +548,7 @@ namespace Kindergarden_ConsoleApplication
             {
                 Console.WriteLine("You must type last name!");
                 Console.WriteLine();
-                Console.WriteLine("Press any key to continue.");
+                Console.WriteLine("Press Enter to continue.");
                 Console.ReadLine();
                 CreateKid();
                 return;
@@ -559,7 +560,7 @@ namespace Kindergarden_ConsoleApplication
             {
                 Console.WriteLine("You must type a phone number!");
                 Console.WriteLine();
-                Console.WriteLine("Press any key to continue.");
+                Console.WriteLine("Press Enter to continue.");
                 Console.ReadLine();
                 CreateKid();
                 return;
@@ -571,7 +572,7 @@ namespace Kindergarden_ConsoleApplication
             {
                 Console.WriteLine("You must type an address!");
                 Console.WriteLine();
-                Console.WriteLine("Press any key to continue.");
+                Console.WriteLine("Press Enter to continue.");
                 Console.ReadLine();
                 CreateKid();
                 return;
@@ -580,11 +581,10 @@ namespace Kindergarden_ConsoleApplication
             kidService.CreateKid(fName, lName, age, parentFName, parentLName, pn, address);
             Console.WriteLine("The kid has been successfully added to our kindergarden!");
             Console.WriteLine();
-            Console.WriteLine("Press any key to go back to main menu.");
+            Console.WriteLine("Press Enter to go back to main menu.");
             Console.ReadLine();
             Input();
         }
-
         private void DeleteKid()
         {
             Console.Clear();
@@ -594,7 +594,7 @@ namespace Kindergarden_ConsoleApplication
             {
                 Console.WriteLine("You must type a first name!");
                 Console.WriteLine();
-                Console.WriteLine("Press any key to continue.");
+                Console.WriteLine("Press Enter to continue.");
                 Console.ReadLine();
                 DeleteKid();
                 return;
@@ -644,10 +644,10 @@ namespace Kindergarden_ConsoleApplication
                 Console.Write("Please, enter the id of your choice: ");
                 Kid selectedKid = kidsWithThisName[int.Parse(Console.ReadLine()) - 1];
                 kidService.Delete(selectedKid.FirstName);
-                
+                Console.WriteLine("The kid has been successfully removed from our kindergarden.");
             }
             Console.WriteLine();
-            Console.WriteLine("Press any key to go back to main menu.");
+            Console.WriteLine("Press Enter to go back to main menu.");
             Console.ReadLine();
             Input();
 
