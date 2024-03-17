@@ -104,15 +104,7 @@ namespace Kindergarden_Services
             
             if (kid != null)
             {
-                var parent = db.Parents.FirstOrDefault(x => x.Kids.Contains(kid));
-                var group = db.Groups.FirstOrDefault(x => x.Kids.Contains(kid));
-                kvm.Name = kid.FirstName + " " + kid.LastName;
-                kvm.Age = kid.Age;
-                kvm.ParentName = parent.FirstName +" "+parent.LastName;
-                kvm.PhoneNumber = parent.PhoneNumber;
-                kvm.Address = parent.Address;
-                kvm.GroupName = group.GroupName;
-                return kvm; 
+                return kid;
             }
             else return null;
         }
