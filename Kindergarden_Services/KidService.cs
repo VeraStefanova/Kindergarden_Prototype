@@ -109,11 +109,11 @@ namespace Kindergarden_Services
             else return null;
         }
 
-        public bool UpdateName(int id, string newName)
+        public bool UpdateName(int id, string newName)// въвежда се цялото име на детето
         {
-            var kidtEntity = db.Kids.FirstOrDefault(x => x.KidId == id);
-            string[] name = newName.Trim().Split().ToArray();
-            if (kidtEntity != null)
+            var kidtEntity = db.Kids.FirstOrDefault(x => x.KidId == id);  // Търси дете
+            string[] name = newName.Trim().Split().ToArray(); //сплитваме го
+            if (kidtEntity != null) //проверка за наличие
             {
                 kidtEntity.FirstName = name[0];
                 kidtEntity.LastName = name[1];

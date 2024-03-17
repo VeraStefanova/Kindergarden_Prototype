@@ -226,8 +226,8 @@ namespace Kindergarden_ConsoleApplication
                 return;
             }
             List<Kid> kidsWithThisName = new List<Kid>();
-            KidViewModel kvm = kidService.FetchKidAndParent(name);
-            if (kvm == null)
+            Kid kid = kidService.FetchKidAndParent(name);
+            if (kid == null)
             {
                 Console.WriteLine("There is no kid with this name!");
                 Console.WriteLine("1. Enter name again");
@@ -256,11 +256,11 @@ namespace Kindergarden_ConsoleApplication
             }
             else
             {
-                foreach (var kid in db.Kids)
+                foreach (var kid1 in db.Kids)
                 {
-                    if (kid.FirstName == name)
+                    if (kid1.FirstName == name)
                     {
-                        kidsWithThisName.Add(kid);
+                        kidsWithThisName.Add(kid1);
                     }
                 }
                 for (int i = 1; i <= kidsWithThisName.Count; i++)
@@ -297,7 +297,7 @@ namespace Kindergarden_ConsoleApplication
                     {
                         Console.Write("Enter kid's new age: ");
                         int newAge = int.Parse(Console.ReadLine());
-                        if (newAge < 3 || newAge > 6 || newAge == null)
+                        if (newAge < 3 || newAge > 6 || newAge.ToString().Count()==0)
                         {
                             Console.WriteLine("You must type a valid age!");
                             Console.WriteLine();
