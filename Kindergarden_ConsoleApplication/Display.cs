@@ -92,10 +92,12 @@ namespace Kindergarden_ConsoleApplication
         private void ListAllKids()
         {
             Console.Clear();
-            foreach (var kid in db.Kids)
+            foreach (var kid1 in db.Kids)
             {
-                KidViewModel kvm = kidService.FetchKidAndParent(kid.FirstName);
-                Console.WriteLine($"Kid name: {kvm.Name}, Age: {kvm.Age}, Parent name: {kvm.ParentName}, Parent phone number: {kvm.PhoneNumber}, Address: {kvm.Address}, Group: {kvm.GroupName}");
+                Kid kid = kidService.FetchKidAndParent(kid1.FirstName);
+                Console.WriteLine($"Kid name: {kid.FirstName + " " + kid.LastName}, Age: {kid.Age}, " +
+                    $"Parent name: {kid.Parent.FirstName + " " + kid.Parent.LastName}, Parent phone number: {kid.Parent.PhoneNumber}, " +
+                    $"Address: {kid.Parent.Address}, Group: {kid.Group.GroupName}");
             }
             Console.WriteLine();
             Console.WriteLine("Press any key to go back to main menu.");
@@ -127,7 +129,7 @@ namespace Kindergarden_ConsoleApplication
             Console.Clear();
             foreach (var parent in db.Parents)
             {
-                ParentViewModel pvm = parentService.Fetch(parent.ParentId);
+                Parent pvm = parentService.Fetch(parent.ParentId);
                 Console.WriteLine($"Parent name: {pvm.Name}, Parent phone number: {pvm.PhoneNumber}, Address: {pvm.Address}");
             }
             Console.WriteLine();

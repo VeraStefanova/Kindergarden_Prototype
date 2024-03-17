@@ -1,6 +1,5 @@
 ﻿using Kindergarden_Data;
 using Kindergarden_Models;
-using Kindergarden_Services.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,16 +18,15 @@ namespace Kindergarden_Services
 
         public Group Fetch(int id)
         {
-            var gvm = new Group();
             var group = db.Groups.FirstOrDefault(x => x.GroupId == id);
             if (group != null)
             {
-                gvm.Name = group.GroupName;
+                group.GroupName = group.GroupName;
                 foreach(var kid in group.Kids)
                 {
-                    gvm.Kids.Add(kid);
+                    group.Kids.Add(kid);
                 }
-                return gvm;
+                return group;
             }
             else return null;
             
