@@ -1,7 +1,6 @@
 ﻿using Kindergarden_Data;
 using Kindergarden_Models;
 using Kindergarden_Services;
-using Kindergarden_Services.ViewModels;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -155,8 +154,8 @@ namespace Kindergarden_ConsoleApplication
             List<Kid> kidsWithThisName = new List<Kid>();
 
 
-            KidViewModel kvm = kidService.FetchKidAndParent(name);
-            if (kvm == null)
+            Kid kid = kidService.FetchKidAndParent(name);
+            if (kid == null)
             {
                 Console.WriteLine("There is no kid with this name!");
                 Console.WriteLine("1. Enter name again");
@@ -186,11 +185,11 @@ namespace Kindergarden_ConsoleApplication
             }
             else
             {
-                foreach (var kid in db.Kids)
+                foreach (var kid1 in db.Kids)
                 {
-                    if (kid.FirstName == name)
+                    if (kid1.FirstName == name)
                     {
-                        kidsWithThisName.Add(kid);
+                        kidsWithThisName.Add(kid1);
                     }
                 }
                 for (int i = 1; i <= kidsWithThisName.Count; i++)

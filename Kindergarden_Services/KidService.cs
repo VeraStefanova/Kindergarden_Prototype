@@ -6,7 +6,6 @@ using System.Text;
 using System.Threading.Tasks;
 using Kindergarden_Data;
 using Kindergarden_Models;
-using Kindergarden_Services.ViewModels;
 using System.Security.Cryptography;
 using System.Reflection.Metadata.Ecma335;
 
@@ -99,10 +98,8 @@ namespace Kindergarden_Services
             }
         }
 
-        public KidViewModel FetchKidAndParent(string kidName)
+        public Kid FetchKidAndParent(string kidName)
         {
-            
-            var kvm = new KidViewModel();
             var kid = db.Kids.FirstOrDefault(x => x.FirstName == kidName.Trim());
             
             if (kid != null)
