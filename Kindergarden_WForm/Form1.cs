@@ -1,5 +1,6 @@
-using Kindergarden_Data;
+
 using Kindergarden_Models;
+using Kindergarden_Data;
 using Kindergarden_Services;
 using System.Linq;
 
@@ -13,7 +14,6 @@ namespace Kindergarden_WForm
         private readonly ParentService parentService;
         private readonly GroupService groupService;
         private readonly KindergardenDbContext db;
-        DataGridView table = new DataGridView();
         public Form1()
         {
             InitializeComponent();
@@ -34,14 +34,22 @@ namespace Kindergarden_WForm
         {
             MenuCollapse();
 
-            foreach (var kid in db.Kids)
+            Kid kid;
+            Parent parent;
+            Group group;
+            foreach (var kidTemp in db.Kids)
             {
-                Parent parent = db.Parents.FirstOrDefault(x => x.ParentId == kid.ParentId);
-                table.Rows.Add($"{kid.FirstName.ToString() + " " + kid.LastName.ToString()}", kid.Age.ToString(), $"{parent.FirstName.ToString() + " " + parent.LastName.ToString()}", parent.PhoneNumber.ToString(), parent.Address.ToString());
+                kid = kidTemp;
+                parent = db.Parents.FirstOrDefault(x => x.ParentId == kid.ParentId);
+                kid.Parent = parent;
+                group = db.Groups.FirstOrDefault(y => y.GroupId == kid.GroupId);
+                kid.Group = group;
+                dataGridView1.Rows.Add($"{kid.FirstName + " " + kid.LastName}", kid.Age.ToString(),
+                    $"{parent.FirstName + " " + parent.LastName}", parent.PhoneNumber, parent.Address, group.GroupName);
             }
 
             dataGridView1.Visible = true;
-            
+
 
 
         }
@@ -82,9 +90,6 @@ namespace Kindergarden_WForm
 
         } // Hamburger
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
+        
     }
 }

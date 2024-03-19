@@ -35,7 +35,7 @@ namespace Kindergarden_Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            //при изтриване на идасшев да се трие само ако няма децана този родител
+            //при изтриване на родител да се трие само ако няма деца на този родител
             modelBuilder.Entity<Parent>()
                 .HasMany(x => x.Kids)
                 .WithOne(x => x.Parent)

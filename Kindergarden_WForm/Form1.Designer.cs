@@ -49,6 +49,7 @@
             Parent_name = new DataGridViewTextBoxColumn();
             Phone_number = new DataGridViewTextBoxColumn();
             Address = new DataGridViewTextBoxColumn();
+            Group = new DataGridViewTextBoxColumn();
             button3 = new Button();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
@@ -84,8 +85,8 @@
             splitContainer1.Panel2.Controls.Add(dataGridView1);
             splitContainer1.Panel2.Controls.Add(button3);
             splitContainer1.Panel2.Font = new Font("Segoe UI", 9F);
-            splitContainer1.Size = new Size(1084, 614);
-            splitContainer1.SplitterDistance = 361;
+            splitContainer1.Size = new Size(1367, 614);
+            splitContainer1.SplitterDistance = 455;
             splitContainer1.TabIndex = 0;
             // 
             // button10
@@ -195,7 +196,7 @@
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
             dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Kid_name, Age, Parent_name, Phone_number, Address });
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Kid_name, Age, Parent_name, Phone_number, Address, Group });
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = SystemColors.Window;
             dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
@@ -204,7 +205,7 @@
             dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
             dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
-            dataGridView1.Location = new Point(130, 145);
+            dataGridView1.Location = new Point(58, 169);
             dataGridView1.Name = "dataGridView1";
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = SystemColors.Control;
@@ -215,7 +216,7 @@
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
             dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.Size = new Size(677, 195);
+            dataGridView1.Size = new Size(802, 195);
             dataGridView1.TabIndex = 1;
             dataGridView1.Visible = false;
             // 
@@ -254,6 +255,13 @@
             Address.Name = "Address";
             Address.Width = 125;
             // 
+            // Group
+            // 
+            Group.HeaderText = "Group";
+            Group.MinimumWidth = 6;
+            Group.Name = "Group";
+            Group.Width = 125;
+            // 
             // button3
             // 
             button3.BackColor = SystemColors.ActiveCaptionText;
@@ -272,7 +280,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1084, 614);
+            ClientSize = new Size(1367, 614);
             Controls.Add(splitContainer1);
             Name = "Form1";
             Text = "Form1";
@@ -306,5 +314,6 @@
         private DataGridViewTextBoxColumn Parent_name;
         private DataGridViewTextBoxColumn Phone_number;
         private DataGridViewTextBoxColumn Address;
+        private DataGridViewTextBoxColumn Group;
     }
 }
