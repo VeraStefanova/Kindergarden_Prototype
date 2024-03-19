@@ -168,6 +168,7 @@ namespace Kindergarden_ConsoleApplication
             }
             List<Kid> kidsWithThisName = new List<Kid>();
             Kid kid = kidService.FetchKidAndParent(name);
+
             if (kid == null)
             {
                 Console.WriteLine("There is no kid with this name!");
@@ -198,6 +199,9 @@ namespace Kindergarden_ConsoleApplication
             }
             else
             {
+                kid.Parent = db.Parents.FirstOrDefault(x => x.ParentId == kid.ParentId);
+                kid.Group = db.Groups.FirstOrDefault(x => x.GroupId == kid.GroupId);
+
                 foreach (var kid1 in db.Kids)
                 {
                     if (kid1.FirstName == name)
@@ -601,6 +605,8 @@ namespace Kindergarden_ConsoleApplication
             }
             List<Kid> kidsWithThisName = new List<Kid>();
             Kid kid = db.Kids.FirstOrDefault(x=>x.FirstName == name);
+           
+            
             if (kid == null)
             {
                 Console.WriteLine("There is no kid with this name!");
@@ -629,7 +635,9 @@ namespace Kindergarden_ConsoleApplication
                 }
             }
             else
-            {
+            { 
+                Group group = db.Groups.FirstOrDefault(y => y.GroupId == kid.GroupId);
+                Parent parents = db.Parents.FirstOrDefault(y => y.ParentId == kid.ParentId);
                 foreach (var kidSearch in db.Kids)
                 {
                     if (kidSearch.FirstName == name)
