@@ -93,11 +93,14 @@ namespace Kindergarden_ConsoleApplication
         {
             Console.Clear();
             List<Kid> kidsList = db.Kids.ToList();
+            Kid kid;
+            Parent parent;
+            Group group;
             foreach (var kid1 in kidsList)
             {
-                Kid kid = kidService.FetchKidAndParent(kid1.FirstName);
-                Group group = db.Groups.FirstOrDefault(x=>x.GroupId==kid.GroupId);
-                Parent parent = db.Parents.FirstOrDefault(y => y.ParentId == kid.ParentId);
+                 kid = kid1;
+                 group = db.Groups.FirstOrDefault(x=>x.GroupId==kid.GroupId);
+                 parent = db.Parents.FirstOrDefault(y => y.ParentId == kid.ParentId);
 
                 if(kid== null)
                 {
