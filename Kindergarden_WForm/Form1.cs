@@ -76,6 +76,7 @@ namespace Kindergarden_WForm
             int longestGroup = Math.Max(Math.Max(group1.Count, group2.Count), Math.Max(group3.Count, group4.Count)); ;
             
             List<Kid> kidsOrdered = new List<Kid>();
+            
 
             for(int i=0;i<longestGroup;i++)
             {
@@ -111,11 +112,23 @@ namespace Kindergarden_WForm
                 {
                     kidsOrdered.Add(null);
                 }
-                dataGridView1.Rows.Add("", "", "", "", "", "", $"{kidsOrdered[0].FirstName + " " + kidsOrdered[0].LastName}", $"{kidsOrdered[1].FirstName + " " + kidsOrdered[1].LastName}",
-                    $"{kidsOrdered[2].FirstName + " " + kidsOrdered[2].LastName}", $"{kidsOrdered[3].FirstName + " " + kidsOrdered[3].LastName}");
+                string[] kidsFNames = new string[4];
+                for (int j = 0; j < 4; j++)
+                {
+                    if (kidsOrdered[j]==null)
+                    {
+                        kidsFNames[j] = "";
+                    }
+                    else
+                    {
+                        kidsFNames[j] = kidsOrdered[j].FirstName + " " +kidsOrdered[j].LastName;
+                    }
+                }
+
+                
+                dataGridView1.Rows.Add("", "", "", "", "", "", kidsFNames[0], kidsFNames[1], kidsFNames[2], kidsFNames[3]);
                 kidsOrdered.Clear();
-                //if kidsOrdered[0] == null ...
-                // 4 ifa
+
             }
             
 
