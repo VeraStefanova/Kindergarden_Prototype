@@ -43,6 +43,8 @@
             button2 = new Button();
             label1 = new Label();
             button1 = new Button();
+            textBox1 = new TextBox();
+            label2 = new Label();
             dataGridView1 = new DataGridView();
             Kid_name = new DataGridViewTextBoxColumn();
             Age = new DataGridViewTextBoxColumn();
@@ -86,6 +88,8 @@
             // 
             // splitContainer1.Panel2
             // 
+            splitContainer1.Panel2.Controls.Add(textBox1);
+            splitContainer1.Panel2.Controls.Add(label2);
             splitContainer1.Panel2.Controls.Add(dataGridView1);
             splitContainer1.Panel2.Controls.Add(button3);
             splitContainer1.Panel2.Font = new Font("Segoe UI", 9F);
@@ -149,6 +153,7 @@
             button5.TabIndex = 3;
             button5.Text = "Search kid and parent";
             button5.UseVisualStyleBackColor = true;
+            button5.Click += button5_Click;
             // 
             // button4
             // 
@@ -189,6 +194,26 @@
             button1.Text = "List all kids";
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
+            // 
+            // textBox1
+            // 
+            textBox1.Font = new Font("Segoe UI", 15F);
+            textBox1.Location = new Point(339, 80);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(152, 41);
+            textBox1.TabIndex = 3;
+            textBox1.Visible = false;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI", 15F);
+            label2.Location = new Point(130, 80);
+            label2.Name = "label2";
+            label2.Size = new Size(203, 35);
+            label2.TabIndex = 2;
+            label2.Text = "Enter kid's name:";
+            label2.Visible = false;
             // 
             // dataGridView1
             // 
@@ -322,6 +347,7 @@
             splitContainer1.Panel1.ResumeLayout(false);
             splitContainer1.Panel1.PerformLayout();
             splitContainer1.Panel2.ResumeLayout(false);
+            splitContainer1.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).EndInit();
             splitContainer1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
@@ -353,5 +379,7 @@
         private DataGridViewTextBoxColumn Group2;
         private DataGridViewTextBoxColumn Group3;
         private DataGridViewTextBoxColumn Group4;
+        private TextBox textBox1;
+        private Label label2;
     }
 }
