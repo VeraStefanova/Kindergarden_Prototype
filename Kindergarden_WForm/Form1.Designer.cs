@@ -44,13 +44,17 @@
             label1 = new Label();
             button1 = new Button();
             dataGridView1 = new DataGridView();
+            button3 = new Button();
             Kid_name = new DataGridViewTextBoxColumn();
             Age = new DataGridViewTextBoxColumn();
             Parent_name = new DataGridViewTextBoxColumn();
             Phone_number = new DataGridViewTextBoxColumn();
             Address = new DataGridViewTextBoxColumn();
             Group = new DataGridViewTextBoxColumn();
-            button3 = new Button();
+            Group1 = new DataGridViewTextBoxColumn();
+            Group2 = new DataGridViewTextBoxColumn();
+            Group3 = new DataGridViewTextBoxColumn();
+            Group4 = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
             splitContainer1.Panel2.SuspendLayout();
@@ -85,8 +89,8 @@
             splitContainer1.Panel2.Controls.Add(dataGridView1);
             splitContainer1.Panel2.Controls.Add(button3);
             splitContainer1.Panel2.Font = new Font("Segoe UI", 9F);
-            splitContainer1.Size = new Size(1367, 614);
-            splitContainer1.SplitterDistance = 455;
+            splitContainer1.Size = new Size(1241, 614);
+            splitContainer1.SplitterDistance = 411;
             splitContainer1.TabIndex = 0;
             // 
             // button10
@@ -187,6 +191,8 @@
             // 
             // dataGridView1
             // 
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dataGridView1.BackgroundColor = SystemColors.Control;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = SystemColors.Control;
             dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F);
@@ -196,7 +202,7 @@
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
             dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Kid_name, Age, Parent_name, Phone_number, Address, Group });
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Kid_name, Age, Parent_name, Phone_number, Address, Group, Group1, Group2, Group3, Group4 });
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = SystemColors.Window;
             dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
@@ -205,7 +211,7 @@
             dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
             dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
-            dataGridView1.Location = new Point(58, 169);
+            dataGridView1.Location = new Point(162, 155);
             dataGridView1.Name = "dataGridView1";
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = SystemColors.Control;
@@ -216,51 +222,9 @@
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
             dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.Size = new Size(802, 195);
+            dataGridView1.Size = new Size(806, 264);
             dataGridView1.TabIndex = 1;
             dataGridView1.Visible = false;
-            // 
-            // Kid_name
-            // 
-            Kid_name.HeaderText = "Kid_name";
-            Kid_name.MinimumWidth = 6;
-            Kid_name.Name = "Kid_name";
-            Kid_name.Width = 125;
-            // 
-            // Age
-            // 
-            Age.HeaderText = "Age";
-            Age.MinimumWidth = 6;
-            Age.Name = "Age";
-            Age.Width = 125;
-            // 
-            // Parent_name
-            // 
-            Parent_name.HeaderText = "Parent_name";
-            Parent_name.MinimumWidth = 6;
-            Parent_name.Name = "Parent_name";
-            Parent_name.Width = 125;
-            // 
-            // Phone_number
-            // 
-            Phone_number.HeaderText = "Phone_number";
-            Phone_number.MinimumWidth = 6;
-            Phone_number.Name = "Phone_number";
-            Phone_number.Width = 125;
-            // 
-            // Address
-            // 
-            Address.HeaderText = "Address";
-            Address.MinimumWidth = 6;
-            Address.Name = "Address";
-            Address.Width = 125;
-            // 
-            // Group
-            // 
-            Group.HeaderText = "Group";
-            Group.MinimumWidth = 6;
-            Group.Name = "Group";
-            Group.Width = 125;
             // 
             // button3
             // 
@@ -276,11 +240,80 @@
             button3.Visible = false;
             button3.Click += button3_Click;
             // 
+            // Kid_name
+            // 
+            Kid_name.HeaderText = "Kid name";
+            Kid_name.MinimumWidth = 6;
+            Kid_name.Name = "Kid_name";
+            Kid_name.Width = 101;
+            // 
+            // Age
+            // 
+            Age.HeaderText = "Age";
+            Age.MinimumWidth = 6;
+            Age.Name = "Age";
+            Age.Width = 65;
+            // 
+            // Parent_name
+            // 
+            Parent_name.HeaderText = "Parent name";
+            Parent_name.MinimumWidth = 6;
+            Parent_name.Name = "Parent_name";
+            Parent_name.Width = 120;
+            // 
+            // Phone_number
+            // 
+            Phone_number.HeaderText = "Phone number";
+            Phone_number.MinimumWidth = 6;
+            Phone_number.Name = "Phone_number";
+            Phone_number.Width = 134;
+            // 
+            // Address
+            // 
+            Address.HeaderText = "Address";
+            Address.MinimumWidth = 6;
+            Address.Name = "Address";
+            Address.Width = 91;
+            // 
+            // Group
+            // 
+            Group.HeaderText = "Group";
+            Group.MinimumWidth = 6;
+            Group.Name = "Group";
+            Group.Width = 79;
+            // 
+            // Group1
+            // 
+            Group1.HeaderText = "Kometka";
+            Group1.MinimumWidth = 6;
+            Group1.Name = "Group1";
+            Group1.Width = 97;
+            // 
+            // Group2
+            // 
+            Group2.HeaderText = "Luna";
+            Group2.MinimumWidth = 6;
+            Group2.Name = "Group2";
+            Group2.Width = 69;
+            // 
+            // Group3
+            // 
+            Group3.HeaderText = "Zvezdichka";
+            Group3.MinimumWidth = 6;
+            Group3.Name = "Group3";
+            Group3.Width = 112;
+            // 
+            // Group4
+            // 
+            Group4.HeaderText = "Slunchice";
+            Group4.MinimumWidth = 6;
+            Group4.Name = "Group4";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1367, 614);
+            ClientSize = new Size(1241, 614);
             Controls.Add(splitContainer1);
             Name = "Form1";
             Text = "Form1";
@@ -315,5 +348,9 @@
         private DataGridViewTextBoxColumn Phone_number;
         private DataGridViewTextBoxColumn Address;
         private DataGridViewTextBoxColumn Group;
+        private DataGridViewTextBoxColumn Group1;
+        private DataGridViewTextBoxColumn Group2;
+        private DataGridViewTextBoxColumn Group3;
+        private DataGridViewTextBoxColumn Group4;
     }
 }
