@@ -197,21 +197,40 @@ namespace Kindergarden_WForm
             
             MenuCollapse();
             dataGridView1.Rows.Clear();
+
+            // Add button refresh
+            Parent parent;
+            Group group;
+            List<Kid> kids = db.Kids.Where(x => x.FirstName == textBox1.Text).ToList();
             label2.Visible = true;
             textBox1.Visible = true;
-            Kid kid;
-            Parent parent;
-            List<Kid> kids = db.Kids.Where(x => x.FirstName == textBox1.Text).ToList();
-            foreach (var kid1 in kids)
+            while(textBox1.Text==null)
             {
-                parent = db.Parents.FirstOrDefault(x => x.ParentId == kid1.ParentId);
-                dataGridView1.Rows.Add($"{kid1.FirstName + " " + kid1.LastName}", kid.Age.ToString(),
-                    $"{parent.FirstName + " " + parent.LastName}", parent.PhoneNumber, parent.Address, group.GroupName);
+                
             }
+            foreach (var kid1 in kids)
+                {
+                    group = db.Groups.FirstOrDefault(y => y.GroupId == kid1.GroupId);
+                    parent = db.Parents.FirstOrDefault(x => x.ParentId == kid1.ParentId);
+                    dataGridView1.Rows.Add($"{kid1.FirstName + " " + kid1.LastName}", kid1.Age.ToString(),
+                        $"{parent.FirstName + " " + parent.LastName}", parent.PhoneNumber, parent.Address, group.GroupName);
+                }
             dataGridView1.Visible = true;
             
 
-            
+            dataGridView1.Columns["Kid_name"].Visible = true;
+            dataGridView1.Columns["Age"].Visible = true;
+            dataGridView1.Columns["Parent_name"].Visible = true;
+            dataGridView1.Columns["Phone_number"].Visible = true;
+            dataGridView1.Columns["Address"].Visible = true;
+            dataGridView1.Columns["Group"].Visible = true;
+            dataGridView1.Columns["Group1"].Visible = false;
+            dataGridView1.Columns["Group2"].Visible = false;
+            dataGridView1.Columns["Group3"].Visible = false;
+            dataGridView1.Columns["Group4"].Visible = false;
+            dataGridView1.Refresh();
+
+
         }
 
         private void button8_Click(object sender, EventArgs e) // Update parent
