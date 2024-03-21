@@ -43,6 +43,7 @@
             button2 = new Button();
             label1 = new Label();
             button1 = new Button();
+            button11 = new Button();
             textBox1 = new TextBox();
             label2 = new Label();
             dataGridView1 = new DataGridView();
@@ -88,6 +89,7 @@
             // 
             // splitContainer1.Panel2
             // 
+            splitContainer1.Panel2.Controls.Add(button11);
             splitContainer1.Panel2.Controls.Add(textBox1);
             splitContainer1.Panel2.Controls.Add(label2);
             splitContainer1.Panel2.Controls.Add(dataGridView1);
@@ -195,10 +197,23 @@
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
             // 
+            // button11
+            // 
+            button11.FlatStyle = FlatStyle.Flat;
+            button11.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button11.Location = new Point(648, 80);
+            button11.Name = "button11";
+            button11.Size = new Size(114, 42);
+            button11.TabIndex = 4;
+            button11.Text = "Search";
+            button11.UseVisualStyleBackColor = true;
+            button11.Visible = false;
+            button11.Click += button11_Click;
+            // 
             // textBox1
             // 
             textBox1.Font = new Font("Segoe UI", 15F);
-            textBox1.Location = new Point(339, 80);
+            textBox1.Location = new Point(462, 77);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(152, 41);
             textBox1.TabIndex = 3;
@@ -208,7 +223,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 15F);
-            label2.Location = new Point(130, 80);
+            label2.Location = new Point(253, 80);
             label2.Name = "label2";
             label2.Size = new Size(203, 35);
             label2.TabIndex = 2;
@@ -237,7 +252,7 @@
             dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
             dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
-            dataGridView1.Location = new Point(130, 160);
+            dataGridView1.Location = new Point(253, 150);
             dataGridView1.Name = "dataGridView1";
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = SystemColors.Control;
@@ -381,5 +396,6 @@
         private DataGridViewTextBoxColumn Group4;
         private TextBox textBox1;
         private Label label2;
+        private Button button11;
     }
 }

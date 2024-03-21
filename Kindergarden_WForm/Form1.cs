@@ -58,7 +58,7 @@ namespace Kindergarden_WForm
                 dataGridView1.Rows.Add($"{kid.FirstName + " " + kid.LastName}", kid.Age.ToString(),
                     $"{parent.FirstName + " " + parent.LastName}", parent.PhoneNumber, parent.Address, group.GroupName);
             }
-
+            button11.Visible = false;
             dataGridView1.Visible = true;
             dataGridView1.Columns["Kid_name"].Visible = true;
             dataGridView1.Columns["Age"].Visible = true;
@@ -157,6 +157,7 @@ namespace Kindergarden_WForm
             dataGridView1.Columns["Parent_name"].Visible = false;
             dataGridView1.Columns["Phone_number"].Visible = false;
             dataGridView1.Columns["Address"].Visible = false;
+            button11.Visible = false;
             label1.Visible = false;
             textBox1.Visible = false;
 
@@ -171,6 +172,8 @@ namespace Kindergarden_WForm
 
             List<Parent> parentList = db.Parents.ToList();
             Parent parent;
+
+
             foreach (var parentTemp in parentList)
             {
                 parent = parentTemp;
@@ -189,48 +192,18 @@ namespace Kindergarden_WForm
             dataGridView1.Columns["Group2"].Visible = false;
             dataGridView1.Columns["Group3"].Visible = false;
             dataGridView1.Columns["Group4"].Visible = false;
+            button11.Visible = false;
             label1.Visible = false;
             textBox1.Visible = false;
         }
-        private void button5_Click(object sender, EventArgs e)
+        private void button5_Click(object sender, EventArgs e) //Search Kid and Parent
         {
-            
-            MenuCollapse();
-            dataGridView1.Rows.Clear();
 
-            // Add button refresh
-            Parent parent;
-            Group group;
-            List<Kid> kids = db.Kids.Where(x => x.FirstName == textBox1.Text).ToList();
+            MenuCollapse();
+            dataGridView1.Rows.Clear();         
             label2.Visible = true;
             textBox1.Visible = true;
-            while(textBox1.Text==null)
-            {
-                
-            }
-            foreach (var kid1 in kids)
-                {
-                    group = db.Groups.FirstOrDefault(y => y.GroupId == kid1.GroupId);
-                    parent = db.Parents.FirstOrDefault(x => x.ParentId == kid1.ParentId);
-                    dataGridView1.Rows.Add($"{kid1.FirstName + " " + kid1.LastName}", kid1.Age.ToString(),
-                        $"{parent.FirstName + " " + parent.LastName}", parent.PhoneNumber, parent.Address, group.GroupName);
-                }
-            dataGridView1.Visible = true;
-            
-
-            dataGridView1.Columns["Kid_name"].Visible = true;
-            dataGridView1.Columns["Age"].Visible = true;
-            dataGridView1.Columns["Parent_name"].Visible = true;
-            dataGridView1.Columns["Phone_number"].Visible = true;
-            dataGridView1.Columns["Address"].Visible = true;
-            dataGridView1.Columns["Group"].Visible = true;
-            dataGridView1.Columns["Group1"].Visible = false;
-            dataGridView1.Columns["Group2"].Visible = false;
-            dataGridView1.Columns["Group3"].Visible = false;
-            dataGridView1.Columns["Group4"].Visible = false;
-            dataGridView1.Refresh();
-
-
+            button11.Visible = true;
         }
 
         private void button8_Click(object sender, EventArgs e) // Update parent
@@ -254,15 +227,45 @@ namespace Kindergarden_WForm
         private void button3_Click(object sender, EventArgs e)
         {
             button3.Visible = false;
+            label1.Visible = true;
             splitContainer1.Panel1Collapsed = false;
             for (int i = 0; i < SplitterDist; i++)
             {
                 splitContainer1.SplitterDistance = i;
             }
             dataGridView1.Visible = false;
+            button11.Visible = false;
+            label2.Visible = false;
+            textBox1.Visible = false;
 
         } // Hamburger
 
-        
+        private void button11_Click(object sender, EventArgs e) // Search Button
+        {
+            dataGridView1.Rows.Clear();
+            Parent parent;
+            Group group;
+            List<Kid> kids = db.Kids.Where(x => x.FirstName == textBox1.Text).ToList();
+            foreach (var kid1 in kids)
+            {
+                group = db.Groups.FirstOrDefault(y => y.GroupId == kid1.GroupId);
+                parent = db.Parents.FirstOrDefault(x => x.ParentId == kid1.ParentId);
+                dataGridView1.Rows.Add($"{kid1.FirstName + " " + kid1.LastName}", kid1.Age.ToString(),
+                    $"{parent.FirstName + " " + parent.LastName}", parent.PhoneNumber, parent.Address, group.GroupName);
+            }
+            dataGridView1.Visible = true;
+
+
+            dataGridView1.Columns["Kid_name"].Visible = true;
+            dataGridView1.Columns["Age"].Visible = true;
+            dataGridView1.Columns["Parent_name"].Visible = true;
+            dataGridView1.Columns["Phone_number"].Visible = true;
+            dataGridView1.Columns["Address"].Visible = true;
+            dataGridView1.Columns["Group"].Visible = true;
+            dataGridView1.Columns["Group1"].Visible = false;
+            dataGridView1.Columns["Group2"].Visible = false;
+            dataGridView1.Columns["Group3"].Visible = false;
+            dataGridView1.Columns["Group4"].Visible = false;
+        }
     }
 }
