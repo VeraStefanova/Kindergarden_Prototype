@@ -67,7 +67,6 @@
             // 
             // splitContainer1
             // 
-            splitContainer1.Dock = DockStyle.Fill;
             splitContainer1.Location = new Point(0, 0);
             splitContainer1.Name = "splitContainer1";
             // 
@@ -95,8 +94,8 @@
             splitContainer1.Panel2.Controls.Add(dataGridView1);
             splitContainer1.Panel2.Controls.Add(button3);
             splitContainer1.Panel2.Font = new Font("Segoe UI", 9F);
-            splitContainer1.Size = new Size(1246, 614);
-            splitContainer1.SplitterDistance = 411;
+            splitContainer1.Size = new Size(1496, 614);
+            splitContainer1.SplitterDistance = 246;
             splitContainer1.TabIndex = 0;
             // 
             // button10
@@ -201,7 +200,7 @@
             // 
             button11.FlatStyle = FlatStyle.Flat;
             button11.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button11.Location = new Point(648, 80);
+            button11.Location = new Point(552, 76);
             button11.Name = "button11";
             button11.Size = new Size(114, 42);
             button11.TabIndex = 4;
@@ -213,7 +212,7 @@
             // textBox1
             // 
             textBox1.Font = new Font("Segoe UI", 15F);
-            textBox1.Location = new Point(462, 77);
+            textBox1.Location = new Point(394, 77);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(152, 41);
             textBox1.TabIndex = 3;
@@ -223,11 +222,11 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 15F);
-            label2.Location = new Point(253, 80);
+            label2.Location = new Point(242, 80);
             label2.Name = "label2";
-            label2.Size = new Size(203, 35);
+            label2.Size = new Size(146, 35);
             label2.TabIndex = 2;
-            label2.Text = "Enter kid's name:";
+            label2.Text = "Enter name:";
             label2.Visible = false;
             // 
             // dataGridView1
@@ -252,7 +251,7 @@
             dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
             dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
-            dataGridView1.Location = new Point(253, 150);
+            dataGridView1.Location = new Point(242, 149);
             dataGridView1.Name = "dataGridView1";
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = SystemColors.Control;
@@ -354,7 +353,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1246, 614);
+            ClientSize = new Size(1496, 614);
             Controls.Add(splitContainer1);
             Name = "Form1";
             Text = "Form1";

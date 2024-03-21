@@ -200,14 +200,45 @@ namespace Kindergarden_WForm
         {
 
             MenuCollapse();
-            dataGridView1.Rows.Clear();         
+            dataGridView1.Rows.Clear();
             label2.Visible = true;
+            label2.Text = "Enter name";
             textBox1.Visible = true;
             button11.Visible = true;
+            dataGridView1.Columns["Kid_name"].Visible = true;
+            dataGridView1.Columns["Age"].Visible = true;
+            dataGridView1.Columns["Parent_name"].Visible = true;
+            dataGridView1.Columns["Phone_number"].Visible = true;
+            dataGridView1.Columns["Address"].Visible = true;
+            dataGridView1.Columns["Group"].Visible = true;
+            dataGridView1.Columns["Group1"].Visible = false;
+            dataGridView1.Columns["Group2"].Visible = false;
+            dataGridView1.Columns["Group3"].Visible = false;
+            dataGridView1.Columns["Group4"].Visible = false;
         }
 
         private void button8_Click(object sender, EventArgs e) // Update parent
         {
+            MenuCollapse();
+            dataGridView1.Rows.Clear();
+
+            
+            dataGridView1.Visible = false;
+            dataGridView1.Columns["Group1"].Visible = false;
+            dataGridView1.Columns["Group2"].Visible = false;
+            dataGridView1.Columns["Group3"].Visible = false;
+            dataGridView1.Columns["Group4"].Visible = false;
+
+            dataGridView1.Columns["kid_name"].Visible = false;
+            dataGridView1.Columns["group"].Visible = false;
+            dataGridView1.Columns["age"].Visible = false;
+            dataGridView1.Columns["Parent_name"].Visible = true;
+            dataGridView1.Columns["Phone_number"].Visible = true;
+            dataGridView1.Columns["Address"].Visible = true;
+            button11.Visible = true;
+            label1.Visible = false;
+            label2.Visible = true;
+            textBox1.Visible = true;
 
         }
 
@@ -240,7 +271,7 @@ namespace Kindergarden_WForm
 
         } // Hamburger
 
-        private void button11_Click(object sender, EventArgs e) // Search Button
+        private void button11_Click(object sender, EventArgs e) // Search Button 
         {
             dataGridView1.Rows.Clear();
             Parent parent;
@@ -254,18 +285,10 @@ namespace Kindergarden_WForm
                     $"{parent.FirstName + " " + parent.LastName}", parent.PhoneNumber, parent.Address, group.GroupName);
             }
             dataGridView1.Visible = true;
+            textBox1.Text = null;
 
-
-            dataGridView1.Columns["Kid_name"].Visible = true;
-            dataGridView1.Columns["Age"].Visible = true;
-            dataGridView1.Columns["Parent_name"].Visible = true;
-            dataGridView1.Columns["Phone_number"].Visible = true;
-            dataGridView1.Columns["Address"].Visible = true;
-            dataGridView1.Columns["Group"].Visible = true;
-            dataGridView1.Columns["Group1"].Visible = false;
-            dataGridView1.Columns["Group2"].Visible = false;
-            dataGridView1.Columns["Group3"].Visible = false;
-            dataGridView1.Columns["Group4"].Visible = false;
         }
+
+   
     }
 }
