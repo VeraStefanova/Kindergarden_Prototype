@@ -44,7 +44,6 @@
             label1 = new Label();
             button1 = new Button();
             dataGridView1 = new DataGridView();
-            button3 = new Button();
             Kid_name = new DataGridViewTextBoxColumn();
             Age = new DataGridViewTextBoxColumn();
             Parent_name = new DataGridViewTextBoxColumn();
@@ -55,6 +54,7 @@
             Group2 = new DataGridViewTextBoxColumn();
             Group3 = new DataGridViewTextBoxColumn();
             Group4 = new DataGridViewTextBoxColumn();
+            button3 = new Button();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
             splitContainer1.Panel2.SuspendLayout();
@@ -89,7 +89,7 @@
             splitContainer1.Panel2.Controls.Add(dataGridView1);
             splitContainer1.Panel2.Controls.Add(button3);
             splitContainer1.Panel2.Font = new Font("Segoe UI", 9F);
-            splitContainer1.Size = new Size(1241, 614);
+            splitContainer1.Size = new Size(1246, 614);
             splitContainer1.SplitterDistance = 411;
             splitContainer1.TabIndex = 0;
             // 
@@ -158,6 +158,7 @@
             button4.TabIndex = 3;
             button4.Text = "List all parents";
             button4.UseVisualStyleBackColor = true;
+            button4.Click += button4_Click;
             // 
             // button2
             // 
@@ -211,7 +212,7 @@
             dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
             dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
-            dataGridView1.Location = new Point(162, 155);
+            dataGridView1.Location = new Point(130, 160);
             dataGridView1.Name = "dataGridView1";
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = SystemColors.Control;
@@ -222,23 +223,9 @@
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
             dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.Size = new Size(806, 264);
+            dataGridView1.Size = new Size(849, 264);
             dataGridView1.TabIndex = 1;
             dataGridView1.Visible = false;
-            // 
-            // button3
-            // 
-            button3.BackColor = SystemColors.ActiveCaptionText;
-            button3.BackgroundImage = (Image)resources.GetObject("button3.BackgroundImage");
-            button3.BackgroundImageLayout = ImageLayout.Stretch;
-            button3.ForeColor = SystemColors.ButtonFace;
-            button3.Location = new Point(3, 3);
-            button3.Name = "button3";
-            button3.Size = new Size(56, 51);
-            button3.TabIndex = 0;
-            button3.UseVisualStyleBackColor = false;
-            button3.Visible = false;
-            button3.Click += button3_Click;
             // 
             // Kid_name
             // 
@@ -309,11 +296,25 @@
             Group4.MinimumWidth = 6;
             Group4.Name = "Group4";
             // 
+            // button3
+            // 
+            button3.BackColor = SystemColors.ActiveCaptionText;
+            button3.BackgroundImage = (Image)resources.GetObject("button3.BackgroundImage");
+            button3.BackgroundImageLayout = ImageLayout.Stretch;
+            button3.ForeColor = SystemColors.ButtonFace;
+            button3.Location = new Point(3, 3);
+            button3.Name = "button3";
+            button3.Size = new Size(56, 51);
+            button3.TabIndex = 0;
+            button3.UseVisualStyleBackColor = false;
+            button3.Visible = false;
+            button3.Click += button3_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1241, 614);
+            ClientSize = new Size(1246, 614);
             Controls.Add(splitContainer1);
             Name = "Form1";
             Text = "Form1";

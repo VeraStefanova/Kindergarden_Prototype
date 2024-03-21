@@ -5,6 +5,7 @@ using Kindergarden_Services;
 using System.Linq;
 using System.Security.Cryptography;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
+using System.Diagnostics.Contracts;
 
 namespace Kindergarden_WForm
 {
@@ -41,7 +42,7 @@ namespace Kindergarden_WForm
         private void button1_Click(object sender, EventArgs e) //List all kids
         {
             MenuCollapse();
-
+            dataGridView1.Rows.Clear();
             Kid kid;
             Parent parent;
             Group group;
@@ -58,29 +59,36 @@ namespace Kindergarden_WForm
             }
 
             dataGridView1.Visible = true;
+            dataGridView1.Columns["Kid_name"].Visible = true;
+            dataGridView1.Columns["Age"].Visible = true;
+            dataGridView1.Columns["Parent_name"].Visible = true;
+            dataGridView1.Columns["Phone_number"].Visible = true;
+            dataGridView1.Columns["Address"].Visible = true;
+            dataGridView1.Columns["Group"].Visible = true;
             dataGridView1.Columns["Group1"].Visible = false;
             dataGridView1.Columns["Group2"].Visible = false;
             dataGridView1.Columns["Group3"].Visible = false;
             dataGridView1.Columns["Group4"].Visible = false;
+            //clear table
 
 
         }
         private void button2_Click(object sender, EventArgs e) // List all groups
-        { 
+        {
             MenuCollapse();
-
+            dataGridView1.Rows.Clear();
             List<Kid> group1 = db.Kids.Where(x => x.GroupId == 1).ToList();
             List<Kid> group2 = db.Kids.Where(x => x.GroupId == 2).ToList();
             List<Kid> group3 = db.Kids.Where(x => x.GroupId == 3).ToList();
             List<Kid> group4 = db.Kids.Where(x => x.GroupId == 4).ToList();
             int longestGroup = Math.Max(Math.Max(group1.Count, group2.Count), Math.Max(group3.Count, group4.Count)); ;
-            
-            List<Kid> kidsOrdered = new List<Kid>();
-            
 
-            for(int i=0;i<longestGroup;i++)
+            List<Kid> kidsOrdered = new List<Kid>();
+
+
+            for (int i = 0; i < longestGroup; i++)
             {
-                if(i<group1.Count)
+                if (i < group1.Count)
                 {
                     kidsOrdered.Add(group1[i]);
                 }
@@ -115,24 +123,24 @@ namespace Kindergarden_WForm
                 string[] kidsFNames = new string[4];
                 for (int j = 0; j < 4; j++)
                 {
-                    if (kidsOrdered[j]==null)
+                    if (kidsOrdered[j] == null)
                     {
                         kidsFNames[j] = "";
                     }
                     else
                     {
-                        kidsFNames[j] = kidsOrdered[j].FirstName + " " +kidsOrdered[j].LastName;
+                        kidsFNames[j] = kidsOrdered[j].FirstName + " " + kidsOrdered[j].LastName;
                     }
                 }
 
-                
+
                 dataGridView1.Rows.Add("", "", "", "", "", "", kidsFNames[0], kidsFNames[1], kidsFNames[2], kidsFNames[3]);
                 kidsOrdered.Clear();
 
             }
-            
 
-            
+
+
 
             dataGridView1.Visible = true;
             dataGridView1.Columns["Group1"].Visible = true;
@@ -151,12 +159,37 @@ namespace Kindergarden_WForm
 
         }
 
+        private void button4_Click(object sender, EventArgs e) // List All Parents
+        {
+            MenuCollapse();
+            dataGridView1.Rows.Clear();
 
+            List<Parent> parentList = db.Parents.ToList();
+            Parent parent;
+            foreach (var parentTemp in parentList)
+            {
+                parent = parentTemp;
+                dataGridView1.Rows.Add("", "", $"{parent.FirstName + " " + parent.LastName}", parent.PhoneNumber, parent.Address);
+            }
+
+            dataGridView1.Visible = true;
+
+            dataGridView1.Columns["Kid_name"].Visible = false;
+            dataGridView1.Columns["Age"].Visible = false;
+            dataGridView1.Columns["Parent_name"].Visible = true;
+            dataGridView1.Columns["Phone_number"].Visible = true;
+            dataGridView1.Columns["Address"].Visible = true;
+            dataGridView1.Columns["Group"].Visible = false;
+            dataGridView1.Columns["Group1"].Visible = false;
+            dataGridView1.Columns["Group2"].Visible = false;
+            dataGridView1.Columns["Group3"].Visible = false;
+            dataGridView1.Columns["Group4"].Visible = false;
+        }
 
 
         private void button8_Click(object sender, EventArgs e) // Update parent
         {
-            
+
         }
         private void MenuCollapse()
         {
@@ -166,6 +199,7 @@ namespace Kindergarden_WForm
             }
             splitContainer1.Panel1Collapsed = true;
             button3.Visible = true;
+
             //TODO: Make labels and buttons visible after collapse
         } // Collapse
         private void button3_Click(object sender, EventArgs e)
@@ -176,10 +210,10 @@ namespace Kindergarden_WForm
             {
                 splitContainer1.SplitterDistance = i;
             }
+            dataGridView1.Visible = false;
 
         } // Hamburger
+
         
-
-
     }
 }
