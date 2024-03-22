@@ -36,17 +36,22 @@
             button10 = new Button();
             button9 = new Button();
             button8 = new Button();
-            button7 = new Button();
             button6 = new Button();
             button5 = new Button();
             button4 = new Button();
             button2 = new Button();
             label1 = new Label();
             button1 = new Button();
+            button7 = new Button();
+            Search2 = new Button();
+            Select = new Button();
+            textBox2 = new TextBox();
+            label3 = new Label();
             button11 = new Button();
             textBox1 = new TextBox();
             label2 = new Label();
             dataGridView1 = new DataGridView();
+            Id = new DataGridViewTextBoxColumn();
             Kid_name = new DataGridViewTextBoxColumn();
             Age = new DataGridViewTextBoxColumn();
             Parent_name = new DataGridViewTextBoxColumn();
@@ -77,7 +82,6 @@
             splitContainer1.Panel1.Controls.Add(button10);
             splitContainer1.Panel1.Controls.Add(button9);
             splitContainer1.Panel1.Controls.Add(button8);
-            splitContainer1.Panel1.Controls.Add(button7);
             splitContainer1.Panel1.Controls.Add(button6);
             splitContainer1.Panel1.Controls.Add(button5);
             splitContainer1.Panel1.Controls.Add(button4);
@@ -88,6 +92,11 @@
             // 
             // splitContainer1.Panel2
             // 
+            splitContainer1.Panel2.Controls.Add(button7);
+            splitContainer1.Panel2.Controls.Add(Search2);
+            splitContainer1.Panel2.Controls.Add(Select);
+            splitContainer1.Panel2.Controls.Add(textBox2);
+            splitContainer1.Panel2.Controls.Add(label3);
             splitContainer1.Panel2.Controls.Add(button11);
             splitContainer1.Panel2.Controls.Add(textBox1);
             splitContainer1.Panel2.Controls.Add(label2);
@@ -100,7 +109,7 @@
             // 
             // button10
             // 
-            button10.Location = new Point(14, 451);
+            button10.Location = new Point(14, 415);
             button10.Name = "button10";
             button10.Size = new Size(192, 29);
             button10.TabIndex = 3;
@@ -110,7 +119,7 @@
             // 
             // button9
             // 
-            button9.Location = new Point(14, 406);
+            button9.Location = new Point(14, 364);
             button9.Name = "button9";
             button9.Size = new Size(192, 29);
             button9.TabIndex = 3;
@@ -120,22 +129,13 @@
             // 
             // button8
             // 
-            button8.Location = new Point(14, 359);
+            button8.Location = new Point(14, 314);
             button8.Name = "button8";
             button8.Size = new Size(192, 29);
             button8.TabIndex = 3;
-            button8.Text = "Update parent";
+            button8.Text = "Update information";
             button8.UseVisualStyleBackColor = true;
             button8.Click += button8_Click;
-            // 
-            // button7
-            // 
-            button7.Location = new Point(14, 311);
-            button7.Name = "button7";
-            button7.Size = new Size(192, 29);
-            button7.TabIndex = 3;
-            button7.Text = "Update kid";
-            button7.UseVisualStyleBackColor = true;
             // 
             // button6
             // 
@@ -196,15 +196,78 @@
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
             // 
+            // button7
+            // 
+            button7.FlatStyle = FlatStyle.Flat;
+            button7.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button7.Location = new Point(51, 231);
+            button7.Name = "button7";
+            button7.Size = new Size(126, 33);
+            button7.TabIndex = 9;
+            button7.Text = "Save changes";
+            button7.UseVisualStyleBackColor = true;
+            button7.Visible = false;
+            button7.Click += button7_Click;
+            // 
+            // Search2
+            // 
+            Search2.FlatStyle = FlatStyle.Flat;
+            Search2.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            Search2.ImageAlign = ContentAlignment.TopCenter;
+            Search2.Location = new Point(679, 78);
+            Search2.Name = "Search2";
+            Search2.Size = new Size(114, 46);
+            Search2.TabIndex = 8;
+            Search2.Text = "Search";
+            Search2.TextAlign = ContentAlignment.TopCenter;
+            Search2.UseVisualStyleBackColor = true;
+            Search2.Visible = false;
+            Search2.Click += Search2_Click;
+            // 
+            // Select
+            // 
+            Select.FlatStyle = FlatStyle.Flat;
+            Select.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            Select.ImageAlign = ContentAlignment.TopCenter;
+            Select.Location = new Point(71, 188);
+            Select.Name = "Select";
+            Select.Size = new Size(84, 33);
+            Select.TabIndex = 7;
+            Select.Text = "Select";
+            Select.UseVisualStyleBackColor = true;
+            Select.Visible = false;
+            Select.Click += Select_Click;
+            // 
+            // textBox2
+            // 
+            textBox2.Location = new Point(174, 149);
+            textBox2.Name = "textBox2";
+            textBox2.Size = new Size(41, 27);
+            textBox2.TabIndex = 6;
+            textBox2.Visible = false;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI", 12F);
+            label3.Location = new Point(16, 146);
+            label3.Name = "label3";
+            label3.Size = new Size(152, 28);
+            label3.TabIndex = 5;
+            label3.Text = "Enter desired Id:";
+            label3.Visible = false;
+            // 
             // button11
             // 
             button11.FlatStyle = FlatStyle.Flat;
             button11.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button11.Location = new Point(552, 76);
+            button11.ImageAlign = ContentAlignment.TopCenter;
+            button11.Location = new Point(679, 78);
             button11.Name = "button11";
-            button11.Size = new Size(114, 42);
+            button11.Size = new Size(114, 46);
             button11.TabIndex = 4;
             button11.Text = "Search";
+            button11.TextAlign = ContentAlignment.TopCenter;
             button11.UseVisualStyleBackColor = true;
             button11.Visible = false;
             button11.Click += button11_Click;
@@ -212,9 +275,9 @@
             // textBox1
             // 
             textBox1.Font = new Font("Segoe UI", 15F);
-            textBox1.Location = new Point(394, 77);
+            textBox1.Location = new Point(473, 80);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(152, 41);
+            textBox1.Size = new Size(174, 41);
             textBox1.TabIndex = 3;
             textBox1.Visible = false;
             // 
@@ -222,17 +285,18 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 15F);
-            label2.Location = new Point(242, 80);
+            label2.Location = new Point(225, 80);
             label2.Name = "label2";
-            label2.Size = new Size(146, 35);
+            label2.Size = new Size(252, 35);
             label2.TabIndex = 2;
-            label2.Text = "Enter name:";
+            label2.Text = "Enter kid's first name:";
             label2.Visible = false;
             // 
             // dataGridView1
             // 
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             dataGridView1.BackgroundColor = SystemColors.Control;
+            dataGridView1.BorderStyle = BorderStyle.None;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = SystemColors.Control;
             dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F);
@@ -242,7 +306,7 @@
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
             dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Kid_name, Age, Parent_name, Phone_number, Address, Group, Group1, Group2, Group3, Group4 });
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Id, Kid_name, Age, Parent_name, Phone_number, Address, Group, Group1, Group2, Group3, Group4 });
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = SystemColors.Window;
             dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
@@ -251,7 +315,7 @@
             dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
             dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
-            dataGridView1.Location = new Point(242, 149);
+            dataGridView1.Location = new Point(225, 146);
             dataGridView1.Name = "dataGridView1";
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = SystemColors.Control;
@@ -262,9 +326,16 @@
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
             dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.Size = new Size(849, 264);
+            dataGridView1.Size = new Size(849, 266);
             dataGridView1.TabIndex = 1;
             dataGridView1.Visible = false;
+            // 
+            // Id
+            // 
+            Id.HeaderText = "Id";
+            Id.MinimumWidth = 6;
+            Id.Name = "Id";
+            Id.Width = 51;
             // 
             // Kid_name
             // 
@@ -353,7 +424,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1496, 614);
+            ClientSize = new Size(1266, 615);
             Controls.Add(splitContainer1);
             Name = "Form1";
             Text = "Form1";
@@ -376,13 +447,16 @@
         private Button button2;
         private Button button3;
         private Button button8;
-        private Button button7;
         private Button button6;
         private Button button5;
         private Button button4;
         private Button button9;
         private Button button10;
         private DataGridView dataGridView1;
+        private TextBox textBox1;
+        private Label label2;
+        private Button button11;
+        private DataGridViewTextBoxColumn Id;
         private DataGridViewTextBoxColumn Kid_name;
         private DataGridViewTextBoxColumn Age;
         private DataGridViewTextBoxColumn Parent_name;
@@ -393,8 +467,10 @@
         private DataGridViewTextBoxColumn Group2;
         private DataGridViewTextBoxColumn Group3;
         private DataGridViewTextBoxColumn Group4;
-        private TextBox textBox1;
-        private Label label2;
-        private Button button11;
+        private TextBox textBox2;
+        private Label label3;
+        private Button Select;
+        private Button Search2;
+        private Button button7;
     }
 }

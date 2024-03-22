@@ -18,7 +18,7 @@ namespace Kindergarden_WForm
         }
         private void Copy()
         {
-
+            
         }
 
         private void Form2_Load(object sender, EventArgs e)
