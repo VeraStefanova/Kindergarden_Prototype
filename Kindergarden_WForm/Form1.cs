@@ -6,6 +6,11 @@ using System.Linq;
 using System.Security.Cryptography;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
 using System.Diagnostics.Contracts;
+using System.Data;
+using System.Data.SqlClient;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
+using System.Windows.Forms;
+
 
 namespace Kindergarden_WForm
 {
@@ -17,7 +22,9 @@ namespace Kindergarden_WForm
         private readonly ParentService parentService;
         private readonly GroupService groupService;
         private readonly KindergardenDbContext db;
-
+        SqlDataAdapter adapter;
+        DataTable dataTable;
+        SqlConnection connection = new SqlConnection("Server=KAMENPC\\SQLEXPRESS;Database=Kindergarden;Integrated Security=true;TrustServerCertificate=True");
         public Form1()
         {
             InitializeComponent();
@@ -42,22 +49,29 @@ namespace Kindergarden_WForm
 
         private void button1_Click(object sender, EventArgs e) //List all kids
         {
-            MenuCollapse();
-            dataGridView1.Rows.Clear();
-            Kid kid;
-            Parent parent;
-            Group group;
-            List<Kid> kidsList = db.Kids.ToList();
-            foreach (var kidTemp in kidsList)
-            {
-                kid = kidTemp;
-                parent = db.Parents.FirstOrDefault(x => x.ParentId == kid.ParentId);
-                kid.Parent = parent;
-                group = db.Groups.FirstOrDefault(y => y.GroupId == kid.GroupId);
-                kid.Group = group;
-                dataGridView1.Rows.Add("", $"{kid.FirstName + " " + kid.LastName}", kid.Age.ToString(),
-                    $"{parent.FirstName + " " + parent.LastName}", parent.PhoneNumber, parent.Address, group.GroupName);
-            }
+            adapter = new SqlDataAdapter("SELECT * FROM dbo.Kids", connection);
+            dataTable = new DataTable();
+            adapter.Fill(dataTable);
+            dataGridView1.DataSource = dataTable;
+            
+            //MenuCollapse();
+            //dataGridView1.Rows.Clear();
+            //Kid kid;
+            //Parent parent;
+            //Group group;
+            //List<Kid> kidsList = db.Kids.ToList();
+            //foreach (var kidTemp in kidsList)
+            //{
+            //    kid = kidTemp;
+            //    parent = db.Parents.FirstOrDefault(x => x.ParentId == kid.ParentId);
+            //    kid.Parent = parent;
+            //    group = db.Groups.FirstOrDefault(y => y.GroupId == kid.GroupId);
+            //    kid.Group = group;
+            //    dataGridView1.Rows.Add("", $"{kid.FirstName + " " + kid.LastName}", kid.Age.ToString(),
+            //        $"{parent.FirstName + " " + parent.LastName}", parent.PhoneNumber, parent.Address, group.GroupName);
+            //}
+
+
             button11.Visible = false;
             dataGridView1.Visible = true;
             label3.Visible = false;
