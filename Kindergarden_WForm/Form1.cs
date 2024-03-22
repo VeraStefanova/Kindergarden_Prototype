@@ -49,46 +49,24 @@ namespace Kindergarden_WForm
 
         private void button1_Click(object sender, EventArgs e) //List all kids
         {
-            adapter = new SqlDataAdapter("SELECT * FROM dbo.Kids", connection);
+            MenuCollapse();
+            adapter = new SqlDataAdapter("SELECT Concat(k.FirstName,' ',k.LastName) as 'Kid name', Age, \r\nConcat(p.FirstName,' ',p.LastName) as 'Parent name',\r\nPhoneNumber as'Phone number',Address, GroupName as 'Group name'  from Kids as k\r\nJOIN Parents as p on (p.ParentId=k.ParentId)\r\nJoin Groups as g on (k.GroupId=g.GroupId)", connection);
             dataTable = new DataTable();
             adapter.Fill(dataTable);
             dataGridView1.DataSource = dataTable;
-            
-            //MenuCollapse();
-            //dataGridView1.Rows.Clear();
-            //Kid kid;
-            //Parent parent;
-            //Group group;
-            //List<Kid> kidsList = db.Kids.ToList();
-            //foreach (var kidTemp in kidsList)
-            //{
-            //    kid = kidTemp;
-            //    parent = db.Parents.FirstOrDefault(x => x.ParentId == kid.ParentId);
-            //    kid.Parent = parent;
-            //    group = db.Groups.FirstOrDefault(y => y.GroupId == kid.GroupId);
-            //    kid.Group = group;
-            //    dataGridView1.Rows.Add("", $"{kid.FirstName + " " + kid.LastName}", kid.Age.ToString(),
-            //        $"{parent.FirstName + " " + parent.LastName}", parent.PhoneNumber, parent.Address, group.GroupName);
-            //}
 
-
+            dataGridView2.BringToFront();
+            dataGridView3.BringToFront();
+            dataGridView4.BringToFront();
+            dataGridView2.Visible = false;
+            dataGridView3.Visible = false;
+            dataGridView4.Visible = false;
             button11.Visible = false;
             dataGridView1.Visible = true;
             label3.Visible = false;
             Select.Visible = false;
             textBox2.Visible = false;
             dataGridView1.Columns["Id"].Visible = false;
-            dataGridView1.Columns["Kid_name"].Visible = true;
-            dataGridView1.Columns["Age"].Visible = true;
-            dataGridView1.Columns["Parent_name"].Visible = true;
-            dataGridView1.Columns["Phone_number"].Visible = true;
-            dataGridView1.Columns["Address"].Visible = true;
-            dataGridView1.Columns["Group"].Visible = true;
-            dataGridView1.Columns["Group1"].Visible = false;
-            dataGridView1.Columns["Group2"].Visible = false;
-            dataGridView1.Columns["Group3"].Visible = false;
-            dataGridView1.Columns["Group4"].Visible = false;
-            label1.Visible = false;
             textBox1.Visible = false;
 
             Search2.Visible = false;
@@ -98,90 +76,39 @@ namespace Kindergarden_WForm
         private void button2_Click(object sender, EventArgs e) // List all groups
         {
             MenuCollapse();
-            dataGridView1.Rows.Clear();
-            List<Kid> group1 = db.Kids.Where(x => x.GroupId == 1).ToList();
-            List<Kid> group2 = db.Kids.Where(x => x.GroupId == 2).ToList();
-            List<Kid> group3 = db.Kids.Where(x => x.GroupId == 3).ToList();
-            List<Kid> group4 = db.Kids.Where(x => x.GroupId == 4).ToList();
-            int longestGroup = Math.Max(Math.Max(group1.Count, group2.Count), Math.Max(group3.Count, group4.Count)); ;
-
-            List<Kid> kidsOrdered = new List<Kid>();
+            adapter = new SqlDataAdapter(" Select Concat(k.FirstName,' ',k.LastName) as 'Kometa' from Kids as k join Groups as g on (k.GroupId=g.GroupId) Where(k.GroupId=1)", connection);
+            dataTable = new DataTable();
+            adapter.Fill(dataTable);
+            dataGridView1.DataSource = dataTable;
 
 
-            for (int i = 0; i < longestGroup; i++)
-            {
-                if (i < group1.Count)
-                {
-                    kidsOrdered.Add(group1[i]);
-                }
-                else
-                {
-                    kidsOrdered.Add(null);
-                }
-                if (i < group2.Count)
-                {
-                    kidsOrdered.Add(group2[i]);
-                }
-                else
-                {
-                    kidsOrdered.Add(null);
-                }
-                if (i < group3.Count)
-                {
-                    kidsOrdered.Add(group3[i]);
-                }
-                else
-                {
-                    kidsOrdered.Add(null);
-                }
-                if (i < group4.Count)
-                {
-                    kidsOrdered.Add(group4[i]);
-                }
-                else
-                {
-                    kidsOrdered.Add(null);
-                }
-                string[] kidsFNames = new string[4];
-                for (int j = 0; j < 4; j++)
-                {
-                    if (kidsOrdered[j] == null)
-                    {
-                        kidsFNames[j] = "";
-                    }
-                    else
-                    {
-                        kidsFNames[j] = kidsOrdered[j].FirstName + " " + kidsOrdered[j].LastName;
-                    }
-                }
+            adapter = new SqlDataAdapter("Select Concat(k.FirstName,' ',k.LastName) as 'Luna' from Kids as k join Groups as g on (k.GroupId=g.GroupId) Where(k.GroupId=2)", connection);
+            dataTable = new DataTable();
+            adapter.Fill(dataTable);
+            dataGridView2.DataSource = dataTable;
 
+            adapter = new SqlDataAdapter("Select Concat(k.FirstName,' ',k.LastName) as 'Zvezdichka' from Kids as k join Groups as g on (k.GroupId=g.GroupId) Where(k.GroupId=3)", connection);
+            dataTable = new DataTable();
+            adapter.Fill(dataTable);
+            dataGridView3.DataSource = dataTable;
 
-                dataGridView1.Rows.Add("", "", "", "", "", "", "", kidsFNames[0], kidsFNames[1], kidsFNames[2], kidsFNames[3]);
-                kidsOrdered.Clear();
+            adapter = new SqlDataAdapter("Select Concat(k.FirstName,' ',k.LastName) as 'Slunchice' from Kids as k join Groups as g on (k.GroupId=g.GroupId) Where(k.GroupId=4)", connection);
+            dataTable = new DataTable();
+            adapter.Fill(dataTable);
+            dataGridView4.DataSource = dataTable;
 
-            }
-
-
+            dataGridView1.BringToFront();
+            dataGridView1.Visible = true;
+            dataGridView2.Visible = true;
+            dataGridView3.Visible = true;
+            dataGridView4.Visible = true;
 
             Search2.Visible = false;
-            dataGridView1.Visible = true;
-            dataGridView1.Columns["Group1"].Visible = true;
-            dataGridView1.Columns["Group2"].Visible = true;
-            dataGridView1.Columns["Group3"].Visible = true;
-            dataGridView1.Columns["Group4"].Visible = true;
-
             label3.Visible = false;
             Select.Visible = false;
             textBox2.Visible = false;
             dataGridView1.Columns["Id"].Visible = false;
-            dataGridView1.Columns["kid_name"].Visible = false;
-            dataGridView1.Columns["group"].Visible = false;
-            dataGridView1.Columns["age"].Visible = false;
-            dataGridView1.Columns["Parent_name"].Visible = false;
-            dataGridView1.Columns["Phone_number"].Visible = false;
-            dataGridView1.Columns["Address"].Visible = false;
             button11.Visible = false;
-            label1.Visible = false;
             textBox1.Visible = false;
 
 
@@ -191,34 +118,22 @@ namespace Kindergarden_WForm
         private void button4_Click(object sender, EventArgs e) // List All Parents
         {
             MenuCollapse();
-            dataGridView1.Rows.Clear();
 
-            List<Parent> parentList = db.Parents.ToList();
-            Parent parent;
+            adapter = new SqlDataAdapter("Select CONCAT(FirstName,' ', LastName)as 'Parent name', PhoneNumber as 'Phone number', Address from Parents", connection);
+            dataTable = new DataTable();
+            adapter.Fill(dataTable);
+            dataGridView1.DataSource = dataTable;
 
-
-            foreach (var parentTemp in parentList)
-            {
-                parent = parentTemp;
-                dataGridView1.Rows.Add("", "", "", $"{parent.FirstName + " " + parent.LastName}", parent.PhoneNumber, parent.Address);
-            }
-
+            dataGridView1.BringToFront();
+            dataGridView2.Visible = false;
+            dataGridView3.Visible = false;
+            dataGridView4.Visible = false;
             dataGridView1.Visible = true;
             Search2.Visible = false;
             label3.Visible = false;
             Select.Visible = false;
             textBox2.Visible = false;
             dataGridView1.Columns["Id"].Visible = false;
-            dataGridView1.Columns["Kid_name"].Visible = false;
-            dataGridView1.Columns["Age"].Visible = false;
-            dataGridView1.Columns["Parent_name"].Visible = true;
-            dataGridView1.Columns["Phone_number"].Visible = true;
-            dataGridView1.Columns["Address"].Visible = true;
-            dataGridView1.Columns["Group"].Visible = false;
-            dataGridView1.Columns["Group1"].Visible = false;
-            dataGridView1.Columns["Group2"].Visible = false;
-            dataGridView1.Columns["Group3"].Visible = false;
-            dataGridView1.Columns["Group4"].Visible = false;
             button11.Visible = false;
             label1.Visible = false;
             textBox1.Visible = false;
@@ -228,6 +143,9 @@ namespace Kindergarden_WForm
 
             MenuCollapse();
             dataGridView1.Rows.Clear();
+
+
+            dataGridView1.BringToFront();
             label2.Visible = true;
             label2.Text = "Enter kid's first name:";
             textBox1.Visible = true;
@@ -238,37 +156,17 @@ namespace Kindergarden_WForm
             textBox2.Visible = false;
             Search2.Visible = false;
             dataGridView1.Columns["Id"].Visible = false;
-            dataGridView1.Columns["Kid_name"].Visible = true;
-            dataGridView1.Columns["Age"].Visible = true;
-            dataGridView1.Columns["Parent_name"].Visible = true;
-            dataGridView1.Columns["Phone_number"].Visible = true;
-            dataGridView1.Columns["Address"].Visible = true;
-            dataGridView1.Columns["Group"].Visible = true;
-            dataGridView1.Columns["Group1"].Visible = false;
-            dataGridView1.Columns["Group2"].Visible = false;
-            dataGridView1.Columns["Group3"].Visible = false;
-            dataGridView1.Columns["Group4"].Visible = false;
+
         }
 
         private void button8_Click(object sender, EventArgs e) // Update 
         {
             MenuCollapse();
-            dataGridView1.Rows.Clear();
+
 
 
             Search2.Visible = true;
-            dataGridView1.Visible = false;
-            dataGridView1.Columns["Group1"].Visible = false;
-            dataGridView1.Columns["Group2"].Visible = false;
-            dataGridView1.Columns["Group3"].Visible = false;
-            dataGridView1.Columns["Group4"].Visible = false;
 
-            dataGridView1.Columns["kid_name"].Visible = true;
-            dataGridView1.Columns["group"].Visible = false;
-            dataGridView1.Columns["age"].Visible = true;
-            dataGridView1.Columns["Parent_name"].Visible = true;
-            dataGridView1.Columns["Phone_number"].Visible = true;
-            dataGridView1.Columns["Address"].Visible = true;
             button11.Visible = true;
             label2.Visible = true;
             textBox1.Visible = true;
@@ -312,21 +210,13 @@ namespace Kindergarden_WForm
 
         private void button11_Click(object sender, EventArgs e) // Search Button for kid and parent
         {
-            dataGridView1.Rows.Clear();
-            Kid kid1;
-            Parent parent;
-            Group group;
-            List<Kid> kids = db.Kids.Where(x => x.FirstName == textBox1.Text).ToList();
-            for (int i = 0; i < kids.Count; i++)
-            {
-                kid1 = kids[i];
-                group = db.Groups.FirstOrDefault(y => y.GroupId == kid1.GroupId);
-                parent = db.Parents.FirstOrDefault(x => x.ParentId == kid1.ParentId);
-                dataGridView1.Rows.Add(i + 1, $"{kid1.FirstName + " " + kid1.LastName}", kid1.Age.ToString(),
-                    $"{parent.FirstName + " " + parent.LastName}", parent.PhoneNumber, parent.Address, group.GroupName);
-            }
+            string query = $"SELECT Concat(k.FirstName,' ',k.LastName) as 'Kid name', Age, Concat(p.FirstName,' ',p.LastName) as 'Parent name',PhoneNumber as'Phone number',Address, GroupName as 'Group name'  from Kids as k JOIN Parents as p on (p.ParentId=k.ParentId)Join Groups as g on (k.GroupId=g.GroupId) where(k.FirstName='{textBox1.Text}')";
+            adapter = new SqlDataAdapter(query, connection);
+            dataTable = new DataTable();
+            adapter.Fill(dataTable);
+            dataGridView1.DataSource = dataTable;
 
-            dataGridView1.Columns["Id"].Visible = true;
+            dataGridView1.Columns["Id"].Visible = false;
             dataGridView1.Visible = true;
             textBox1.Text = null;
 
@@ -359,16 +249,16 @@ namespace Kindergarden_WForm
             label3.Visible = true;
             Select.Visible = true;
             textBox2.Visible = true;
-        }
+        } // search za update 
 
         private void Select_Click(object sender, EventArgs e) // Select
         {
             dataGridView1.Rows.Clear();
             Kid kid = new Kid();
             Parent parent = new Parent();
-            Group group = new Group(); 
+            Group group = new Group();
             List<Kid> kids = db.Kids.Where(x => x.FirstName == textBox1.Text).ToList();
-            
+
             for (int i = 0; i < kids.Count; i++)
             {
                 if (i + 1 == int.Parse(textBox2.Text))
@@ -383,7 +273,7 @@ namespace Kindergarden_WForm
             dataGridView1.Visible = true;
             dataGridView1.Columns["Id"].Visible = false;
             button7.Visible = true;
-            
+
         }
 
         private void button7_Click(object sender, EventArgs e) //Save changes
@@ -392,7 +282,7 @@ namespace Kindergarden_WForm
             Kid kid = new Kid();
             Parent parent = new Parent();
             Group group = new Group();
-            
+
             var kidName = dataGridView1.Rows[0].Cells[1].Value.ToString().Split().ToArray();
             var parentName = dataGridView1.Rows[0].Cells[3].Value.ToString().Split().ToArray();
             kid.FirstName = kidName[0];
@@ -403,31 +293,40 @@ namespace Kindergarden_WForm
             parent.LastName = parentName[1];
             parent.PhoneNumber = dataGridView1.Rows[0].Cells[4].Value.ToString();
             parent.Address = dataGridView1.Rows[0].Cells[5].Value.ToString();
-            if (kid.Age == 3) 
+            if (kid.Age == 3)
             {
-                 group = db.Groups.FirstOrDefault(x => x.GroupId == 1);
+                group = db.Groups.FirstOrDefault(x => x.GroupId == 1);
                 kid.GroupId = group.GroupId;
                 kid.Group = group;
             }
             else if (kid.Age == 4)
             {
-                 group = db.Groups.FirstOrDefault(x => x.GroupId == 2);
+                group = db.Groups.FirstOrDefault(x => x.GroupId == 2);
                 kid.GroupId = group.GroupId;
                 kid.Group = group;
             }
             else if (kid.Age == 5)
             {
-                 group = db.Groups.FirstOrDefault(x => x.GroupId == 3);
+                group = db.Groups.FirstOrDefault(x => x.GroupId == 3);
                 kid.GroupId = group.GroupId;
                 kid.Group = group;
             }
             else if (kid.Age == 6)
             {
-                 group = db.Groups.FirstOrDefault(x => x.GroupId == 4);
+                group = db.Groups.FirstOrDefault(x => x.GroupId == 4);
                 kid.GroupId = group.GroupId;
                 kid.Group = group;
             }
             db.SaveChanges();
+        }
+
+        private void button6_Click(object sender, EventArgs e) // Create kid
+        {
+            Form2 form2 = new Form2();
+           
+            form2.Show();
+            this.Hide();
+
         }
     }
 }
