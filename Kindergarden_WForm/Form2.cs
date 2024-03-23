@@ -14,6 +14,9 @@ using System.Windows.Forms;
 
 namespace Kindergarden_WForm
 {
+    /// <summary>
+    /// Represents a form for creating new kids and their associated parents in the kindergarten database.
+    /// </summary>    
     public partial class Form2 : Form
     {
         private readonly KidService kidService;
@@ -71,58 +74,7 @@ namespace Kindergarden_WForm
                 
                 
                 kidService.CreateKid(kidName[0], kidName[1], int.Parse(TextBoxCreateKidAge.Text), parentName[0], parentName[1], TextBoxCreateParentPhonenumber.Text, TextBoxCreateAddress.Text);
-                //Kid kid = new Kid();
-                //Parent parent = new Parent();
-                //Group group;
-
-                //var kidName = TextBoxCreateKidName.Text.Trim().Split().ToArray();
-                //kid.FirstName = kidName[0].ToString();
-                //kid.LastName = kidName[1].ToString();
-                //kid.Age = int.Parse(TextBoxCreateKidAge.Text);
-
-
-                //if (kid.Age == 3)
-                //{
-                //    group = db.Groups.FirstOrDefault(x => x.GroupId == 1);
-                //    kid.GroupId = group.GroupId;
-                //    kid.Group = group;
-                //}
-                //else if (kid.Age == 4)
-                //{
-                //    group = db.Groups.FirstOrDefault(x => x.GroupId == 2);
-                //    kid.GroupId = group.GroupId;
-                //    kid.Group = group;
-                //}
-                //else if (kid.Age == 5)
-                //{
-                //    group = db.Groups.FirstOrDefault(x => x.GroupId == 3);
-                //    kid.GroupId = group.GroupId;
-                //    kid.Group = group;
-                //}
-                //else if (kid.Age == 6)
-                //{
-                //    group = db.Groups.FirstOrDefault(x => x.GroupId == 4);
-                //    kid.GroupId = group.GroupId;
-                //    kid.Group = group;
-                //}
-
-                //if (db.Parents.FirstOrDefault(x => x.PhoneNumber == parent.PhoneNumber) == null)
-                //{
-                //    string[] parentName = TextBoxCreateParentName.Text.Trim().Split().ToArray();
-                //    parent.FirstName = parentName[0].ToString();
-                //    parent.LastName = parentName[1].ToString();
-                //    parent.PhoneNumber = TextBoxCreateParentPhonenumber.Text;
-                //    parent.Address = TextBoxCreateAddress.Text;
-                //    db.Parents.Add(parent);
-                //}
-                //else
-                //{
-                //    parent = db.Parents.FirstOrDefault(x => x.PhoneNumber == parent.PhoneNumber);
-
-                //}
-
-                //kid.ParentId = parent.ParentId;
-                //db.Kids.Add(kid); 
+                 
                 TextBoxCreateKidName.Text = null;
                 TextBoxCreateKidAge.Text = null;
                 TextBoxCreateParentName.Text = null;

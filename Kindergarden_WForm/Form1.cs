@@ -14,6 +14,11 @@ using System.Windows.Forms;
 
 namespace Kindergarden_WForm
 {
+    /// <summary>
+    /// Represents the main form for managing kindergarten data, providing functionalities for creating,
+    /// reading, updating, and deleting (CRUD) operations related to kids,
+    /// parents, and groups within the kindergarten database.
+    /// </summary>
 
     public partial class Form1 : Form
     {
@@ -27,6 +32,7 @@ namespace Kindergarden_WForm
         SqlConnection connection = new SqlConnection("Server=KAMENPC\\SQLEXPRESS;Database=Kindergarden;Integrated Security=true;TrustServerCertificate=True");
         List<Kid> kidsWithThisName = new List<Kid>();
 
+        /// <summary>Initializes a new instance of the <see cref="Form1" /> class.</summary>
         public Form1()
         {
             InitializeComponent();
@@ -47,7 +53,7 @@ namespace Kindergarden_WForm
         {
             splitContainer1.IsSplitterFixed = false;
             splitContainer1.SplitterDistance = SplitterDist;
-        }
+        } // Animation preparation... deformation of the time dialation of the demonetisation station in bulgariation nation
 
         private void button1_Click(object sender, EventArgs e) //List all kids
         {
@@ -137,6 +143,7 @@ namespace Kindergarden_WForm
             label1.Visible = false;
             textBox1.Visible = false;
         }
+
         private void button5_Click(object sender, EventArgs e) //Search Kid and Parent
         {
 
@@ -175,8 +182,6 @@ namespace Kindergarden_WForm
             textBox2.Visible = false;
 
         }
-
-
 
         private void MenuCollapse()
         {
@@ -247,7 +252,7 @@ namespace Kindergarden_WForm
 
         }
 
-        private void Search2_Click(object sender, EventArgs e)  // search for Update
+        private void Search2_Click(object sender, EventArgs e) 
         {
             kidsWithThisName.Clear();
             string query1 = $"SELECT k.KidId as 'Id', Concat(k.FirstName,' ',k.LastName) as 'Kid name', Age, Concat(p.FirstName,' ',p.LastName) as 'Parent name',PhoneNumber as'Phone number',Address, GroupName as 'Group name'  from Kids as k JOIN Parents as p on (p.ParentId=k.ParentId)Join Groups as g on (k.GroupId=g.GroupId) where(k.FirstName='{textBox1.Text}')";
@@ -520,6 +525,7 @@ namespace Kindergarden_WForm
             textBox2.Text = null;
             kidsWithThisName.Clear();
 
-        }
+        } // Delete Button
+
     }
 }

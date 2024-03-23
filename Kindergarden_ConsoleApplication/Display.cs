@@ -12,6 +12,9 @@ using System.Threading.Tasks;
 
 namespace Kindergarden_ConsoleApplication
 {
+    /// <summary>
+    /// Represents the user interface for managing kindergarten data, including CRUD operations for kids, parents, and groups.
+    /// </summary>
     public class Display
     {
         private int closeOperationId = 9;
@@ -20,6 +23,7 @@ namespace Kindergarden_ConsoleApplication
         private readonly GroupService groupService;
         private readonly KindergardenDbContext db;
 
+        /// <summary>Initializes a new instance of the <see cref="Display" /> class.</summary>
         public Display()
         {
             this.db = new KindergardenDbContext();
@@ -30,6 +34,7 @@ namespace Kindergarden_ConsoleApplication
             Input();
         }
 
+        /// <summary>Shows the menu.</summary>
         private void ShowMenu()
         {
             Console.Clear();
@@ -48,6 +53,7 @@ namespace Kindergarden_ConsoleApplication
 
 
         }
+        /// <summary>Awaits the choice of the user.</summary>
         private void Input()
         {
             var operation = -1;
@@ -89,6 +95,7 @@ namespace Kindergarden_ConsoleApplication
             } while (operation != closeOperationId);
         }
 
+        /// <summary>Lists all kids.</summary>
         private void ListAllKids()
         {
             Console.Clear();
@@ -118,6 +125,7 @@ namespace Kindergarden_ConsoleApplication
 
         }
 
+        /// <summary>Lists all groups.</summary>
         private void ListAllGroups()
         {
             Console.Clear();
@@ -138,6 +146,7 @@ namespace Kindergarden_ConsoleApplication
             Input();
 
         }
+        /// <summary>Lists all parents.</summary>
         private void ListAllParents()
         {
             Console.Clear();
@@ -155,6 +164,7 @@ namespace Kindergarden_ConsoleApplication
 
         }
 
+        /// <summary>Fetches the kid and parent.</summary>
         private void FetchKidAndParent()
         {
             Console.Clear();
@@ -228,6 +238,7 @@ namespace Kindergarden_ConsoleApplication
 
         }
 
+        /// <summary>Updates the kid.</summary>
         private void UpdateKid()
         {
             Console.Clear();
@@ -344,6 +355,7 @@ namespace Kindergarden_ConsoleApplication
 
 
         }
+        /// <summary>Updates the parent.</summary>
         private void UpdateParent()
         {
             Console.Clear();
@@ -478,6 +490,7 @@ namespace Kindergarden_ConsoleApplication
             Input();
 
         }
+        /// <summary>Creates the kid.</summary>
         private void CreateKid()
         {
             Console.Clear();
@@ -592,6 +605,7 @@ namespace Kindergarden_ConsoleApplication
             Console.ReadLine();
             Input();
         }
+        /// <summary>Deletes the kid.</summary>
         private void DeleteKid()
         {
             Console.Clear();

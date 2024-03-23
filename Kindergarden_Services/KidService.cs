@@ -13,15 +13,28 @@ using System.Threading.Channels;
 
 namespace Kindergarden_Services
 {
+    /// <summary>
+    /// Service for managing kid-related operations such as creation, deletion, updating, and fetching.
+    /// </summary>
     public class KidService : IKidService
     {
 
+        /// <summary>Initializes a new instance of the <see cref="KidService" /> class.</summary>
+        /// <param name="db">The database.</param>
         public KidService(KindergardenDbContext db)
         {
             this.db = db;
         }
          
         private KindergardenDbContext db;
+        /// <summary>Creates the kid.</summary>
+        /// <param name="firstName">The first name.</param>
+        /// <param name="lastName">The last name.</param>
+        /// <param name="age">The age.</param>
+        /// <param name="parentFirstName">First name of the parent.</param>
+        /// <param name="parentLastName">Last name of the parent.</param>
+        /// <param name="phoneNumber">The phone number.</param>
+        /// <param name="address">The address.</param>
         public void CreateKid(string firstName, string lastName, int age, string parentFirstName, string parentLastName, string phoneNumber, string address)
         {
             Kid kid = new Kid
@@ -77,6 +90,12 @@ namespace Kindergarden_Services
             db.SaveChanges();
         }
 
+
+        /// <summary>Deletes the specified kid by name.</summary>
+        /// <param name="kidName">Name of the kid.</param>
+        /// <returns>
+        ///   <br />
+        /// </returns>
         public bool Delete(string kidName)
         {
             var kid = db.Kids.FirstOrDefault(x => x.FirstName == kidName); 
@@ -100,6 +119,9 @@ namespace Kindergarden_Services
             }
         }
 
+        /// <summary>Fetches the kid and parent.</summary>
+        /// <param name="kidName">Name of the kid.</param>
+      
         public Kid FetchKidAndParent(string kidName)
         {
             var kid = db.Kids.FirstOrDefault(x => x.FirstName == kidName.Trim());
@@ -111,6 +133,10 @@ namespace Kindergarden_Services
             else return null;
         }
 
+        /// <summary>Updates the kid's name.</summary>
+        /// <param name="id">The identifier.</param>
+        /// <param name="newName">The new name.</param>
+   
         public bool UpdateName(int id, string newName)// въвежда се цялото име на детето
         {
             var kidtEntity = db.Kids.FirstOrDefault(x => x.KidId == id);  // Търси дете
@@ -125,6 +151,10 @@ namespace Kindergarden_Services
             else { return false; }
         }
 
+        /// <summary>Updates the kid's age.</summary>
+        /// <param name="id">The identifier.</param>
+        /// <param name="newAge">The new age.</param>
+        
         public bool UpdateAge(int id, int newAge)
         {
             var kid = db.Kids.FirstOrDefault(x => x.KidId == id);

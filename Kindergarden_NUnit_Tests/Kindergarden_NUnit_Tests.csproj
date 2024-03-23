@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
@@ -11,6 +11,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.9.0" />
+    <PackageReference Include="Moq" Version="4.20.70" />
     <PackageReference Include="NUnit" Version="4.1.0" />
     <PackageReference Include="NUnit.Engine" Version="3.17.0" />
     <PackageReference Include="NUnit.Extension.TeamCityEventListener" Version="1.0.9" />
@@ -23,6 +24,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Kindergarden_Data\Kindergarden_Data.csproj" />
+    <ProjectReference Include="..\Kindergarden_Models\Kindergarden_Models.csproj" />
+    <ProjectReference Include="..\Kindergarden_Services\Kindergarden_Services.csproj" />
   </ItemGroup>
 
 </Project>
