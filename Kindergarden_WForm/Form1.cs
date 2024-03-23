@@ -288,6 +288,7 @@ namespace Kindergarden_WForm
             kid.FirstName = kidName[0];
             kid.LastName = kidName[1];
 
+
             kid.Age = int.Parse(dataGridView1.Rows[0].Cells[2].Value.ToString());
             parent.FirstName = parentName[0];
             parent.LastName = parentName[1];
