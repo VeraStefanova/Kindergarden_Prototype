@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kindergarden_ConsoleApplica
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kindergarden_WForm", "Kindergarden_WForm\Kindergarden_WForm.csproj", "{1EBD8C6D-275C-42D1-8DD7-737592ACBDE4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kindergarden_NUnit_Tests", "Kindergarden_NUnit_Tests\Kindergarden_NUnit_Tests.csproj", "{9BCE300D-DEC5-4B5E-81AD-74000A587B61}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{1EBD8C6D-275C-42D1-8DD7-737592ACBDE4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1EBD8C6D-275C-42D1-8DD7-737592ACBDE4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1EBD8C6D-275C-42D1-8DD7-737592ACBDE4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9BCE300D-DEC5-4B5E-81AD-74000A587B61}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9BCE300D-DEC5-4B5E-81AD-74000A587B61}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9BCE300D-DEC5-4B5E-81AD-74000A587B61}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9BCE300D-DEC5-4B5E-81AD-74000A587B61}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
