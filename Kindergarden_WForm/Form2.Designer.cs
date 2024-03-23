@@ -39,6 +39,7 @@
             TextBoxCreateParentPhonenumber = new TextBox();
             TextBoxCreateAddress = new TextBox();
             ButtonSaveExit = new Button();
+            LabelWarning = new Label();
             SuspendLayout();
             // 
             // TextBoxCreateKidName
@@ -135,11 +136,22 @@
             ButtonSaveExit.UseVisualStyleBackColor = true;
             ButtonSaveExit.Click += ButtonSaveExit_Click;
             // 
+            // LabelWarning
+            // 
+            LabelWarning.AutoSize = true;
+            LabelWarning.Location = new Point(196, 46);
+            LabelWarning.Name = "LabelWarning";
+            LabelWarning.Size = new Size(196, 20);
+            LabelWarning.TabIndex = 11;
+            LabelWarning.Text = "No boxes can be left empty!";
+            LabelWarning.Click += label1_Click_1;
+            // 
             // Form2
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(598, 412);
+            Controls.Add(LabelWarning);
             Controls.Add(ButtonSaveExit);
             Controls.Add(TextBoxCreateAddress);
             Controls.Add(TextBoxCreateParentPhonenumber);
@@ -171,5 +183,6 @@
         private TextBox TextBoxCreateParentPhonenumber;
         private TextBox TextBoxCreateAddress;
         private Button ButtonSaveExit;
+        private Label LabelWarning;
     }
 }
