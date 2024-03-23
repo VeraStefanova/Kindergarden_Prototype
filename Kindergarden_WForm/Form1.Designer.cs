@@ -50,6 +50,10 @@
             button2 = new Button();
             label1 = new Label();
             button1 = new Button();
+            KidRemovalMessage = new Label();
+            Delete = new Button();
+            Search3 = new Button();
+            Select2 = new Button();
             textBox7 = new TextBox();
             textBox6 = new TextBox();
             textBox5 = new TextBox();
@@ -104,6 +108,10 @@
             // 
             // splitContainer1.Panel2
             // 
+            splitContainer1.Panel2.Controls.Add(KidRemovalMessage);
+            splitContainer1.Panel2.Controls.Add(Delete);
+            splitContainer1.Panel2.Controls.Add(Search3);
+            splitContainer1.Panel2.Controls.Add(Select2);
             splitContainer1.Panel2.Controls.Add(textBox7);
             splitContainer1.Panel2.Controls.Add(textBox6);
             splitContainer1.Panel2.Controls.Add(textBox5);
@@ -137,10 +145,10 @@
             button9.Location = new Point(14, 364);
             button9.Name = "button9";
             button9.Size = new Size(192, 29);
-            button9.TabIndex = 3;
-            button9.Text = "Delete kid";
+            button9.TabIndex = 4;
+            button9.Text = "Delete ";
             button9.UseVisualStyleBackColor = true;
-            button9.Click += button8_Click;
+            button9.Click += button9_Click;
             // 
             // button8
             // 
@@ -211,6 +219,57 @@
             button1.Text = "List all kids";
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
+            // 
+            // KidRemovalMessage
+            // 
+            KidRemovalMessage.AutoSize = true;
+            KidRemovalMessage.Font = new Font("Segoe UI", 15F);
+            KidRemovalMessage.Location = new Point(225, 231);
+            KidRemovalMessage.Name = "KidRemovalMessage";
+            KidRemovalMessage.Size = new Size(710, 35);
+            KidRemovalMessage.TabIndex = 26;
+            KidRemovalMessage.Text = "The kid has been successfully removed from the kindergarden!";
+            KidRemovalMessage.Visible = false;
+            // 
+            // Delete
+            // 
+            Delete.FlatStyle = FlatStyle.Flat;
+            Delete.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            Delete.ImageAlign = ContentAlignment.TopCenter;
+            Delete.Location = new Point(66, 231);
+            Delete.Name = "Delete";
+            Delete.Size = new Size(94, 33);
+            Delete.TabIndex = 25;
+            Delete.Text = "Delete";
+            Delete.UseVisualStyleBackColor = true;
+            Delete.Visible = false;
+            Delete.Click += Delete_Click;
+            // 
+            // Search3
+            // 
+            Search3.FlatStyle = FlatStyle.Flat;
+            Search3.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            Search3.Location = new Point(679, 78);
+            Search3.Name = "Search3";
+            Search3.Size = new Size(114, 46);
+            Search3.TabIndex = 24;
+            Search3.Text = "Search";
+            Search3.UseVisualStyleBackColor = true;
+            Search3.Visible = false;
+            Search3.Click += Search3_Click;
+            // 
+            // Select2
+            // 
+            Select2.FlatStyle = FlatStyle.Flat;
+            Select2.Font = new Font("Segoe UI Semibold", 10F, FontStyle.Bold);
+            Select2.Location = new Point(71, 188);
+            Select2.Name = "Select2";
+            Select2.Size = new Size(84, 33);
+            Select2.TabIndex = 23;
+            Select2.Text = "Select";
+            Select2.UseVisualStyleBackColor = true;
+            Select2.Visible = false;
+            Select2.Click += Select2_Click;
             // 
             // textBox7
             // 
@@ -578,7 +637,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1571, 615);
+            ClientSize = new Size(1260, 615);
             Controls.Add(splitContainer1);
             Name = "Form1";
             Text = "Form1";
@@ -607,7 +666,6 @@
         private Button button6;
         private Button button5;
         private Button button4;
-        private Button button9;
         private DataGridView dataGridView1;
         private TextBox textBox1;
         private Label label2;
@@ -630,5 +688,10 @@
         private Label label4;
         private TextBox textBox7;
         private TextBox textBox6;
+        private Button button9;
+        private Button Select2;
+        private Button Search3;
+        private Button Delete;
+        private Label KidRemovalMessage;
     }
 }

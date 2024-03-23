@@ -20,7 +20,7 @@ namespace Kindergarden_Services
         {
             this.db = db;
         }
-
+         
         private KindergardenDbContext db;
         public void CreateKid(string firstName, string lastName, int age, string parentFirstName, string parentLastName, string phoneNumber, string address)
         {
@@ -72,7 +72,7 @@ namespace Kindergarden_Services
             }
 
             kid.Parent = parentEntity;
-            //kid.ParentId = parentEntity.ParentId;
+
             db.Kids.Add(kid);
             db.SaveChanges();
         }
