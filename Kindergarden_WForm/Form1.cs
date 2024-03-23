@@ -24,7 +24,7 @@ namespace Kindergarden_WForm
         private readonly KindergardenDbContext db;
         SqlDataAdapter adapter;
         DataTable dataTable;
-        SqlConnection connection = new SqlConnection("Server=KAMENPC\\SQLEXPRESS;Database=Kindergarden;Integrated Security=true;TrustServerCertificate=True");
+        SqlConnection connection = new SqlConnection("Server=LAPTOP-0TJUUHRJ\\SQLEXPRESS;Database=Kindergarden;Integrated Security=true;TrustServerCertificate=True");
         List<Kid> kidsWithThisName = new List<Kid>();
         public Form1()
         {
