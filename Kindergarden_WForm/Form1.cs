@@ -107,7 +107,6 @@ namespace Kindergarden_WForm
             label3.Visible = false;
             Select.Visible = false;
             textBox2.Visible = false;
-            dataGridView1.Columns["Id"].Visible = false;
             button11.Visible = false;
             textBox1.Visible = false;
 
@@ -133,7 +132,6 @@ namespace Kindergarden_WForm
             label3.Visible = false;
             Select.Visible = false;
             textBox2.Visible = false;
-            dataGridView1.Columns["Id"].Visible = false;
             button11.Visible = false;
             label1.Visible = false;
             textBox1.Visible = false;
@@ -142,7 +140,6 @@ namespace Kindergarden_WForm
         {
 
             MenuCollapse();
-            dataGridView1.Rows.Clear();
 
 
             dataGridView1.BringToFront();
@@ -155,7 +152,6 @@ namespace Kindergarden_WForm
             Select.Visible = false;
             textBox2.Visible = false;
             Search2.Visible = false;
-            dataGridView1.Columns["Id"].Visible = false;
 
         }
 
@@ -209,6 +205,23 @@ namespace Kindergarden_WForm
             label3.Visible = false;
             Select.Visible = false;
             textBox2.Visible = false;
+            Search2.Visible = false;
+            button7.Visible = false;
+            label4.Visible = false;
+            label5.Visible = false;
+            label6.Visible = false;
+            label7.Visible = false;
+            label8.Visible = false;
+            textBox3.Visible = false;
+            textBox4.Visible = false;
+            textBox5.Visible = false;
+            textBox6.Visible = false;
+            textBox7.Visible = false;
+            dataGridView2.Visible = false;
+            dataGridView3.Visible = false;
+            dataGridView4.Visible = false;
+            textBox1.Text = null;
+            textBox2.Text = null;
 
         } // Hamburger
 
@@ -230,16 +243,15 @@ namespace Kindergarden_WForm
 
         private void Search2_Click(object sender, EventArgs e)  // search for Update
         {
-            
             string query1 = $"SELECT k.KidId as 'Id', Concat(k.FirstName,' ',k.LastName) as 'Kid name', Age, Concat(p.FirstName,' ',p.LastName) as 'Parent name',PhoneNumber as'Phone number',Address, GroupName as 'Group name'  from Kids as k JOIN Parents as p on (p.ParentId=k.ParentId)Join Groups as g on (k.GroupId=g.GroupId) where(k.FirstName='{textBox1.Text}')";
             adapter = new SqlDataAdapter(query1, connection);
             dataTable = new DataTable();
             adapter.Fill(dataTable);
             dataGridView1.DataSource = dataTable;
-
+            dataGridView1.Columns["Id"].Visible = true;
             
             kidsWithThisName = db.Kids.Where(x => x.FirstName == textBox1.Text).ToList();
-            
+
 
             
             dataGridView1.Visible = true;
@@ -253,7 +265,7 @@ namespace Kindergarden_WForm
         private void Select_Click(object sender, EventArgs e) // Select
         {
 
-            string query1 = $"SELECT Concat(k.FirstName,' ',k.LastName) as 'Kid name', Age, Concat(p.FirstName,' ',p.LastName) as 'Parent name',PhoneNumber as'Phone number',Address, GroupName as 'Group name'  from Kids as k JOIN Parents as p on (p.ParentId=k.ParentId)Join Groups as g on (k.GroupId=g.GroupId) where(k.Kidid='{textBox2.Text}')";
+            string query1 = $"SELECT k.KidId as 'Id', Concat(k.FirstName,' ',k.LastName) as 'Kid name', Age, Concat(p.FirstName,' ',p.LastName) as 'Parent name',PhoneNumber as'Phone number',Address, GroupName as 'Group name'  from Kids as k JOIN Parents as p on (p.ParentId=k.ParentId)Join Groups as g on (k.GroupId=g.GroupId) where(k.Kidid='{textBox2.Text}')";
             adapter = new SqlDataAdapter(query1, connection);
             dataTable = new DataTable();
             adapter.Fill(dataTable);
@@ -263,15 +275,16 @@ namespace Kindergarden_WForm
             Parent parent = new Parent();
             kid = kidsWithThisName.FirstOrDefault(x => x.KidId.ToString() == textBox2.Text);
             parent = db.Parents.FirstOrDefault(x => x.ParentId == kid.ParentId);
-            
 
-            
+
+
 
 
             //dataGridView1.Rows.Add("", $"{kid.FirstName + " " + kid.LastName}", kid.Age.ToString(),
             //$"{parent.FirstName + " " + parent.LastName}", parent.PhoneNumber, parent.Address);
 
 
+            dataGridView1.Columns["Id"].Visible = false;
             dataGridView1.Visible = true;
             button7.Visible = true;
             label4.Visible = true;
@@ -317,6 +330,7 @@ namespace Kindergarden_WForm
                 parent.LastName = parentName[1];
 
             }
+
             if(textBox6.Text!=null && textBox6.Text!="")  //parent name
             {
 
@@ -329,19 +343,8 @@ namespace Kindergarden_WForm
                 parent.Address = textBox7.Text;
 
             }
-            
-            
-            //var kidName = dataGridView1.Rows[0].Cells[1].Value.ToString().Split().ToArray();
-            //var parentName = dataGridView1.Rows[0].Cells[3].Value.ToString().Split().ToArray();
-            //kid.FirstName = kidName[0];
-            //kid.LastName = kidName[1];
 
 
-            //kid.Age = int.Parse(dataGridView1.Rows[0].Cells[2].Value.ToString());
-            //parent.FirstName = parentName[0];
-            //parent.LastName = parentName[1];
-            //parent.PhoneNumber = dataGridView1.Rows[0].Cells[4].Value.ToString();
-            //parent.Address = dataGridView1.Rows[0].Cells[5].Value.ToString();
             if (kid.Age == 3)
             {
                 group = db.Groups.FirstOrDefault(x => x.GroupId == 1);
@@ -367,6 +370,13 @@ namespace Kindergarden_WForm
                 kid.Group = group;
             }
             db.SaveChanges();
+            textBox3.Text = null;
+            textBox4.Text = null;
+            textBox5.Text = null;
+            textBox6.Text = null;
+            textBox7.Text = null;
+            Search2.Visible = true;
+            button11.Visible = false;
         }
 
         private void button6_Click(object sender, EventArgs e) // Create kid

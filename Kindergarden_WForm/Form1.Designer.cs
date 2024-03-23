@@ -42,7 +42,6 @@
             DataGridViewCellStyle dataGridViewCellStyle12 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             splitContainer1 = new SplitContainer();
-            button10 = new Button();
             button9 = new Button();
             button8 = new Button();
             button6 = new Button();
@@ -93,7 +92,6 @@
             // 
             splitContainer1.Panel1.AutoScroll = true;
             splitContainer1.Panel1.BackColor = SystemColors.GradientInactiveCaption;
-            splitContainer1.Panel1.Controls.Add(button10);
             splitContainer1.Panel1.Controls.Add(button9);
             splitContainer1.Panel1.Controls.Add(button8);
             splitContainer1.Panel1.Controls.Add(button6);
@@ -133,16 +131,6 @@
             splitContainer1.Size = new Size(1496, 614);
             splitContainer1.SplitterDistance = 246;
             splitContainer1.TabIndex = 0;
-            // 
-            // button10
-            // 
-            button10.Location = new Point(14, 415);
-            button10.Name = "button10";
-            button10.Size = new Size(192, 29);
-            button10.TabIndex = 3;
-            button10.Text = "Exit";
-            button10.UseVisualStyleBackColor = true;
-            button10.Click += button8_Click;
             // 
             // button9
             // 
@@ -258,7 +246,7 @@
             // 
             // textBox3
             // 
-            textBox3.Location = new Point(140, 420);
+            textBox3.Location = new Point(152, 420);
             textBox3.Name = "textBox3";
             textBox3.Size = new Size(125, 27);
             textBox3.TabIndex = 18;
@@ -620,7 +608,6 @@
         private Button button5;
         private Button button4;
         private Button button9;
-        private Button button10;
         private DataGridView dataGridView1;
         private TextBox textBox1;
         private Label label2;
