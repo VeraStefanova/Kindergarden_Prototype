@@ -24,9 +24,8 @@ namespace Kindergarden_WForm
         private readonly KindergardenDbContext db;
         SqlDataAdapter adapter;
         DataTable dataTable;
-        SqlConnection connection = new SqlConnection("Server=KAMENPC\\SQLEXPRESS;Database=Kindergarden;Integrated Security=true;TrustServerCertificate=True");
+        SqlConnection connection = new SqlConnection("Server=LEGIONPRO5\\SQLEXPRESS;Database=Kindergarden;Integrated Security=true;TrustServerCertificate=True");
         List<Kid> kidsWithThisName = new List<Kid>();
-        private static Form1 instance;
 
         public Form1()
         {
@@ -36,7 +35,6 @@ namespace Kindergarden_WForm
             this.kidService = new KidService(db);
             this.parentService = new ParentService(db);
             this.groupService = new GroupService(db);
-            instance = this;
 
         }
 
