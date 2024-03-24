@@ -325,7 +325,18 @@ namespace Kindergarden_ConsoleApplication
                     else if (choice == 2)
                     {
                         Console.Write("Enter kid's new age: ");
-                        int newAge = int.Parse(Console.ReadLine());
+                        var age1 = Console.ReadLine();
+                        if (!int.TryParse(age1.ToString(), out int newAge))
+                        {
+
+                            Console.WriteLine("You must type a valid age!");
+                            Console.WriteLine();
+                            Console.WriteLine("Press Enter to continue.");
+                            Console.ReadLine();
+                            UpdateKid();
+                            return;
+                        }
+
                         if (newAge < 3 || newAge > 6 || newAge.ToString().Count()==0)
                         {
                             Console.WriteLine("You must type a valid age!");
@@ -517,12 +528,22 @@ namespace Kindergarden_ConsoleApplication
                 CreateKid();
                 return;
             }
-            
+
             Console.Write("Enter kid's age:");      // kid Age
-            int age = int.Parse(Console.ReadLine());
-            if(String.IsNullOrEmpty(age.ToString()))
+            var age1 = Console.ReadLine();
+            if (String.IsNullOrEmpty(age1.ToString()))
             {
                 Console.WriteLine("You must type an age!");
+                Console.WriteLine();
+                Console.WriteLine("Press Enter to continue.");
+                Console.ReadLine();
+                CreateKid();
+                return;
+            }
+            if (!int.TryParse(age1.ToString(), out int age))
+            {
+
+                Console.WriteLine("You must type a valid age!");
                 Console.WriteLine();
                 Console.WriteLine("Press Enter to continue.");
                 Console.ReadLine();
