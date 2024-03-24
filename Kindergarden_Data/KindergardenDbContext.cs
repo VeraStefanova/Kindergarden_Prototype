@@ -31,8 +31,9 @@ namespace Kindergarden_Data
         /// <summary>Gets or sets the groups from the database.</summary>
         /// <value>The groups.</value>
         public DbSet<Kindergarden_Models.Group> Groups { get; set; }
-
         
+
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
