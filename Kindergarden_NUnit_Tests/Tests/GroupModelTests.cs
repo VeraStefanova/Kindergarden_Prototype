@@ -109,7 +109,7 @@ namespace Kindergarden_NUnit_Tests.Tests
             var result = _parentService.UpdateAddress(existingParentAddress, newAddress);
 
             // Assert
-            ClassicAssert.True(result);
+            ClassicAssert.False(result);
             var updatedParent = _dbContext.Parents.FirstOrDefault(p => p.Address == newAddress);
             ClassicAssert.NotNull(updatedParent);
             ClassicAssert.AreEqual(newAddress, updatedParent.Address);

@@ -510,7 +510,7 @@ namespace Kindergarden_WForm
             parent = db.Parents.FirstOrDefault(x => x.ParentId == kid.ParentId);
 
             db.Kids.Remove(kid);
-
+            parent.Kids.Remove(kid);
             if(parent.Kids.Count==0)
             {
                 db.Parents.Remove(parent);

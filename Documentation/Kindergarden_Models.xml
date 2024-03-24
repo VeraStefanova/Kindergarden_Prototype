@@ -1,0 +1,84 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Kindergarden_Models</name>
+    </assembly>
+    <members>
+        <member name="T:Kindergarden_Models.Group">
+            <summary>Represents a group entity with a unique identifier,
+            required name, and collection of associated kids.</summary>
+        </member>
+        <member name="P:Kindergarden_Models.Group.GroupId">
+            <summary>Gets or sets the group identifier.</summary>
+            <value>The group identifier.</value>
+        </member>
+        <member name="P:Kindergarden_Models.Group.GroupName">
+            <summary>Gets or sets the name of the group.</summary>
+            <value>The name of the group.</value>
+        </member>
+        <member name="P:Kindergarden_Models.Group.Kids">
+            <summary>Gets or sets the kids.</summary>
+            <value>The kids.</value>
+        </member>
+        <member name="T:Kindergarden_Models.Kid">
+            <summary>Represents a child entity with a unique identifier, required first name,
+            last name, and optional age, associated parent, and group.</summary>
+        </member>
+        <member name="P:Kindergarden_Models.Kid.KidId">
+            <summary>Gets or sets the kid identifier.</summary>
+            <value>The kid identifier.</value>
+        </member>
+        <member name="P:Kindergarden_Models.Kid.FirstName">
+            <summary>Gets or sets the first name.</summary>
+            <value>The first name.</value>
+        </member>
+        <member name="P:Kindergarden_Models.Kid.LastName">
+            <summary>Gets or sets the last name.</summary>
+            <value>The last name.</value>
+        </member>
+        <member name="P:Kindergarden_Models.Kid.Age">
+            <summary>Gets or sets the age.</summary>
+            <value>The age.</value>
+        </member>
+        <member name="P:Kindergarden_Models.Kid.ParentId">
+            <summary>Gets or sets the parent identifier.</summary>
+            <value>The parent identifier.</value>
+        </member>
+        <member name="P:Kindergarden_Models.Kid.Parent">
+            <summary>Gets or sets the parent.</summary>
+            <value>The parent.</value>
+        </member>
+        <member name="P:Kindergarden_Models.Kid.Group">
+            <summary>Gets or sets the group.</summary>
+            <value>The group.</value>
+        </member>
+        <member name="T:Kindergarden_Models.Parent">
+            <summary>Represents a parent entity with a unique identifier, first name,
+            last name, phone number, address, and collection of associated kids.</summary>
+        </member>
+        <member name="P:Kindergarden_Models.Parent.ParentId">
+            <summary>Gets or sets the parent identifier.</summary>
+            <value>The parent identifier.</value>
+        </member>
+        <member name="P:Kindergarden_Models.Parent.FirstName">
+            <summary>Gets or sets the first name.</summary>
+            <value>The first name.</value>
+        </member>
+        <member name="P:Kindergarden_Models.Parent.LastName">
+            <summary>Gets or sets the last name.</summary> 
+            <value>The last name.</value>
+        </member>
+        <member name="P:Kindergarden_Models.Parent.PhoneNumber">
+            <summary>Gets or sets the phone number.</summary>
+            <value>The phone number.</value>
+        </member>
+        <member name="P:Kindergarden_Models.Parent.Address">
+            <summary>Gets or sets the address.</summary>
+            <value>The address.</value>
+        </member>
+        <member name="P:Kindergarden_Models.Parent.Kids">
+            <summary>Gets or sets the kids of one parent.</summary>
+            <value>The kids of one parent.</value>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Kindergarden_Data</name>
+    </assembly>
+    <members>
+        <member name="P:Kindergarden_Data.KindergardenDbContext.Kids">
+            <summary>Gets or sets the kids from the database.</summary>
+            <value>The kids.</value>
+        </member>
+        <member name="P:Kindergarden_Data.KindergardenDbContext.Parents">
+            <summary>Gets or sets the parents from the database .</summary>
+            <value>The parents.</value>
+        </member>
+        <member name="P:Kindergarden_Data.KindergardenDbContext.Groups">
+            <summary>Gets or sets the groups from the database.</summary>
+            <value>The groups.</value>
+        </member>
+    </members>
+</doc>

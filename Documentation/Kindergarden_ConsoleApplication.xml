@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Kindergarden_ConsoleApplication</name>
+    </assembly>
+    <members>
+        <member name="T:Kindergarden_ConsoleApplication.Display">
+            <summary>
+            Represents the user interface for managing kindergarten data, including CRUD operations for kids, parents, and groups.
+            </summary>
+        </member>
+        <member name="M:Kindergarden_ConsoleApplication.Display.#ctor">
+            <summary>Initializes a new instance of the <see cref="T:Kindergarden_ConsoleApplication.Display" /> class.</summary>
+        </member>
+        <member name="M:Kindergarden_ConsoleApplication.Display.ShowMenu">
+            <summary>Shows the menu.</summary>
+        </member>
+        <member name="M:Kindergarden_ConsoleApplication.Display.Input">
+            <summary>Awaits the choice of the user.</summary>
+        </member>
+        <member name="M:Kindergarden_ConsoleApplication.Display.ListAllKids">
+            <summary>Lists all kids.</summary>
+        </member>
+        <member name="M:Kindergarden_ConsoleApplication.Display.ListAllGroups">
+            <summary>Lists all groups.</summary>
+        </member>
+        <member name="M:Kindergarden_ConsoleApplication.Display.ListAllParents">
+            <summary>Lists all parents.</summary>
+        </member>
+        <member name="M:Kindergarden_ConsoleApplication.Display.FetchKidAndParent">
+            <summary>Fetches the kid and parent.</summary>
+        </member>
+        <member name="M:Kindergarden_ConsoleApplication.Display.UpdateKid">
+            <summary>Updates the kid.</summary>
+        </member>
+        <member name="M:Kindergarden_ConsoleApplication.Display.UpdateParent">
+            <summary>Updates the parent.</summary>
+        </member>
+        <member name="M:Kindergarden_ConsoleApplication.Display.CreateKid">
+            <summary>Creates the kid.</summary>
+        </member>
+        <member name="M:Kindergarden_ConsoleApplication.Display.DeleteKid">
+            <summary>Deletes the kid.</summary>
+        </member>
+    </members>
+</doc>

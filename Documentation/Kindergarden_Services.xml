@@ -1,0 +1,182 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Kindergarden_Services</name>
+    </assembly>
+    <members>
+        <member name="T:Kindergarden_Services.GroupService">
+            <summary>
+            Service class for managing groups within a kindergarten.
+            </summary>
+        </member>
+        <member name="M:Kindergarden_Services.GroupService.#ctor(Kindergarden_Data.KindergardenDbContext)">
+            <summary>Initializes a new instance of the <see cref="T:Kindergarden_Services.GroupService" /> class.</summary>
+            <param name="db">The database.</param>
+        </member>
+        <member name="M:Kindergarden_Services.GroupService.Fetch(System.Int32)">
+            <summary>Fetches the wanted Group by it's id.</summary>
+            <param name="id">The identifier.</param>
+        </member>
+        <member name="T:Kindergarden_Services.IGroupService">
+            <summary>
+            Interface for retrieving group information.
+            </summary>
+        </member>
+        <member name="M:Kindergarden_Services.IGroupService.Fetch(System.Int32)">
+            <summary>Fetches the wanted Group by it's id.</summary>
+            <param name="id">The identifier.</param>
+            <returns>
+              <br />
+            </returns>
+        </member>
+        <member name="T:Kindergarden_Services.IKidService">
+            <summary>
+            Interface for managing kid-related operations such as creation, deletion, updating, and fetching.
+            </summary>
+        </member>
+        <member name="M:Kindergarden_Services.IKidService.CreateKid(System.String,System.String,System.Int32,System.String,System.String,System.String,System.String)">
+            <summary>Creates the kid.</summary>
+            <param name="firstName">The first name.</param>
+            <param name="lastName">The last name.</param>
+            <param name="age">The age.</param>
+            <param name="parentFirstName">First name of the parent.</param>
+            <param name="parentLastName">Last name of the parent.</param>
+            <param name="phoneNumber">The phone number.</param>
+            <param name="address">The address.</param>
+        </member>
+        <member name="M:Kindergarden_Services.IKidService.Delete(System.String)">
+            <summary>Deletes the specified kid by name.</summary>
+            <param name="kidName">Name of the kid.</param>
+            <returns>
+              <br />
+            </returns>
+        </member>
+        <member name="M:Kindergarden_Services.IKidService.FetchKidAndParent(System.String)">
+            <summary>Fetches the kid and parent.</summary>
+            <param name="kidName">Name of the kid.</param>
+            <returns>
+              <br />
+            </returns>
+        </member>
+        <member name="M:Kindergarden_Services.IKidService.UpdateName(System.Int32,System.String)">
+            <summary>Updates the kid's name.</summary>
+            <param name="id">The identifier.</param>
+            <param name="newName">The new name.</param>
+            <returns>
+              <br />
+            </returns>
+        </member>
+        <member name="M:Kindergarden_Services.IKidService.UpdateAge(System.Int32,System.Int32)">
+            <summary>Updates the kid's age.</summary>
+            <param name="id">The identifier.</param>
+            <param name="newAge">The new age.</param>
+            <returns>
+              <br />
+            </returns>
+        </member>
+        <member name="T:Kindergarden_Services.IParentService">
+            <summary>
+            Interface for managing parent-related operations such as fetching and updating parent information.
+            </summary>
+        </member>
+        <member name="M:Kindergarden_Services.IParentService.Fetch(System.Int32)">
+            <summary>Fetches the specified Parent by kid's Id.</summary>
+            <param name="id">The identifier.</param>
+            <returns>
+              <br />
+            </returns>
+        </member>
+        <member name="M:Kindergarden_Services.IParentService.UpdateName(System.Int32,System.String)">
+            <summary>Updates the name.</summary>
+            <param name="id">The identifier.</param>
+            <param name="newName">The new name.</param>
+            <returns>
+              <br />
+            </returns>
+        </member>
+        <member name="M:Kindergarden_Services.IParentService.UpdateAddress(System.String,System.String)">
+            <summary>Updates the address.</summary>
+            <param name="oldAddress">The old address.</param>
+            <param name="newAddress">The new address.</param>
+            <returns>
+              <br />
+            </returns>
+        </member>
+        <member name="M:Kindergarden_Services.IParentService.UpdatePN(System.String,System.String)">
+            <summary>Updates the phone number.</summary>
+            <param name="pn1">The PN1.</param>
+            <param name="pn">The pn.</param>
+            <returns>
+              <br />
+            </returns>
+        </member>
+        <member name="T:Kindergarden_Services.KidService">
+            <summary>
+            Service for managing kid-related operations such as creation, deletion, updating, and fetching.
+            </summary>
+        </member>
+        <member name="M:Kindergarden_Services.KidService.#ctor(Kindergarden_Data.KindergardenDbContext)">
+            <summary>Initializes a new instance of the <see cref="T:Kindergarden_Services.KidService" /> class.</summary>
+            <param name="db">The database.</param>
+        </member>
+        <member name="M:Kindergarden_Services.KidService.CreateKid(System.String,System.String,System.Int32,System.String,System.String,System.String,System.String)">
+            <summary>Creates the kid.</summary>
+            <param name="firstName">The first name.</param>
+            <param name="lastName">The last name.</param>
+            <param name="age">The age.</param>
+            <param name="parentFirstName">First name of the parent.</param>
+            <param name="parentLastName">Last name of the parent.</param>
+            <param name="phoneNumber">The phone number.</param>
+            <param name="address">The address.</param>
+        </member>
+        <member name="M:Kindergarden_Services.KidService.Delete(System.String)">
+            <summary>Deletes the specified kid by name.</summary>
+            <param name="kidName">Name of the kid.</param>
+            <returns>
+              <br />
+            </returns>
+        </member>
+        <member name="M:Kindergarden_Services.KidService.FetchKidAndParent(System.String)">
+            <summary>Fetches the kid and parent.</summary>
+            <param name="kidName">Name of the kid.</param>
+        </member>
+        <member name="M:Kindergarden_Services.KidService.UpdateName(System.Int32,System.String)">
+            <summary>Updates the kid's name.</summary>
+            <param name="id">The identifier.</param>
+            <param name="newName">The new name.</param>
+        </member>
+        <member name="M:Kindergarden_Services.KidService.UpdateAge(System.Int32,System.Int32)">
+            <summary>Updates the kid's age.</summary>
+            <param name="id">The identifier.</param>
+            <param name="newAge">The new age.</param>
+        </member>
+        <member name="T:Kindergarden_Services.ParentService">
+            <summary>
+            Service for managing parent-related operations such as fetching and updating parent information.
+            </summary>
+        </member>
+        <member name="M:Kindergarden_Services.ParentService.#ctor(Kindergarden_Data.KindergardenDbContext)">
+            <summary>Initializes a new instance of the <see cref="T:Kindergarden_Services.ParentService" /> class.</summary>
+            <param name="db">The database.</param>
+        </member>
+        <member name="M:Kindergarden_Services.ParentService.Fetch(System.Int32)">
+            <summary>Fetches the specified Parent by kid's Id.</summary>
+            <param name="id">The identifier.</param>
+        </member>
+        <member name="M:Kindergarden_Services.ParentService.UpdateName(System.Int32,System.String)">
+            <summary>Updates the parent's name.</summary>
+            <param name="id">The identifier.</param>
+            <param name="newName">The new name.</param>
+        </member>
+        <member name="M:Kindergarden_Services.ParentService.UpdatePN(System.String,System.String)">
+            <summary>Updates the phone number.</summary>
+            <param name="oldPN"></param>
+            <param name="newPN"></param>
+        </member>
+        <member name="M:Kindergarden_Services.ParentService.UpdateAddress(System.String,System.String)">
+            <summary>Updates the address.</summary>
+            <param name="oldAddress">The old address.</param>
+            <param name="newAddress">The new address.</param>
+        </member>
+    </members>
+</doc>
