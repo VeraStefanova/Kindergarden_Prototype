@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Kindergarden_NUnit_Tests.ModelTests
+namespace Kindergarden_NUnit_Tests.Tests
 {
 
     [TestFixture]

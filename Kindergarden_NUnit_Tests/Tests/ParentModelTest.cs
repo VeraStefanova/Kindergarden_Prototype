@@ -8,7 +8,7 @@ using NUnit.Framework;
 using NUnit.Compatibility;
 using NUnit.Framework.Legacy;
 
-namespace Kindergarden_NUnit_Tests.ModelTests
+namespace Kindergarden_NUnit_Tests.Tests
 {
     [TestFixture]
     public class ParentModelTests
