@@ -455,8 +455,8 @@ namespace Kindergarden_WForm
             dataTable = new DataTable();
             adapter.Fill(dataTable);
             dataGridView1.DataSource = dataTable;
-            dataGridView1.Columns["Id"].Visible = false;
 
+            dataGridView1.Columns["Id"].Visible = false;
             Kid kid = new Kid();
             Parent parent = new Parent();
             kid = kidsWithThisName.FirstOrDefault(x => x.KidId.ToString() == textBox2.Text);
@@ -495,7 +495,6 @@ namespace Kindergarden_WForm
                 dataTable = new DataTable();
                 adapter.Fill(dataTable);
                 dataGridView1.DataSource = dataTable;
-                dataGridView1.Columns["Id"].Visible = true;
 
 
                 kidsWithThisName = db.Kids.Where(x => x.FirstName == textBox1.Text).ToList();
@@ -543,13 +542,16 @@ namespace Kindergarden_WForm
         private void Delete_Click(object sender, EventArgs e)
         {
             Kid kid;
+            Kid kid2;
             Parent parent;
             kid = kidsWithThisName.FirstOrDefault(x => x.KidId.ToString() == textBox2.Text);
             parent = db.Parents.FirstOrDefault(x => x.ParentId == kid.ParentId);
 
             db.Kids.Remove(kid);
-            parent.Kids.Remove(kid);
-            if(parent.Kids.Count==0)
+            db.SaveChanges();
+
+            kid2 = db.Kids.FirstOrDefault(x => x.ParentId == parent.ParentId);
+            if(kid2==null)
             {
                 db.Parents.Remove(parent);
             }
