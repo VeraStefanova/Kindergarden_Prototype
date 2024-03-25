@@ -101,12 +101,14 @@ namespace Kindergarden_Services
             var kid = db.Kids.FirstOrDefault(x => x.FirstName == kidName); 
             if (kid != null)
             {
+                Kid kid2;
                 Parent parent = kid.Parent; // Викам родителя на детето на което искам да изтрия
                 db.Kids.Remove(kid); //изтривам детето, но родителя остава
+                db.SaveChanges(); //Inache ne trie deteto i ne moga da napravq tyrsenento
 
-                parent.Kids.Remove(kid); // nz dali trie relationa i za tva go pravq ruchno
+                kid2 = db.Kids.FirstOrDefault(x=>x.ParentId==parent.ParentId);
 
-                if (parent.Kids.Count == 0) //Sled iztrivaneto na tova dete proverqvame dali tozi roditel, na iztritoto veche dete, ima drugi relation-i
+                if (kid2 == null) //Sled iztrivaneto na tova dete proverqvame dali tozi roditel, na iztritoto veche dete, ima drugi deca
                 {
                     db.Parents.Remove(parent);
                 }

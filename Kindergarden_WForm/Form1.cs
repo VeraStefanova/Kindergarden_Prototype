@@ -232,19 +232,31 @@ namespace Kindergarden_WForm
             Select2.Visible = false;
             Delete.Visible = false;
             KidRemovalMessage.Visible = false;
+            NoKidFoundLabel.Visible = false;
 
         } // Hamburger
 
         private void button11_Click(object sender, EventArgs e) // Search Button for kid and parent
         {
             kidsWithThisName.Clear();
-            string query = $"SELECT Concat(k.FirstName,' ',k.LastName) as 'Kid name', Age, Concat(p.FirstName,' ',p.LastName) as 'Parent name',PhoneNumber as'Phone number',Address, GroupName as 'Group name'  from Kids as k  JOIN Parents as p on (p.ParentId=k.ParentId)Join Groups as g on (k.GroupId=g.GroupId) where(k.FirstName='{textBox1.Text}')";
-            adapter = new SqlDataAdapter(query, connection);
-            dataTable = new DataTable();
-            adapter.Fill(dataTable);
-            dataGridView1.DataSource = dataTable;
-
-            dataGridView1.Visible = true;
+            if(db.Kids.FirstOrDefault(x=>x.FirstName==textBox1.Text)!=null)
+            {
+                string query = $"SELECT Concat(k.FirstName,' ',k.LastName) as 'Kid name', Age, Concat(p.FirstName,' ',p.LastName) as 'Parent name',PhoneNumber as'Phone number',Address, GroupName as 'Group name'  from Kids as k  JOIN Parents as p on (p.ParentId=k.ParentId)Join Groups as g on (k.GroupId=g.GroupId) where(k.FirstName='{textBox1.Text}')";
+                adapter = new SqlDataAdapter(query, connection);
+                dataTable = new DataTable();
+                adapter.Fill(dataTable);
+                dataGridView1.DataSource = dataTable;
+                NoKidFoundLabel.Visible = false;
+                dataGridView1.Visible = true;
+                
+            }
+            else
+            {
+                
+                dataGridView1.Visible = false;
+                NoKidFoundLabel.Visible = true;
+            }
+            
             textBox1.Text = null;
             label3.Visible = false;
             Select.Visible = false;
@@ -255,23 +267,36 @@ namespace Kindergarden_WForm
         private void Search2_Click(object sender, EventArgs e) 
         {
             kidsWithThisName.Clear();
-            string query1 = $"SELECT k.KidId as 'Id', Concat(k.FirstName,' ',k.LastName) as 'Kid name', Age, Concat(p.FirstName,' ',p.LastName) as 'Parent name',PhoneNumber as'Phone number',Address, GroupName as 'Group name'  from Kids as k JOIN Parents as p on (p.ParentId=k.ParentId)Join Groups as g on (k.GroupId=g.GroupId) where(k.FirstName='{textBox1.Text}')";
-            adapter = new SqlDataAdapter(query1, connection);
-            dataTable = new DataTable();
-            adapter.Fill(dataTable);
-            dataGridView1.DataSource = dataTable;
-            dataGridView1.Columns["Id"].Visible = true;
+            if (db.Kids.FirstOrDefault(x => x.FirstName == textBox1.Text) != null)
+            {
+                string query1 = $"SELECT k.KidId as 'Id', Concat(k.FirstName,' ',k.LastName) as 'Kid name', Age, Concat(p.FirstName,' ',p.LastName) as 'Parent name',PhoneNumber as'Phone number',Address, GroupName as 'Group name'  from Kids as k JOIN Parents as p on (p.ParentId=k.ParentId)Join Groups as g on (k.GroupId=g.GroupId) where(k.FirstName='{textBox1.Text}')";
+                adapter = new SqlDataAdapter(query1, connection);
+                dataTable = new DataTable();
+                adapter.Fill(dataTable);
+                dataGridView1.DataSource = dataTable;
 
-            kidsWithThisName = db.Kids.Where(x => x.FirstName == textBox1.Text).ToList();
+                kidsWithThisName = db.Kids.Where(x => x.FirstName == textBox1.Text).ToList();
+                dataGridView1.Visible = true;
+                button7.Visible = false;
+                label3.Visible = true;
+                Select.Visible = true;
+                textBox2.Visible = true;
+                NoKidFoundLabel.Visible = false;
+            }
+            else
+            {
+                dataGridView1.Visible = false;
+                button7.Visible = false;
+                label3.Visible = false;
+                Select.Visible = false;
+                textBox2.Visible = false;
+                NoKidFoundLabel.Visible = true;
+
+            }
 
 
-
-            dataGridView1.Visible = true;
             textBox2.Text = null;
-            button7.Visible = false;
-            label3.Visible = true;
-            Select.Visible = true;
-            textBox2.Visible = true;
+            textBox1.Text = null;
             label4.Visible = false;
             label5.Visible = false;
             label6.Visible = false;
@@ -297,13 +322,6 @@ namespace Kindergarden_WForm
             Parent parent = new Parent();
             kid = kidsWithThisName.FirstOrDefault(x => x.KidId.ToString() == textBox2.Text);
             parent = db.Parents.FirstOrDefault(x => x.ParentId == kid.ParentId);
-
-
-
-
-
-            //dataGridView1.Rows.Add("", $"{kid.FirstName + " " + kid.LastName}", kid.Age.ToString(),
-            //$"{parent.FirstName + " " + parent.LastName}", parent.PhoneNumber, parent.Address);
 
 
             dataGridView1.Columns["Id"].Visible = false;
@@ -437,8 +455,8 @@ namespace Kindergarden_WForm
             dataTable = new DataTable();
             adapter.Fill(dataTable);
             dataGridView1.DataSource = dataTable;
-            dataGridView1.Columns["Id"].Visible = false;
 
+            dataGridView1.Columns["Id"].Visible = false;
             Kid kid = new Kid();
             Parent parent = new Parent();
             kid = kidsWithThisName.FirstOrDefault(x => x.KidId.ToString() == textBox2.Text);
@@ -470,24 +488,43 @@ namespace Kindergarden_WForm
         private void Search3_Click(object sender, EventArgs e) // Search for delete
         {
             kidsWithThisName.Clear();
-            string query1 = $"SELECT k.KidId as 'Id', Concat(k.FirstName,' ',k.LastName) as 'Kid name', Age, Concat(p.FirstName,' ',p.LastName) as 'Parent name',PhoneNumber as'Phone number',Address, GroupName as 'Group name'  from Kids as k JOIN Parents as p on (p.ParentId=k.ParentId)Join Groups as g on (k.GroupId=g.GroupId) where(k.FirstName='{textBox1.Text}')";
-            adapter = new SqlDataAdapter(query1, connection);
-            dataTable = new DataTable();
-            adapter.Fill(dataTable);
-            dataGridView1.DataSource = dataTable;
-            dataGridView1.Columns["Id"].Visible = true;
+            if (db.Kids.FirstOrDefault(x => x.FirstName == textBox1.Text) != null)
+            {
+                string query1 = $"SELECT k.KidId as 'Id', Concat(k.FirstName,' ',k.LastName) as 'Kid name', Age, Concat(p.FirstName,' ',p.LastName) as 'Parent name',PhoneNumber as'Phone number',Address, GroupName as 'Group name'  from Kids as k JOIN Parents as p on (p.ParentId=k.ParentId)Join Groups as g on (k.GroupId=g.GroupId) where(k.FirstName='{textBox1.Text}')";
+                adapter = new SqlDataAdapter(query1, connection);
+                dataTable = new DataTable();
+                adapter.Fill(dataTable);
+                dataGridView1.DataSource = dataTable;
+
+
+                kidsWithThisName = db.Kids.Where(x => x.FirstName == textBox1.Text).ToList();
+                
+                KidRemovalMessage.Visible = false;
+                dataGridView1.Visible = true;
+                textBox2.Text = null;
+                Select.Visible = false;
+                label3.Visible = true;
+                Select2.Visible = true;
+                textBox2.Visible = true;
+                NoKidFoundLabel.Visible = false;
+
+            }
+            else
+            {
+                KidRemovalMessage.Visible = false;
+                dataGridView1.Visible = false;
+                textBox2.Visible = false;
+                textBox2.Text = null;
+                Select.Visible = false;
+                label3.Visible = false;
+                Select2.Visible = false;
+                textBox2.Visible = false;
+                NoKidFoundLabel.Visible = true;
+            }
+
+
+
             
-
-            kidsWithThisName = db.Kids.Where(x => x.FirstName == textBox1.Text).ToList();
-
-
-
-            dataGridView1.Visible = true;
-            textBox2.Text = null;
-            Select.Visible = false;
-            label3.Visible = true;
-            Select2.Visible = true;
-            textBox2.Visible = true;
             label4.Visible = false;
             label5.Visible = false;
             label6.Visible = false;
@@ -505,13 +542,16 @@ namespace Kindergarden_WForm
         private void Delete_Click(object sender, EventArgs e)
         {
             Kid kid;
+            Kid kid2;
             Parent parent;
             kid = kidsWithThisName.FirstOrDefault(x => x.KidId.ToString() == textBox2.Text);
             parent = db.Parents.FirstOrDefault(x => x.ParentId == kid.ParentId);
 
             db.Kids.Remove(kid);
-            parent.Kids.Remove(kid);
-            if(parent.Kids.Count==0)
+            db.SaveChanges();
+
+            kid2 = db.Kids.FirstOrDefault(x => x.ParentId == parent.ParentId);
+            if(kid2==null)
             {
                 db.Parents.Remove(parent);
             }
