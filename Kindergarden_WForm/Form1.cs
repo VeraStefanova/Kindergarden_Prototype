@@ -233,6 +233,7 @@ namespace Kindergarden_WForm
             Delete.Visible = false;
             KidRemovalMessage.Visible = false;
             NoKidFoundLabel.Visible = false;
+            kidsWithThisName.Clear();
 
         } // Hamburger
 
